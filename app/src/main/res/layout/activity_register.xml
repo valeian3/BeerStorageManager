@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/backgroundRegister"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/register_tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/register_tvMarginTopRegister"
+        android:layout_centerHorizontal="true"
+        android:text="@string/register_tvRegister"
+        android:textSize="@dimen/register_tvSizeRegister"/>
+
+    <TextView
+        android:id="@+id/register_tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/register_tvMarginTopName"
+        android:layout_below="@+id/register_tvRegister"
+        android:layout_centerHorizontal="true"
+        android:text="@string/register_tvName"
+        android:textSize="@dimen/register_tvSizeName"/>
+
+    <EditText
+        android:id="@+id/register_etName"
+        android:layout_width="@dimen/register_etWidthName"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/register_etMarginTopName"
+        android:layout_below="@+id/register_tvName"
+        android:hint="@string/register_etHintName"
+        android:importantForAutofill="no"/>
+
+    <TextView
+        android:id="@+id/register_tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/register_tvMarginTopEmail"
+        android:layout_below="@+id/register_etName"
+        android:layout_centerHorizontal="true"
+        android:text="@string/register_tvEmail"
+        android:textSize="@dimen/register_tvSizeEmail"/>
+
+    <EditText
+        android:id="@+id/register_etEmail"
+        android:layout_width="@dimen/register_etWidthEmail"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/register_etMarginTopEmail"
+        android:layout_below="@+id/register_tvEmail"
+        android:hint="@string/register_etHintEmail"
+        android:importantForAutofill="no"/>
+
+    <TextView
+        android:id="@+id/register_tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/register_tvMarginTopUsername"
+        android:layout_below="@+id/register_etEmail"
+        android:layout_centerHorizontal="true"
+        android:text="@string/register_tvUsername"
+        android:textSize="@dimen/register_tvSizeUsername"/>
+
+    <EditText
+        android:id="@+id/register_etUsername"
+        android:layout_width="@dimen/register_etWidthUsername"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/register_etMarginTopUsername"
+        android:layout_below="@+id/register_tvUsername"
+        android:hint="@string/register_etHintUsername"
+        android:importantForAutofill="no"/>
+
+    <TextView
+        android:id="@+id/register_tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/register_tvMarginTopPassword"
+        android:layout_below="@+id/register_etUsername"
+        android:layout_centerHorizontal="true"
+        android:text="@string/register_tvPassword"
+        android:textSize="@dimen/register_tvSizePassword"/>
+
+    <EditText
+        android:id="@+id/register_etPassword"
+        android:layout_width="@dimen/register_etWidthPassword"
+        android:layout_height="wrap_content"
+        android:inputType="numberPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/register_etMarginTopPassword"
+        android:layout_below="@+id/register_tvPassword"
+        android:hint="@string/register_etHintPassword"
+        android:importantForAutofill="no"/>
+
+    <Button
+        android:id="@+id/register_btnSignUp"
+        android:layout_width="@dimen/register_btnWidthSignUp"
+        android:layout_height="@dimen/register_btnHeighSignUp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/register_btnMargineTopSignUp"
+        android:layout_below="@+id/register_etPassword"
+        android:text="@string/register_btnSignUp"
+        android:background="@color/login_btnSignUp"/>
+
+    <TextView
+        android:id="@+id/register_tvAlreadyHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/register_tvMarginTopForgotAlreadyHaveAccount"
+        android:layout_below="@+id/register_btnSignUp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/register_tvAlreadyHaveAccount"
+        android:textSize="@dimen/register_tvSizeAlreadyHaveAccount"/>
+
+</RelativeLayout>
