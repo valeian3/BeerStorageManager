@@ -6,9 +6,17 @@ public class User {
     private String Name;
     private String Email;
     private String Username;
-    private int Password;
+    private String Password;
 
     public User(){ }
+
+    public User(String id, String name, String email, String username, String password){
+        userId = id;
+        Name = name;
+        Email = email;
+        Username = username;
+        Password = password;
+    }
 
     public String getUserId() {
         return userId;
@@ -42,11 +50,11 @@ public class User {
         Username = username;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return Password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         Password = password;
     }
 

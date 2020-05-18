@@ -21,12 +21,20 @@ public class UserController {
         model.setUsername(name);
     }
 
-    public int getPassword(){
+    public String getPassword(){
         return model.getPassword();
     }
 
-    public void setPassword(int password){
+    public void setPassword(String password){
         model.setPassword(password);
+    }
+
+    public String getEmail(){
+        return model.getEmail();
+    }
+
+    public void setEmail(String email){
+        model.setEmail(email);
     }
 
 }

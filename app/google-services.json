@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "302861178583",
+    "firebase_url": "https://beerstoragemanager.firebaseio.com",
+    "project_id": "beerstoragemanager",
+    "storage_bucket": "beerstoragemanager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302861178583:android:2c8e82d45eb1f85dbe4292",
+        "android_client_info": {
+          "package_name": "com.example.beerstoragemanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302861178583-brr61qacij267g2c7sdlsu135hrj52lo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBFiWh2sDz1BJFzKL_-myvHiicT_xj3jM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302861178583-brr61qacij267g2c7sdlsu135hrj52lo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

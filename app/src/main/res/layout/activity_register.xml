@@ -3,122 +3,122 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/backgroundRegister"
+    android:background="@drawable/background_register"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/register_tvRegister"
+        android:id="@+id/register_tvIdRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/register_tvMarginTopRegister"
         android:layout_centerHorizontal="true"
-        android:text="@string/register_tvRegister"
+        android:text="@string/register_tvTextRegister"
         android:textSize="@dimen/register_tvSizeRegister"/>
 
     <TextView
-        android:id="@+id/register_tvName"
+        android:id="@+id/register_tvIdName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/register_tvMarginTopName"
-        android:layout_below="@+id/register_tvRegister"
+        android:layout_below="@+id/register_tvIdRegister"
         android:layout_centerHorizontal="true"
-        android:text="@string/register_tvName"
+        android:text="@string/register_tvTextName"
         android:textSize="@dimen/register_tvSizeName"/>
 
     <EditText
-        android:id="@+id/register_etName"
+        android:id="@+id/register_etIdName"
         android:layout_width="@dimen/register_etWidthName"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/register_etMarginTopName"
-        android:layout_below="@+id/register_tvName"
+        android:layout_below="@+id/register_tvIdName"
         android:hint="@string/register_etHintName"
         android:importantForAutofill="no"/>
 
     <TextView
-        android:id="@+id/register_tvEmail"
+        android:id="@+id/register_tvIdEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/register_tvMarginTopEmail"
-        android:layout_below="@+id/register_etName"
+        android:layout_below="@+id/register_etIdName"
         android:layout_centerHorizontal="true"
-        android:text="@string/register_tvEmail"
+        android:text="@string/register_tvTextEmail"
         android:textSize="@dimen/register_tvSizeEmail"/>
 
     <EditText
-        android:id="@+id/register_etEmail"
+        android:id="@+id/register_etIdEmail"
         android:layout_width="@dimen/register_etWidthEmail"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/register_etMarginTopEmail"
-        android:layout_below="@+id/register_tvEmail"
+        android:layout_below="@+id/register_tvIdEmail"
         android:hint="@string/register_etHintEmail"
         android:importantForAutofill="no"/>
 
     <TextView
-        android:id="@+id/register_tvUsername"
+        android:id="@+id/register_tvIdUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/register_tvMarginTopUsername"
-        android:layout_below="@+id/register_etEmail"
+        android:layout_below="@+id/register_etIdEmail"
         android:layout_centerHorizontal="true"
-        android:text="@string/register_tvUsername"
+        android:text="@string/register_tvTextUsername"
         android:textSize="@dimen/register_tvSizeUsername"/>
 
     <EditText
-        android:id="@+id/register_etUsername"
+        android:id="@+id/register_etIdUsername"
         android:layout_width="@dimen/register_etWidthUsername"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/register_etMarginTopUsername"
-        android:layout_below="@+id/register_tvUsername"
+        android:layout_below="@+id/register_tvIdUsername"
         android:hint="@string/register_etHintUsername"
         android:importantForAutofill="no"/>
 
     <TextView
-        android:id="@+id/register_tvPassword"
+        android:id="@+id/register_tvIdPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/register_tvMarginTopPassword"
-        android:layout_below="@+id/register_etUsername"
+        android:layout_below="@+id/register_etIdUsername"
         android:layout_centerHorizontal="true"
-        android:text="@string/register_tvPassword"
+        android:text="@string/register_tvTextPassword"
         android:textSize="@dimen/register_tvSizePassword"/>
 
     <EditText
-        android:id="@+id/register_etPassword"
+        android:id="@+id/register_etIdPassword"
         android:layout_width="@dimen/register_etWidthPassword"
         android:layout_height="wrap_content"
         android:inputType="numberPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/register_etMarginTopPassword"
-        android:layout_below="@+id/register_tvPassword"
+        android:layout_below="@+id/register_tvIdPassword"
         android:hint="@string/register_etHintPassword"
         android:importantForAutofill="no"/>
 
     <Button
-        android:id="@+id/register_btnSignUp"
+        android:id="@+id/register_btnIdSignUp"
         android:layout_width="@dimen/register_btnWidthSignUp"
-        android:layout_height="@dimen/register_btnHeighSignUp"
+        android:layout_height="@dimen/register_btnHeightSignUp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/register_btnMargineTopSignUp"
-        android:layout_below="@+id/register_etPassword"
-        android:text="@string/register_btnSignUp"
-        android:background="@color/login_btnSignUp"/>
+        android:layout_marginTop="@dimen/register_btnMarginTopSignUp"
+        android:layout_below="@+id/register_etIdPassword"
+        android:text="@string/register_btnTextSignUp"
+        android:background="@color/login_btnColorSignUp"/>
 
     <TextView
-        android:id="@+id/register_tvAlreadyHaveAccount"
+        android:id="@+id/register_tvIdAlreadyHaveAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/register_tvMarginTopForgotAlreadyHaveAccount"
-        android:layout_below="@+id/register_btnSignUp"
+        android:layout_below="@+id/register_btnIdSignUp"
         android:layout_centerHorizontal="true"
-        android:text="@string/register_tvAlreadyHaveAccount"
+        android:text="@string/register_tvTextAlreadyHaveAccount"
         android:textSize="@dimen/register_tvSizeAlreadyHaveAccount"/>
 
 </RelativeLayout>

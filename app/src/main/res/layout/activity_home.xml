@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_with_picture"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/home_btnIdList"
+        android:layout_width="@dimen/home_btnWidthList"
+        android:layout_height="@dimen/home_btnHeightList"
+        android:layout_marginTop="@dimen/home_btnMarginTopList"
+        android:layout_marginEnd="@dimen/home_btnMarginEndList"
+        android:layout_toStartOf="@+id/home_btnIdWineBarrel"
+        android:background="@drawable/ic_list" />
+
+    <Button
+        android:id="@+id/home_btnIdWineBarrel"
+        android:layout_width="@dimen/home_btnWidthWineBarrel"
+        android:layout_height="@dimen/home_btnHeightWineBarrel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/home_btnMarginTopWineBarrel"
+        android:background="@drawable/ic_wine_barrel" />
+
+    <Button
+        android:id="@+id/home_btnIdBox"
+        android:layout_width="@dimen/home_btnWidthBox"
+        android:layout_height="@dimen/home_btnHeightBox"
+        android:layout_marginStart="@dimen/home_btnMarginStartHeightBox"
+        android:layout_marginTop="@dimen/home_btnMarginTopBox"
+        android:layout_toEndOf="@+id/home_btnIdWineBarrel"
+        android:background="@drawable/ic_box" />
+
+    <Button
+        android:id="@+id/home_btnIdLogout"
+        android:layout_width="@dimen/home_btnWidthLogout"
+        android:layout_height="@dimen/home_btnHeightLogout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/home_btnMarginTopLogout"
+        android:text="@string/home_btnTextLogout"
+        android:background="@color/home_btnColorLogout"/>
+
+</RelativeLayout>
