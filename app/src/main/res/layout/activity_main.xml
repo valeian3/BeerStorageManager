@@ -3,19 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_login"
+    android:background="@drawable/ic_background_login"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".MainActivity">
 
-<TextView
-    android:id="@+id/login_tvIdBrewaryName"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/login_tvMarginTopBrewaryName"
-    android:layout_centerHorizontal="true"
-    android:text="@string/login_tvTextBrewaryName"
-    android:textSize="@dimen/login_tvSizeBrewaryName"/>
+    <TextView
+        android:id="@+id/login_tvIdBreweryName"
+        android:layout_width="@dimen/login_tvWidthBreweryName"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/login_tvMarginTopBreweryName"
+        android:layout_marginStart="@dimen/login_tvMarginStartBreweryName"
+        android:text="@string/login_tvTextBreweryName"
+        android:textStyle="bold"
+        android:textSize="@dimen/login_tvSizeBreweryName"
+        android:textColor="@color/login_tvTextColorBreweryName"/>
 
     <TextView
         android:id="@+id/login_tvIdLogin"
@@ -24,27 +27,41 @@
         android:layout_marginTop="@dimen/login_tvMarginTopLogin"
         android:layout_centerHorizontal="true"
         android:text="@string/login_tvTextLogin"
-        android:textSize="@dimen/login_tvSizeLogin"/>
+        android:textStyle="bold"
+        android:textSize="@dimen/login_tvSizeLogin"
+        android:textColor="@color/register_tvTextColorRegister"/>
 
     <EditText
-    android:id="@+id/login_etIdEmail"
-    android:layout_width="@dimen/login_etWidthEmail"
-    android:layout_height="wrap_content"
-    android:inputType="textEmailAddress"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="@dimen/login_etMarginTopEmail"
-    android:layout_below="@+id/login_tvIdLogin"
-    android:hint="@string/login_etHintEmail"
-    android:importantForAutofill="no"/>
+        android:id="@+id/login_etIdEmail"
+        android:layout_width="@dimen/login_etWidthEmail"
+        android:layout_height="@dimen/login_etHeightEmail"
+        android:inputType="textEmailAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/login_etMarginTopEmail"
+        android:layout_below="@+id/login_tvIdLogin"
+        android:background="@drawable/custom_input"
+        android:elevation="1dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:hint="@string/login_etHintEmail"
+        android:importantForAutofill="no"/>
 
     <EditText
         android:id="@+id/login_etIdPassword"
         android:layout_width="@dimen/login_etWidthPassword"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/login_etHeightPassword"
         android:inputType="numberPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/login_etMarginTopPassword"
         android:layout_below="@+id/login_etIdEmail"
+        android:background="@drawable/custom_input"
+        android:elevation="1dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:hint="@string/login_etHintPassword"
         android:importantForAutofill="no"/>
 
@@ -52,11 +69,13 @@
         android:id="@+id/login_tvIdForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/login_tvMarginTopForgotPassword"
         android:layout_below="@+id/login_etIdPassword"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/login_tvMarginTopForgotPassword"
+        android:layout_marginEnd="@dimen/login_tvMarginEndForgotPassword"
         android:text="@string/login_tvTextForgotPassword"
-        android:textSize="@dimen/login_tvSizeForgotPassword"/>
+        android:textColor="@color/login_tvTextColorForgotPassword"
+        android:textSize="@dimen/login_tvSizeForgotPassword" />
 
     <Button
         android:id="@+id/login_btnIdLogin"
@@ -66,7 +85,8 @@
         android:layout_marginTop="@dimen/login_btnMarginTopLogin"
         android:layout_below="@+id/login_etIdPassword"
         android:text="@string/login_btnTextLogin"
-        android:background="@color/login_btnColorLogin"/>
+        android:textColor="@color/register_btnTextColorSignUp"
+        android:background="@drawable/custom_button"/>
 
     <Button
         android:id="@+id/login_btnIdRegister"
@@ -76,6 +96,7 @@
         android:layout_marginTop="@dimen/login_btnMarginTopRegister"
         android:layout_below="@+id/login_btnIdLogin"
         android:text="@string/login_btnTextRegister"
-        android:background="@color/login_btnColorRegister"/>
+        android:textColor="@color/register_btnTextColorSignUp"
+        android:background="@drawable/custom_button"/>
 
     </RelativeLayout>

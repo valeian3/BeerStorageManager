@@ -1,61 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="login_tvMarginTopBrewaryName">50dp</dimen>
-    <dimen name="login_tvSizeBrewaryName">20sp</dimen>
+    <dimen name="login_tvWidthBreweryName">175sp</dimen>
+    <dimen name="login_tvMarginTopBreweryName">10dp</dimen>
+    <dimen name="login_tvMarginStartBreweryName">40dp</dimen>
+    <dimen name="login_tvSizeBreweryName">35sp</dimen>
 
-    <dimen name="login_tvMarginTopLogin">250dp</dimen>
-    <dimen name="login_tvSizeLogin">25sp</dimen>
+    <dimen name="login_tvMarginTopLogin">240dp</dimen>
+    <dimen name="login_tvSizeLogin">30sp</dimen>
 
-    <dimen name="login_tvMarginTopForgotPassword">5dp</dimen>
-    <dimen name="login_tvSizeForgotPassword">15sp</dimen>
-
-    <dimen name="login_etWidthEmail">200sp</dimen>
+    <dimen name="login_etWidthEmail">250sp</dimen>
+    <dimen name="login_etHeightEmail">40dp</dimen>
     <dimen name="login_etMarginTopEmail">10dp</dimen>
 
-    <dimen name="login_etWidthPassword">200sp</dimen>
+    <dimen name="login_etWidthPassword">250sp</dimen>
+    <dimen name="login_etHeightPassword">40dp</dimen>
     <dimen name="login_etMarginTopPassword">10dp</dimen>
 
-    <dimen name="login_btnWidthLogin">140sp</dimen>
-    <dimen name="login_btnHeightLogin">45dp</dimen>
+    <dimen name="login_tvMarginTopForgotPassword">8dp</dimen>
+    <dimen name="login_tvMarginEndForgotPassword">55dp</dimen>
+    <dimen name="login_tvSizeForgotPassword">14sp</dimen>
+
+    <dimen name="login_btnWidthLogin">190sp</dimen>
+    <dimen name="login_btnHeightLogin">35dp</dimen>
     <dimen name="login_btnMarginTopLogin">50dp</dimen>
 
-    <dimen name="login_btnWidthRegister">140sp</dimen>
-    <dimen name="login_btnHeightRegister">45dp</dimen>
+    <dimen name="login_btnWidthRegister">190sp</dimen>
+    <dimen name="login_btnHeightRegister">35dp</dimen>
     <dimen name="login_btnMarginTopRegister">10dp</dimen>
 
 
-    <dimen name="register_tvMarginTopRegister">135dp</dimen>
-    <dimen name="register_tvSizeRegister">25sp</dimen>
+    <dimen name="register_tvMarginTopRegister">130dp</dimen>
+    <dimen name="register_tvSizeRegister">30sp</dimen>
 
-    <dimen name="register_tvSizeAlreadyHaveAccount">15sp</dimen>
-    <dimen name="register_tvMarginTopForgotAlreadyHaveAccount">35dp</dimen>
+    <dimen name="register_tvMarginTopName">25dp</dimen>
+    <dimen name="register_tvMarginStartName">55dp</dimen>
+    <dimen name="register_tvSizeName">22sp</dimen>
 
-    <dimen name="register_btnWidthSignUp">140sp</dimen>
-    <dimen name="register_btnHeightSignUp">45dp</dimen>
-    <dimen name="register_btnMarginTopSignUp">35dp</dimen>
+    <dimen name="register_etWidthName">250sp</dimen>
+    <dimen name="register_etHeightName">40dp</dimen>
+    <dimen name="register_etMarginTopName">2dp</dimen>
 
-    <dimen name="register_etWidthPassword">200sp</dimen>
-    <dimen name="register_etMarginTopPassword">10dp</dimen>
+    <dimen name="register_tvMarginTopEmail">2dp</dimen>
+    <dimen name="register_tvMarginStartEmail">55dp</dimen>
+    <dimen name="register_tvSizeEmail">22sp</dimen>
 
-    <dimen name="register_tvMarginTopPassword">5dp</dimen>
-    <dimen name="register_tvSizePassword">15sp</dimen>
+    <dimen name="register_etWidthEmail">250sp</dimen>
+    <dimen name="register_etHeightEmail">40dp</dimen>
+    <dimen name="register_etMarginTopEmail">2dp</dimen>
 
-    <dimen name="register_etWidthUsername">200sp</dimen>
-    <dimen name="register_etMarginTopUsername">5dp</dimen>
+    <dimen name="register_tvMarginTopUsername">2dp</dimen>
+    <dimen name="register_tvMarginStartUsername">55dp</dimen>
+    <dimen name="register_tvSizeUsername">22sp</dimen>
 
-    <dimen name="register_tvSizeUsername">15sp</dimen>
-    <dimen name="register_tvMarginTopUsername">5dp</dimen>
-    <dimen name="register_tvMarginTopName">5dp</dimen>
-    <dimen name="register_tvSizeName">15sp</dimen>
+    <dimen name="register_etWidthUsername">250sp</dimen>
+    <dimen name="register_etHeightUsername">40dp</dimen>
+    <dimen name="register_etMarginTopUsername">2dp</dimen>
 
-    <dimen name="register_etWidthName">200sp</dimen>
-    <dimen name="register_etMarginTopName">5dp</dimen>
+    <dimen name="register_tvMarginTopPassword">2dp</dimen>
+    <dimen name="register_tvMarginStartPassword">55dp</dimen>
+    <dimen name="register_tvSizePassword">22sp</dimen>
 
-    <dimen name="register_tvMarginTopEmail">5dp</dimen>
-    <dimen name="register_tvSizeEmail">15sp</dimen>
+    <dimen name="register_etWidthPassword">250sp</dimen>
+    <dimen name="register_etHeightPassword">40dp</dimen>
+    <dimen name="register_etMarginTopPassword">2dp</dimen>
 
-    <dimen name="register_etWidthEmail">200sp</dimen>
-    <dimen name="register_etMarginTopEmail">5dp</dimen>
+    <dimen name="register_btnWidthSignUp">190sp</dimen>
+    <dimen name="register_btnHeightSignUp">35dp</dimen>
+    <dimen name="register_btnMarginTopSignUp">30dp</dimen>
+
+    <dimen name="register_tvSizeAlreadyHaveAccount">13sp</dimen>
+    <dimen name="register_tvMarginTopForgotAlreadyHaveAccount">20dp</dimen>
 
 
     <dimen name="home_btnWidthLogout">140sp</dimen>
@@ -188,6 +202,4 @@
     <dimen name="presets_btnHeightSelect">45dp</dimen>
     <dimen name="presets_btnMarginTopSelect">5dp</dimen>
     <dimen name="presets_btnMarginEndSelect">70dp</dimen>
-
-
 </resources>

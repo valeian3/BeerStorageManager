@@ -12,4 +12,10 @@
     <color name="color_btn">#23CDF8</color>
     <color name="color_ic_BtnAdd">#FFFFFF</color>
     <color name="presets_btnColorSelect">#37A7FC</color>
+    <color name="register_tvTextColorAlreadyHaveAccount">#8A8CDE</color>
+    <color name="register_btnTextColorSignUp">#FFFFFF</color>
+    <color name="register_btnBackgroundColorSignUp">#7D80DA</color>
+    <color name="register_tvTextColorRegister">#8D8A8D</color>
+    <color name="login_tvTextColorForgotPassword">#7D80DA</color>
+    <color name="login_tvTextColorBreweryName">#FFFFFF</color>
 </resources>

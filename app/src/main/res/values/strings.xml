@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">BeerStorageManager</string>
 
-    <string name="login_tvTextBrewaryName">Pivovara Daruvar</string>
+    <string name="login_tvTextBreweryName">Pivovara Daruvar</string>
     <string name="login_tvTextLogin">Login</string>
-    <string name="login_tvTextForgotPassword">Forgot password</string>
+    <string name="login_tvTextForgotPassword">Forgot password?</string>
     <string name="login_etHintEmail">email</string>
     <string name="login_etHintPassword">password</string>
     <string name="login_btnTextLogin">Login</string>
@@ -11,7 +11,7 @@
 
     <string name="register_tvTextRegister">REGISTER</string>
     <string name="register_tvTextAlreadyHaveAccount">Already have an account? Sign in</string>
-    <string name="register_btnTextSignUp">SIGNUP</string>
+    <string name="register_btnTextSignUp">SIGN UP</string>
     <string name="register_etHintPassword">More than 6 letters</string>
     <string name="register_tvTextPassword">Password</string>
     <string name="register_etHintUsername">Name in app</string>
