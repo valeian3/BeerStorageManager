@@ -7,4 +7,9 @@
     <color name="login_btnColorRegister">#F136A2F4</color>
     <color name="login_btnColorSignUp">#F036A2F4</color>
     <color name="home_btnColorLogout">#4794F0</color>
+    <color name="orders_btnColorOrder">#36B2F4</color>
+    <color name="colorBtnAdd">#FFFFFF</color>
+    <color name="color_btn">#23CDF8</color>
+    <color name="color_ic_BtnAdd">#FFFFFF</color>
+    <color name="presets_btnColorSelect">#37A7FC</color>
 </resources>

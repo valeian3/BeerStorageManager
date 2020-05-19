@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">BeerStorageManager</string>
+
     <string name="login_tvTextBrewaryName">Pivovara Daruvar</string>
     <string name="login_tvTextLogin">Login</string>
     <string name="login_tvTextForgotPassword">Forgot password</string>
@@ -7,6 +8,7 @@
     <string name="login_etHintPassword">password</string>
     <string name="login_btnTextLogin">Login</string>
     <string name="login_btnTextRegister">Register</string>
+
     <string name="register_tvTextRegister">REGISTER</string>
     <string name="register_tvTextAlreadyHaveAccount">Already have an account? Sign in</string>
     <string name="register_btnTextSignUp">SIGNUP</string>
@@ -18,5 +20,28 @@
     <string name="register_etHintName">First and Last name</string>
     <string name="register_tvTextEmail">Email</string>
     <string name="register_etHintEmail">Your email address</string>
+
     <string name="home_btnTextLogout">Logout</string>
+
+    <string name="orders_btnTextOrder">Order</string>
+    <string name="orders_tvTextOrder">ORDERS</string>
+    <string name="orders_tvTextSelectBeer">Select beer</string>
+    <string name="orders_tvTextAmountOfBags">Amount of bags</string>
+    <string name="orders_tvHintAmountOfBags">3</string>
+    <string name="orders_etHintAmountOfBags">3</string>
+    <string name="orders_tvTextListOfOrders">List of orders</string>
+    <string name="orders_tvTextName">Name</string>
+    <string name="orders_tvTextAmount">Amount</string>
+
+    <string name="storage_tvTextStorage">STORAGE</string>
+    <string name="storage_tvTextAmount">Amount</string>
+    <string name="storage_tvTextName">Name</string>
+    <string name="presets_tvTextPresets">Presets</string>
+    <string name="presets_tvTextSelectBeer">Select beer</string>
+    <string name="presets_tvTextName">Name</string>
+    <string name="presets_etHintName">name</string>
+    <string name="presets_tvTextIngredients">INGREDIENTS</string>
+    <string name="presets_tvTextListName">Name</string>
+    <string name="presets_tvTextAmount">Amount</string>
+    <string name="presets_btnTextOrder">SELECT</string>
 </resources>

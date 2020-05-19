@@ -2,55 +2,192 @@
 <resources>
     <dimen name="login_tvMarginTopBrewaryName">50dp</dimen>
     <dimen name="login_tvSizeBrewaryName">20sp</dimen>
+
     <dimen name="login_tvMarginTopLogin">250dp</dimen>
     <dimen name="login_tvSizeLogin">25sp</dimen>
+
     <dimen name="login_tvMarginTopForgotPassword">5dp</dimen>
     <dimen name="login_tvSizeForgotPassword">15sp</dimen>
+
     <dimen name="login_etWidthEmail">200sp</dimen>
     <dimen name="login_etMarginTopEmail">10dp</dimen>
+
     <dimen name="login_etWidthPassword">200sp</dimen>
     <dimen name="login_etMarginTopPassword">10dp</dimen>
+
     <dimen name="login_btnWidthLogin">140sp</dimen>
     <dimen name="login_btnHeightLogin">45dp</dimen>
     <dimen name="login_btnMarginTopLogin">50dp</dimen>
+
     <dimen name="login_btnWidthRegister">140sp</dimen>
     <dimen name="login_btnHeightRegister">45dp</dimen>
     <dimen name="login_btnMarginTopRegister">10dp</dimen>
+
+
     <dimen name="register_tvMarginTopRegister">135dp</dimen>
     <dimen name="register_tvSizeRegister">25sp</dimen>
+
     <dimen name="register_tvSizeAlreadyHaveAccount">15sp</dimen>
     <dimen name="register_tvMarginTopForgotAlreadyHaveAccount">35dp</dimen>
+
     <dimen name="register_btnWidthSignUp">140sp</dimen>
     <dimen name="register_btnHeightSignUp">45dp</dimen>
     <dimen name="register_btnMarginTopSignUp">35dp</dimen>
+
     <dimen name="register_etWidthPassword">200sp</dimen>
     <dimen name="register_etMarginTopPassword">10dp</dimen>
+
     <dimen name="register_tvMarginTopPassword">5dp</dimen>
     <dimen name="register_tvSizePassword">15sp</dimen>
+
     <dimen name="register_etWidthUsername">200sp</dimen>
     <dimen name="register_etMarginTopUsername">5dp</dimen>
+
     <dimen name="register_tvSizeUsername">15sp</dimen>
     <dimen name="register_tvMarginTopUsername">5dp</dimen>
     <dimen name="register_tvMarginTopName">5dp</dimen>
     <dimen name="register_tvSizeName">15sp</dimen>
+
     <dimen name="register_etWidthName">200sp</dimen>
     <dimen name="register_etMarginTopName">5dp</dimen>
+
     <dimen name="register_tvMarginTopEmail">5dp</dimen>
     <dimen name="register_tvSizeEmail">15sp</dimen>
+
     <dimen name="register_etWidthEmail">200sp</dimen>
     <dimen name="register_etMarginTopEmail">5dp</dimen>
+
+
     <dimen name="home_btnWidthLogout">140sp</dimen>
     <dimen name="home_btnHeightLogout">45dp</dimen>
     <dimen name="home_btnMarginTopLogout">420dp</dimen>
+
     <dimen name="home_btnWidthList">40sp</dimen>
     <dimen name="home_btnHeightList">40dp</dimen>
     <dimen name="home_btnMarginTopList">300dp</dimen>
+    <dimen name="home_btnMarginEndList">60dp</dimen>
+
     <dimen name="home_btnWidthWineBarrel">40sp</dimen>
     <dimen name="home_btnHeightWineBarrel">40dp</dimen>
-    <dimen name="home_btnMarginEndList">60dp</dimen>
+    <dimen name="home_btnMarginTopWineBarrel">300dp</dimen>
+
     <dimen name="home_btnHeightBox">40dp</dimen>
     <dimen name="home_btnWidthBox">40sp</dimen>
-    <dimen name="home_btnMarginTopWineBarrel">300dp</dimen>
+
     <dimen name="home_btnMarginTopBox">300dp</dimen>
     <dimen name="home_btnMarginStartHeightBox">60dp</dimen>
+
+
+    <dimen name="orders_btnWidthOrder">140sp</dimen>
+    <dimen name="orders_btnHeightOrder">45dp</dimen>
+    <dimen name="orders_btnMarginTopOrder">630dp</dimen>
+    <dimen name="orders_btnMarginEndOrder">65dp</dimen>
+
+    <dimen name="orders_tvSizeOrder">25sp</dimen>
+    <dimen name="orders_tvMarginTopOrder">155dp</dimen>
+
+    <dimen name="orders_tvMarginTopSelectBeer">30dp</dimen>
+    <dimen name="orders_tvSizeSelectBeer">20sp</dimen>
+
+    <dimen name="orders_tvMarginTopAmountOfBags">10dp</dimen>
+    <dimen name="orders_tvSizeAmountOfBags">20sp</dimen>
+
+    <dimen name="orders_spinnerWidthSelector">200sp</dimen>
+    <dimen name="orders_spinnerMarginTopSelector">10dp</dimen>
+
+    <dimen name="orders_etWidthAmountOfBags">200sp</dimen>
+    <dimen name="orders_etMarginTopAmountOfBags">10dp</dimen>
+    <dimen name="orders_etSizeAmountOfBags">20sp</dimen>
+
+    <dimen name="orders_tvMarginTopListOfOrders">430dp</dimen>
+    <dimen name="orders_tvMarginStartListOfOrders">70dp</dimen>
+    <dimen name="orders_tvSizeListOfOrders">20sp</dimen>
+
+    <dimen name="orders_tvMarginTopName">30dp</dimen>
+    <dimen name="orders_tvMarginStartName">70dp</dimen>
+    <dimen name="orders_tvSizeName">20sp</dimen>
+
+    <dimen name="orders_tvMarginTopAmount">30dp</dimen>
+    <dimen name="orders_tvMarginStartAmount">70dp</dimen>
+    <dimen name="orders_tvSizeAmount">20sp</dimen>
+
+    <dimen name="orders_tvSizeBeerName">15sp</dimen>
+    <dimen name="orders_tvWidthBeerName">204sp</dimen>
+    <dimen name="orders_tvHeightBeerName">20dp</dimen>
+    <dimen name="orders_tvMarginStartBeerName">0dp</dimen>
+
+    <dimen name="orders_tvSizeBeerAmount">15sp</dimen>
+    <dimen name="orders_tvWidthBeerAmount">204sp</dimen>
+    <dimen name="orders_tvHeightBeerAmount">20dp</dimen>
+    <dimen name="orders_tvMarginEndBeerAmount">0dp</dimen>
+
+    <dimen name="orders_listMarginTopBeers">10dp</dimen>
+    <dimen name="orders_listWidthBeers">285sp</dimen>
+    <dimen name="orders_listHeightBeers">100dp</dimen>
+
+
+    <dimen name="storage_tvMarginTopStorage">155dp</dimen>
+    <dimen name="storage_tvSizeStorage">25sp</dimen>
+
+    <dimen name="storage_tvMarginTopAmount">400dp</dimen>
+    <dimen name="storage_tvMarginStartAmount">70dp</dimen>
+    <dimen name="storage_tvSizeAmount">20sp</dimen>
+
+    <dimen name="storage_tvMarginTopName">400dp</dimen>
+    <dimen name="storage_tvMarginStartName">70dp</dimen>
+    <dimen name="storage_tvSizeName">20sp</dimen>
+
+    <dimen name="storage_listMarginTopBeers">10dp</dimen>
+    <dimen name="storage_listWidthBeers">285sp</dimen>
+    <dimen name="storage_listHeightBeers">140dp</dimen>
+
+    <dimen name="storage_progressBarWidthProgressBar">140sp</dimen>
+    <dimen name="storage_progressBarHeightProgressBar">140dp</dimen>
+    <dimen name="storage_progressBarMarginTopProgressBar">220dp</dimen>
+
+    <dimen name="storage_fabWidthAdd">60sp</dimen>
+    <dimen name="storage_fabHeightAdd">60dp</dimen>
+    <dimen name="storage_fabMarginEndAdd">30dp</dimen>
+    <dimen name="storage_fabMarginBottomAdd">30dp</dimen>
+    <dimen name="storage_fabElevationAdd">10dp</dimen>
+
+
+    <dimen name="presets_tvMarginTopPresets">155dp</dimen>
+    <dimen name="presets_tvSizePresets">25sp</dimen>
+
+    <dimen name="presets_tvMarginTopSelectBeer">5dp</dimen>
+    <dimen name="presets_tvSizeSelectBeer">15dp</dimen>
+
+    <dimen name="presets_spinnerWidthSelector">200sp</dimen>
+    <dimen name="presets_spinnerMarginTopSelector">5dp</dimen>
+
+    <dimen name="presets_tvMarginTopName">5dp</dimen>
+    <dimen name="presets_tvSizeName">15sp</dimen>
+
+    <dimen name="presets_etWidthName">200</dimen>
+    <dimen name="presets_etMarginTopName">5dp</dimen>
+    <dimen name="presets_etSizeName">20sp</dimen>
+
+    <dimen name="presets_tvMarginTopIngredients">25dp</dimen>
+    <dimen name="presets_tvMarginStartIngredients">70dp</dimen>
+    <dimen name="presets_tvSizeIngredients">20sp</dimen>
+
+    <dimen name="presets_tvMarginStartListName">70dp</dimen>
+    <dimen name="presets_tvMarginTopListName">30dp</dimen>
+    <dimen name="presets_tvSizeListName">20sp</dimen>
+
+    <dimen name="presets_tvMarginTopAmount">30dp</dimen>
+    <dimen name="presets_tvMarginStartAmount">70dp</dimen>
+    <dimen name="presets_tvSizeAmount">20sp</dimen>
+
+    <dimen name="presets_listWidthBeers">285sp</dimen>
+    <dimen name="presets_listHeightBeers">100dp</dimen>
+    <dimen name="presets_listMarginTopBeers">10dp</dimen>
+
+    <dimen name="presets_btnWidthSelect">140sp</dimen>
+    <dimen name="presets_btnHeightSelect">45dp</dimen>
+    <dimen name="presets_btnMarginTopSelect">5dp</dimen>
+    <dimen name="presets_btnMarginEndSelect">70dp</dimen>
+
+
 </resources>

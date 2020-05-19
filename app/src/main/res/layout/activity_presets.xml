@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_presets"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/presets_tvIdPresets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/presets_tvMarginTopPresets"
+        android:layout_centerHorizontal="true"
+        android:text="@string/presets_tvTextPresets"
+        android:textSize="@dimen/presets_tvSizePresets"/>
+
+    <TextView
+        android:id="@+id/presets_tvIdSelectBeer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/presets_tvMarginTopSelectBeer"
+        android:layout_below="@+id/presets_tvIdPresets"
+        android:layout_centerHorizontal="true"
+        android:text="@string/presets_tvTextSelectBeer"
+        android:textSize="@dimen/presets_tvSizeSelectBeer"/>
+
+    <Spinner
+        android:id="@+id/presets_spinnerIdSelector"
+        android:layout_width="@dimen/presets_spinnerWidthSelector"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/presets_spinnerMarginTopSelector"
+        android:layout_below="@+id/presets_tvIdSelectBeer"
+        android:layout_centerHorizontal="true"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+    <TextView
+        android:id="@+id/presets_tvIdName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/presets_tvMarginTopName"
+        android:layout_below="@+id/presets_spinnerIdSelector"
+        android:layout_centerHorizontal="true"
+        android:text="@string/presets_tvTextName"
+        android:textSize="@dimen/presets_tvSizeName"/>
+
+    <EditText
+        android:id="@+id/presets_etIdName"
+        android:layout_width="@dimen/presets_etWidthName"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/presets_etMarginTopName"
+        android:layout_below="@+id/presets_tvIdName"
+        android:hint="@string/presets_etHintName"
+        android:textSize="@dimen/presets_etSizeName"
+        android:importantForAutofill="no"/>
+
+    <TextView
+        android:id="@+id/presets_tvIdIngredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/presets_tvMarginTopIngredients"
+        android:layout_marginStart="@dimen/presets_tvMarginStartIngredients"
+        android:layout_below="@+id/presets_etIdName"
+        android:text="@string/presets_tvTextIngredients"
+        android:textSize="@dimen/presets_tvSizeIngredients" />
+
+    <TextView
+        android:id="@+id/presets_tvIdListName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/presets_tvMarginTopListName"
+        android:layout_marginStart="@dimen/presets_tvMarginStartListName"
+        android:layout_below="@+id/presets_tvIdIngredients"
+        android:text="@string/presets_tvTextListName"
+        android:textSize="@dimen/presets_tvSizeListName"/>
+
+    <TextView
+        android:id="@+id/presets_tvIdAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/presets_tvMarginTopAmount"
+        android:layout_marginEnd="@dimen/presets_tvMarginStartAmount"
+        android:layout_below="@+id/presets_tvIdIngredients"
+        android:text="@string/presets_tvTextAmount"
+        android:textSize="@dimen/presets_tvSizeAmount"/>
+
+    <ListView
+        android:id="@+id/presets_listIdBeers"
+        android:layout_width="@dimen/presets_listWidthBeers"
+        android:layout_height="@dimen/presets_listHeightBeers"
+        android:layout_marginTop="@dimen/presets_listMarginTopBeers"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/presets_tvIdAmount"/>
+
+    <Button
+        android:id="@+id/presets_btnIdSelect"
+        android:layout_width="@dimen/presets_btnWidthSelect"
+        android:layout_height="@dimen/presets_btnHeightSelect"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/presets_btnMarginTopSelect"
+        android:layout_marginEnd="@dimen/presets_btnMarginEndSelect"
+        android:layout_below="@+id/presets_listIdBeers"
+        android:background="@color/presets_btnColorSelect"
+        android:text="@string/presets_btnTextOrder" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/storage_fabIdAdd"
+        android:layout_width="@dimen/storage_fabWidthAdd"
+        android:layout_height="@dimen/storage_fabHeightAdd"
+        android:elevation="@dimen/storage_fabElevationAdd"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/storage_fabMarginEndAdd"
+        android:layout_marginBottom="@dimen/storage_fabMarginBottomAdd"
+        android:clickable="true"
+        android:focusable="true"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:backgroundTint="@color/color_btn"
+        android:tint="@color/color_ic_BtnAdd"/>
+
+</RelativeLayout>

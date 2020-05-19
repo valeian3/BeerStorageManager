@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_storage"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/storage_tvIdStorage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/storage_tvMarginTopStorage"
+        android:layout_centerHorizontal="true"
+        android:text="@string/storage_tvTextStorage"
+        android:textSize="@dimen/storage_tvSizeStorage"/>
+
+    <ProgressBar
+        android:id="@+id/storage_progressBarIdProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="@dimen/storage_progressBarWidthProgressBar"
+        android:layout_height="@dimen/storage_progressBarHeightProgressBar"
+        android:layout_marginTop="@dimen/storage_progressBarMarginTopProgressBar"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/storage_tvIdName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/storage_tvMarginTopName"
+        android:layout_marginStart="@dimen/storage_tvMarginStartName"
+        android:text="@string/storage_tvTextName"
+        android:textSize="@dimen/storage_tvSizeName"/>
+
+    <TextView
+        android:id="@+id/storage_tvIdAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/storage_tvMarginTopAmount"
+        android:layout_marginEnd="@dimen/storage_tvMarginStartAmount"
+        android:text="@string/storage_tvTextAmount"
+        android:textSize="@dimen/storage_tvSizeAmount"/>
+
+    <ListView
+        android:id="@+id/storage_listIdBeers"
+        android:layout_width="@dimen/storage_listWidthBeers"
+        android:layout_height="@dimen/storage_listHeightBeers"
+        android:layout_marginTop="@dimen/storage_listMarginTopBeers"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/storage_tvIdAmount"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/storage_fabIdAdd"
+        android:layout_width="@dimen/storage_fabWidthAdd"
+        android:layout_height="@dimen/storage_fabHeightAdd"
+        android:elevation="@dimen/storage_fabElevationAdd"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/storage_fabMarginEndAdd"
+        android:layout_marginBottom="@dimen/storage_fabMarginBottomAdd"
+        android:clickable="true"
+        android:focusable="true"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:backgroundTint="@color/color_btn"
+        android:tint="@color/color_ic_BtnAdd"/>
+
+</RelativeLayout>
