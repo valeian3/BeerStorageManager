@@ -15,7 +15,9 @@
         android:layout_marginTop="@dimen/storage_tvMarginTopStorage"
         android:layout_centerHorizontal="true"
         android:text="@string/storage_tvTextStorage"
-        android:textSize="@dimen/storage_tvSizeStorage"/>
+        android:textStyle="bold"
+        android:textSize="@dimen/storage_tvSizeStorage"
+        android:textColor="@color/storage_tvTextColorStorage"/>
 
     <ProgressBar
         android:id="@+id/storage_progressBarIdProgressBar"
@@ -32,7 +34,8 @@
         android:layout_marginTop="@dimen/storage_tvMarginTopName"
         android:layout_marginStart="@dimen/storage_tvMarginStartName"
         android:text="@string/storage_tvTextName"
-        android:textSize="@dimen/storage_tvSizeName"/>
+        android:textSize="@dimen/storage_tvSizeName"
+        android:textColor="@color/storage_tvTextColorName"/>
 
     <TextView
         android:id="@+id/storage_tvIdAmount"
@@ -42,7 +45,8 @@
         android:layout_marginTop="@dimen/storage_tvMarginTopAmount"
         android:layout_marginEnd="@dimen/storage_tvMarginStartAmount"
         android:text="@string/storage_tvTextAmount"
-        android:textSize="@dimen/storage_tvSizeAmount"/>
+        android:textSize="@dimen/storage_tvSizeAmount"
+        android:textColor="@color/storage_tvTextColorAmount"/>
 
     <ListView
         android:id="@+id/storage_listIdBeers"

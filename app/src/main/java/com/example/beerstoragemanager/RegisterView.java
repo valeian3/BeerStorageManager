@@ -3,6 +3,7 @@ package com.example.beerstoragemanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterView extends AppCompatActivity {
 
+    private static final String TAG = "RegisterView";
+
     TextView tvIdAlreadyHaveAccount;
     EditText etIdName, etIdEmail, etIdUsername, etIdPassword;
     Button btnSignUp;
@@ -40,6 +43,24 @@ public class RegisterView extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart executed.");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart executed.");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume executed.");
 
         btnSignUp = findViewById(R.id.register_btnIdSignUp);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +70,26 @@ public class RegisterView extends AppCompatActivity {
             }
         });
         AlreadyHaveAccount();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause executed.");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop executed.");
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy executed.");
+        finishAndRemoveTask();
     }
 
     private void RegisterUser(){
@@ -103,7 +144,7 @@ public class RegisterView extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    displayToast("User Registered Sucessfully.");
+                    Log.i(TAG, "User registered successfully.");
                     Intent explicitIntent = new Intent();
                     explicitIntent.setClass(getApplicationContext(), MainActivity.class);
                     startActivity(explicitIntent);
@@ -125,9 +166,9 @@ public class RegisterView extends AppCompatActivity {
 
             user = new User(id, name, email, username, password);
             databaseReference.child(id).setValue(user);
-            displayToast("User inserted into database");
+            Log.i(TAG, "User inserted into database");
         } else {
-            displayToast("User's name cannot stay empty.");
+            Log.i(TAG, "User is not inserted into database.");
         }
     }
 

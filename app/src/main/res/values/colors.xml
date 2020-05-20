@@ -3,19 +3,52 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="login_tvTextColorBreweryName">#FFFFFF</color>
+    <color name="login_tvTextColorLogin">#8D8A8D</color>
     <color name="login_btnColorLogin">#EE3797F8</color>
     <color name="login_btnColorRegister">#F136A2F4</color>
     <color name="login_btnColorSignUp">#F036A2F4</color>
-    <color name="home_btnColorLogout">#4794F0</color>
+    <color name="login_tvTextColorForgotPassword">#7D80DA</color>
+    <color name="login_btnTextColorLogin">#FFFFFF</color>
+    <color name="login_btnTextColorRegister">#FFFFFF</color>
+
+
+    <color name="home_btnTextColorHome">#FFFFFF</color>
+
+
     <color name="orders_btnColorOrder">#36B2F4</color>
+    <color name="orders_tvTextColorOrder">#8D8A8D</color>
+    <color name="orders_tvTextColorListOfOrder">#8D8A8D</color>
+    <color name="orders_tvTextColorName">#8D8A8D</color>
+    <color name="orders_tvTextColorAmount">#8D8A8D</color>
+    <color name="orders_btnTextColorOrder">#FFFFFF</color>
+
+
     <color name="colorBtnAdd">#FFFFFF</color>
     <color name="color_btn">#23CDF8</color>
     <color name="color_ic_BtnAdd">#FFFFFF</color>
+
+
+    <color name="presets_tvTextColorPresets">#8D8A8D</color>
     <color name="presets_btnColorSelect">#37A7FC</color>
+    <color name="presets_btnTextColorSelect">#FFFFFF</color>
+    <color name="presets_tvTextColorName">#8D8A8D</color>
+    <color name="presets_tvTextColorIngredients">#8D8A8D</color>
+    <color name="presets_tvTextColorListName">#8D8A8D</color>
+    <color name="presets_tvTextColorAmount">#8D8A8D</color>
+
+
     <color name="register_tvTextColorAlreadyHaveAccount">#8A8CDE</color>
     <color name="register_btnTextColorSignUp">#FFFFFF</color>
     <color name="register_btnBackgroundColorSignUp">#7D80DA</color>
     <color name="register_tvTextColorRegister">#8D8A8D</color>
-    <color name="login_tvTextColorForgotPassword">#7D80DA</color>
-    <color name="login_tvTextColorBreweryName">#FFFFFF</color>
+
+
+    <color name="storage_tvTextColorStorage">#8D8A8D</color>
+    <color name="storage_tvTextColorName">#8D8A8D</color>
+    <color name="storage_tvTextColorAmount">#8D8A8D</color>
+    <color name="storage_tvTextColorBeerName">#8D8A8D</color>
+    <color name="storage_tvTextColorBeerAmount">#8D8A8D</color>
+    <color name="orders_btnTextColorRegister">#FFFFFF</color>
 </resources>

@@ -16,8 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterView" />
-        <activity android:name=".HomeView" />
+        <activity android:name=".RegisterView"/>
+        <activity android:name=".HomeView"/>
+        <activity android:name=".OrdersView"/>
+        <activity android:name=".PresetsView"/>
+        <activity android:name=".StorageView"/>
         <activity android:name=".Controller.DbController" />
     </application>
 

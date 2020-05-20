@@ -15,7 +15,9 @@
         android:layout_marginTop="@dimen/presets_tvMarginTopPresets"
         android:layout_centerHorizontal="true"
         android:text="@string/presets_tvTextPresets"
-        android:textSize="@dimen/presets_tvSizePresets"/>
+        android:textSize="@dimen/presets_tvSizePresets"
+        android:textStyle="bold"
+        android:textColor="@color/presets_tvTextColorPresets"/>
 
     <TextView
         android:id="@+id/presets_tvIdSelectBeer"
@@ -25,7 +27,8 @@
         android:layout_below="@+id/presets_tvIdPresets"
         android:layout_centerHorizontal="true"
         android:text="@string/presets_tvTextSelectBeer"
-        android:textSize="@dimen/presets_tvSizeSelectBeer"/>
+        android:textSize="@dimen/presets_tvSizeSelectBeer"
+        android:textColor="@color/presets_tvTextColorPresets"/>
 
     <Spinner
         android:id="@+id/presets_spinnerIdSelector"
@@ -45,7 +48,8 @@
         android:layout_below="@+id/presets_spinnerIdSelector"
         android:layout_centerHorizontal="true"
         android:text="@string/presets_tvTextName"
-        android:textSize="@dimen/presets_tvSizeName"/>
+        android:textSize="@dimen/presets_tvSizeName"
+        android:textColor="@color/presets_tvTextColorName"/>
 
     <EditText
         android:id="@+id/presets_etIdName"
@@ -68,7 +72,8 @@
         android:layout_marginStart="@dimen/presets_tvMarginStartIngredients"
         android:layout_below="@+id/presets_etIdName"
         android:text="@string/presets_tvTextIngredients"
-        android:textSize="@dimen/presets_tvSizeIngredients" />
+        android:textSize="@dimen/presets_tvSizeIngredients"
+        android:textColor="@color/presets_tvTextColorIngredients"/>
 
     <TextView
         android:id="@+id/presets_tvIdListName"
@@ -78,7 +83,8 @@
         android:layout_marginStart="@dimen/presets_tvMarginStartListName"
         android:layout_below="@+id/presets_tvIdIngredients"
         android:text="@string/presets_tvTextListName"
-        android:textSize="@dimen/presets_tvSizeListName"/>
+        android:textSize="@dimen/presets_tvSizeListName"
+        android:textColor="@color/presets_tvTextColorListName"/>
 
     <TextView
         android:id="@+id/presets_tvIdAmount"
@@ -89,7 +95,8 @@
         android:layout_marginEnd="@dimen/presets_tvMarginStartAmount"
         android:layout_below="@+id/presets_tvIdIngredients"
         android:text="@string/presets_tvTextAmount"
-        android:textSize="@dimen/presets_tvSizeAmount"/>
+        android:textSize="@dimen/presets_tvSizeAmount"
+        android:textColor="@color/presets_tvTextColorAmount"/>
 
     <ListView
         android:id="@+id/presets_listIdBeers"
@@ -107,8 +114,9 @@
         android:layout_marginTop="@dimen/presets_btnMarginTopSelect"
         android:layout_marginEnd="@dimen/presets_btnMarginEndSelect"
         android:layout_below="@+id/presets_listIdBeers"
-        android:background="@color/presets_btnColorSelect"
-        android:text="@string/presets_btnTextOrder" />
+        android:text="@string/presets_btnTextOrder"
+        android:textColor="@color/presets_btnTextColorSelect"
+        android:background="@drawable/custom_button"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/storage_fabIdAdd"

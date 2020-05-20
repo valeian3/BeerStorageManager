@@ -29,7 +29,7 @@
         android:text="@string/login_tvTextLogin"
         android:textStyle="bold"
         android:textSize="@dimen/login_tvSizeLogin"
-        android:textColor="@color/register_tvTextColorRegister"/>
+        android:textColor="@color/login_tvTextColorLogin"/>
 
     <EditText
         android:id="@+id/login_etIdEmail"
@@ -40,11 +40,9 @@
         android:layout_marginTop="@dimen/login_etMarginTopEmail"
         android:layout_below="@+id/login_tvIdLogin"
         android:background="@drawable/custom_input"
-        android:elevation="1dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:elevation="@dimen/login_etElevationEmail"
+        android:paddingStart="@dimen/login_etPaddingStartEmail"
+        android:paddingEnd="@dimen/login_etPaddingEndEmail"
         android:hint="@string/login_etHintEmail"
         android:importantForAutofill="no"/>
 
@@ -57,11 +55,9 @@
         android:layout_marginTop="@dimen/login_etMarginTopPassword"
         android:layout_below="@+id/login_etIdEmail"
         android:background="@drawable/custom_input"
-        android:elevation="1dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:elevation="@dimen/login_etElevationPassword"
+        android:paddingStart="@dimen/login_etPaddingStartPassword"
+        android:paddingEnd="@dimen/login_etPaddingEndPassword"
         android:hint="@string/login_etHintPassword"
         android:importantForAutofill="no"/>
 
@@ -85,7 +81,7 @@
         android:layout_marginTop="@dimen/login_btnMarginTopLogin"
         android:layout_below="@+id/login_etIdPassword"
         android:text="@string/login_btnTextLogin"
-        android:textColor="@color/register_btnTextColorSignUp"
+        android:textColor="@color/login_btnTextColorLogin"
         android:background="@drawable/custom_button"/>
 
     <Button
@@ -96,7 +92,6 @@
         android:layout_marginTop="@dimen/login_btnMarginTopRegister"
         android:layout_below="@+id/login_btnIdLogin"
         android:text="@string/login_btnTextRegister"
-        android:textColor="@color/register_btnTextColorSignUp"
+        android:textColor="@color/login_btnTextColorRegister"
         android:background="@drawable/custom_button"/>
-
-    </RelativeLayout>
+</RelativeLayout>

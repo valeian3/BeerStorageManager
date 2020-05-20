@@ -15,7 +15,9 @@
         android:layout_marginTop="@dimen/orders_tvMarginTopOrder"
         android:layout_centerHorizontal="true"
         android:text="@string/orders_tvTextOrder"
-        android:textSize="@dimen/orders_tvSizeOrder"/>
+        android:textStyle="bold"
+        android:textSize="@dimen/orders_tvSizeOrder"
+        android:textColor="@color/orders_tvTextColorOrder"/>
 
     <TextView
         android:id="@+id/orders_tvIdSelectBeer"
@@ -25,7 +27,8 @@
         android:layout_below="@+id/orders_tvIdOrder"
         android:layout_centerHorizontal="true"
         android:text="@string/orders_tvTextSelectBeer"
-        android:textSize="@dimen/orders_tvSizeSelectBeer"/>
+        android:textSize="@dimen/orders_tvSizeSelectBeer"
+        android:textColor="@color/orders_tvTextColorOrder"/>
 
     <Spinner
         android:id="@+id/orders_spinnerIdSelector"
@@ -45,7 +48,8 @@
         android:layout_below="@+id/orders_spinnerIdSelector"
         android:layout_centerHorizontal="true"
         android:text="@string/orders_tvTextAmountOfBags"
-        android:textSize="@dimen/orders_tvSizeAmountOfBags"/>
+        android:textSize="@dimen/orders_tvSizeAmountOfBags"
+        android:textColor="@color/orders_tvTextColorOrder"/>
 
     <EditText
         android:id="@+id/orders_etIdAmountOfBags"
@@ -67,7 +71,8 @@
         android:layout_marginTop="@dimen/orders_tvMarginTopListOfOrders"
         android:layout_marginStart="@dimen/orders_tvMarginStartListOfOrders"
         android:text="@string/orders_tvTextListOfOrders"
-        android:textSize="@dimen/orders_tvSizeListOfOrders" />
+        android:textSize="@dimen/orders_tvSizeListOfOrders"
+        android:textColor="@color/orders_tvTextColorListOfOrder"/>
 
     <TextView
         android:id="@+id/orders_tvIdName"
@@ -77,7 +82,8 @@
         android:layout_marginStart="@dimen/orders_tvMarginStartName"
         android:layout_below="@+id/orders_tvIdListOfOrders"
         android:text="@string/orders_tvTextName"
-        android:textSize="@dimen/orders_tvSizeName"/>
+        android:textSize="@dimen/orders_tvSizeName"
+        android:textColor="@color/orders_tvTextColorName"/>
 
     <TextView
         android:id="@+id/orders_tvIdAmount"
@@ -88,7 +94,8 @@
         android:layout_marginEnd="@dimen/orders_tvMarginStartAmount"
         android:layout_below="@+id/orders_tvIdListOfOrders"
         android:text="@string/orders_tvTextAmount"
-        android:textSize="@dimen/orders_tvSizeAmount"/>
+        android:textSize="@dimen/orders_tvSizeAmount"
+        android:textColor="@color/orders_tvTextColorAmount"/>
 
     <ListView
         android:id="@+id/orders_listIdBeers"
@@ -105,7 +112,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="@dimen/orders_btnMarginTopOrder"
         android:layout_marginEnd="@dimen/orders_btnMarginEndOrder"
-        android:background="@color/orders_btnColorOrder"
-        android:text="@string/orders_btnTextOrder" />
+        android:text="@string/orders_btnTextOrder"
+        android:textColor="@color/orders_btnTextColorRegister"
+        android:background="@drawable/custom_button"/>
 
 </RelativeLayout>
