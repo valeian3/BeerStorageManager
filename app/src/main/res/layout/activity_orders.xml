@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/ic_background_orders"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:background="@drawable/ic_background_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
@@ -24,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/orders_tvMarginTopSelectBeer"
-        android:layout_below="@+id/orders_tvIdOrder"
         android:layout_centerHorizontal="true"
+        android:layout_below="@+id/orders_tvIdOrder"
         android:text="@string/orders_tvTextSelectBeer"
         android:textSize="@dimen/orders_tvSizeSelectBeer"
         android:textColor="@color/orders_tvTextColorOrder"/>
@@ -63,57 +63,68 @@
         android:textSize="@dimen/orders_etSizeAmountOfBags"
         android:importantForAutofill="no"/>
 
-    <TextView
-        android:id="@+id/orders_tvIdListOfOrders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="@dimen/orders_layoutWidth"
+        android:layout_height="@dimen/orders_layoutHeight"
+        android:layout_below="@+id/orders_etIdAmountOfBags"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/orders_tvMarginTopListOfOrders"
-        android:layout_marginStart="@dimen/orders_tvMarginStartListOfOrders"
-        android:text="@string/orders_tvTextListOfOrders"
-        android:textSize="@dimen/orders_tvSizeListOfOrders"
-        android:textColor="@color/orders_tvTextColorListOfOrder"/>
+        android:layout_marginStart="@dimen/orders_layoutMarginStart"
+        android:layout_marginTop="@dimen/orders_layoutMarginTop"
+        android:background="@drawable/custom_layout">
 
-    <TextView
-        android:id="@+id/orders_tvIdName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/orders_tvMarginTopName"
-        android:layout_marginStart="@dimen/orders_tvMarginStartName"
-        android:layout_below="@+id/orders_tvIdListOfOrders"
-        android:text="@string/orders_tvTextName"
-        android:textSize="@dimen/orders_tvSizeName"
-        android:textColor="@color/orders_tvTextColorName"/>
+         <TextView
+             android:id="@+id/orders_tvIdListOfOrders"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentStart="true"
+             android:layout_marginTop="@dimen/orders_tvMarginTopListOfOrders"
+             android:layout_marginStart="@dimen/orders_tvMarginStartListOfOrders"
+             android:text="@string/orders_tvTextListOfOrders"
+             android:textSize="@dimen/orders_tvSizeListOfOrders"
+             android:textColor="@color/orders_tvTextColorListOfOrder"/>
 
-    <TextView
-        android:id="@+id/orders_tvIdAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/orders_tvMarginTopAmount"
-        android:layout_marginEnd="@dimen/orders_tvMarginStartAmount"
-        android:layout_below="@+id/orders_tvIdListOfOrders"
-        android:text="@string/orders_tvTextAmount"
-        android:textSize="@dimen/orders_tvSizeAmount"
-        android:textColor="@color/orders_tvTextColorAmount"/>
+         <TextView
+             android:id="@+id/orders_tvIdName"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="@dimen/orders_tvMarginTopName"
+             android:layout_marginStart="@dimen/orders_tvMarginStartName"
+             android:layout_below="@+id/orders_tvIdListOfOrders"
+             android:text="@string/orders_tvTextName"
+             android:textSize="@dimen/orders_tvSizeName"
+             android:textColor="@color/orders_tvTextColorName"/>
 
-    <ListView
-        android:id="@+id/orders_listIdBeers"
-        android:layout_width="@dimen/orders_listWidthBeers"
-        android:layout_height="@dimen/orders_listHeightBeers"
-        android:layout_marginTop="@dimen/orders_listMarginTopBeers"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/orders_tvIdAmount"/>
+        <TextView
+            android:id="@+id/orders_tvIdAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/orders_tvMarginTopAmount"
+            android:layout_marginEnd="@dimen/orders_tvMarginStartAmount"
+            android:layout_below="@+id/orders_tvIdListOfOrders"
+            android:text="@string/orders_tvTextAmount"
+            android:textSize="@dimen/orders_tvSizeAmount"
+            android:textColor="@color/orders_tvTextColorAmount"/>
 
-    <Button
-        android:id="@+id/orders_btnIdOrder"
-        android:layout_width="@dimen/orders_btnWidthOrder"
-        android:layout_height="@dimen/orders_btnHeightOrder"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/orders_btnMarginTopOrder"
-        android:layout_marginEnd="@dimen/orders_btnMarginEndOrder"
-        android:text="@string/orders_btnTextOrder"
-        android:textColor="@color/orders_btnTextColorRegister"
-        android:background="@drawable/custom_button"/>
+        <ListView
+            android:id="@+id/orders_listIdBeers"
+            android:layout_width="@dimen/orders_listWidthBeers"
+            android:layout_height="@dimen/orders_listHeightBeers"
+            android:layout_marginTop="@dimen/orders_listMarginTopBeers"
+            android:layout_centerHorizontal="true"
+            android:divider="#00000000"
+            android:layout_below="@+id/orders_tvIdAmount"/>
 
+        <Button
+            android:id="@+id/orders_btnIdOrder"
+            android:layout_width="@dimen/orders_btnWidthOrder"
+            android:layout_height="@dimen/orders_btnHeightOrder"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/orders_btnMarginTopOrder"
+            android:layout_marginEnd="@dimen/orders_btnMarginEndOrder"
+            android:layout_below="@+id/orders_listIdBeers"
+            android:text="@string/orders_btnTextOrder"
+            android:textColor="@color/orders_btnTextColorOrder"
+            android:background="@drawable/custom_button"/>
+        </RelativeLayout>
 </RelativeLayout>

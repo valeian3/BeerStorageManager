@@ -10,7 +10,8 @@
         android:layout_height="@dimen/orders_tvHeightBeerName"
         android:layout_alignParentStart="true"
         android:layout_marginStart="@dimen/orders_tvMarginStartBeerName"
-        android:gravity="center"
+        android:paddingStart="@dimen/orders_tvPaddingStartName"
+        android:paddingEnd="@dimen/orders_tvPaddingEndName"
         android:textSize="@dimen/orders_tvSizeBeerName"
         android:textColor="@color/storage_tvTextColorBeerName"/>
 
@@ -20,7 +21,8 @@
         android:layout_height="@dimen/orders_tvHeightBeerAmount"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/orders_tvMarginEndBeerAmount"
-        android:gravity="center"
+        android:paddingStart="@dimen/orders_tvPaddingStartAmount"
+        android:paddingEnd="@dimen/orders_tvPaddingEndAmount"
         android:textSize="@dimen/orders_tvSizeBeerAmount"
         android:textColor="@color/storage_tvTextColorBeerAmount"/>
 

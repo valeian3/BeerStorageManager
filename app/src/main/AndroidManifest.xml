@@ -21,6 +21,7 @@
         <activity android:name=".OrdersView"/>
         <activity android:name=".PresetsView"/>
         <activity android:name=".StorageView"/>
+        <activity android:name=".AddingToStorageView"/>
         <activity android:name=".Controller.DbController" />
     </application>
 

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/ic_background_presets"
+    android:background="@drawable/ic_background_home"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".MainActivity">
@@ -63,60 +63,71 @@
         android:textSize="@dimen/presets_etSizeName"
         android:importantForAutofill="no"/>
 
-    <TextView
-        android:id="@+id/presets_tvIdIngredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/presets_tvMarginTopIngredients"
-        android:layout_marginStart="@dimen/presets_tvMarginStartIngredients"
+    <RelativeLayout
+        android:layout_width="@dimen/presets_layoutWidth"
+        android:layout_height="@dimen/presets_layoutHeight"
         android:layout_below="@+id/presets_etIdName"
-        android:text="@string/presets_tvTextIngredients"
-        android:textSize="@dimen/presets_tvSizeIngredients"
-        android:textColor="@color/presets_tvTextColorIngredients"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/presets_layoutMarginStart"
+        android:layout_marginTop="@dimen/presets_layoutMarginTop"
+        android:background="@drawable/custom_layout">
 
-    <TextView
-        android:id="@+id/presets_tvIdListName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/presets_tvMarginTopListName"
-        android:layout_marginStart="@dimen/presets_tvMarginStartListName"
-        android:layout_below="@+id/presets_tvIdIngredients"
-        android:text="@string/presets_tvTextListName"
-        android:textSize="@dimen/presets_tvSizeListName"
-        android:textColor="@color/presets_tvTextColorListName"/>
+        <ListView
+            android:id="@+id/presets_listIdBeers"
+            android:layout_width="@dimen/presets_listWidthBeers"
+            android:layout_height="@dimen/presets_listHeightBeers"
+            android:layout_below="@+id/presets_tvIdAmount"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/presets_listMarginTopBeers"
+            android:divider="#00000000"/>
 
-    <TextView
-        android:id="@+id/presets_tvIdAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/presets_tvMarginTopAmount"
-        android:layout_marginEnd="@dimen/presets_tvMarginStartAmount"
-        android:layout_below="@+id/presets_tvIdIngredients"
-        android:text="@string/presets_tvTextAmount"
-        android:textSize="@dimen/presets_tvSizeAmount"
-        android:textColor="@color/presets_tvTextColorAmount"/>
+        <TextView
+            android:id="@+id/presets_tvIdAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/presets_tvIdIngredients"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/presets_tvMarginTopAmount"
+            android:layout_marginEnd="@dimen/presets_tvMarginStartAmount"
+            android:text="@string/presets_tvTextAmount"
+            android:textColor="@color/presets_tvTextColorAmount"
+            android:textSize="@dimen/presets_tvSizeAmount" />
 
-    <ListView
-        android:id="@+id/presets_listIdBeers"
-        android:layout_width="@dimen/presets_listWidthBeers"
-        android:layout_height="@dimen/presets_listHeightBeers"
-        android:layout_marginTop="@dimen/presets_listMarginTopBeers"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/presets_tvIdAmount"/>
+        <TextView
+            android:id="@+id/presets_tvIdIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/presets_tvMarginStartIngredients"
+            android:layout_marginTop="@dimen/presets_tvMarginTopIngredients"
+            android:text="@string/presets_tvTextIngredients"
+            android:textColor="@color/presets_tvTextColorIngredients"
+            android:textSize="@dimen/presets_tvSizeIngredients" />
 
-    <Button
-        android:id="@+id/presets_btnIdSelect"
-        android:layout_width="@dimen/presets_btnWidthSelect"
-        android:layout_height="@dimen/presets_btnHeightSelect"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/presets_btnMarginTopSelect"
-        android:layout_marginEnd="@dimen/presets_btnMarginEndSelect"
-        android:layout_below="@+id/presets_listIdBeers"
-        android:text="@string/presets_btnTextOrder"
-        android:textColor="@color/presets_btnTextColorSelect"
-        android:background="@drawable/custom_button"/>
+        <TextView
+            android:id="@+id/presets_tvIdListName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/presets_tvIdIngredients"
+            android:layout_marginStart="@dimen/presets_tvMarginStartListName"
+            android:layout_marginTop="@dimen/presets_tvMarginTopListName"
+            android:text="@string/presets_tvTextListName"
+            android:textColor="@color/presets_tvTextColorListName"
+            android:textSize="@dimen/presets_tvSizeListName" />
+
+        <Button
+            android:id="@+id/presets_btnIdSelect"
+            android:layout_width="@dimen/presets_btnWidthSelect"
+            android:layout_height="@dimen/presets_btnHeightSelect"
+            android:layout_below="@+id/presets_listIdBeers"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/presets_btnMarginTopSelect"
+            android:layout_marginEnd="@dimen/presets_btnMarginEndSelect"
+            android:background="@drawable/custom_button"
+            android:text="@string/presets_btnTextOrder"
+            android:textColor="@color/presets_btnTextColorSelect"/>
+
+    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/storage_fabIdAdd"
@@ -129,8 +140,7 @@
         android:layout_marginBottom="@dimen/storage_fabMarginBottomAdd"
         android:clickable="true"
         android:focusable="true"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:backgroundTint="@color/color_btn"
-        android:tint="@color/color_ic_BtnAdd"/>
+        android:src="@drawable/ic_add_button_24dp"
+        android:backgroundTint="@color/color_btn"/>
 
 </RelativeLayout>

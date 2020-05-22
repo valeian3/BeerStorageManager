@@ -36,7 +36,7 @@
     <string name="storage_tvTextStorage">STORAGE</string>
     <string name="storage_tvTextAmount">Amount</string>
     <string name="storage_tvTextName">Name</string>
-    <string name="presets_tvTextPresets">Presets</string>
+    <string name="presets_tvTextPresets">PRESETS</string>
     <string name="presets_tvTextSelectBeer">Select beer</string>
     <string name="presets_tvTextName">Name</string>
     <string name="presets_etHintName">name</string>
@@ -44,4 +44,11 @@
     <string name="presets_tvTextListName">Name</string>
     <string name="presets_tvTextAmount">Amount</string>
     <string name="presets_btnTextOrder">SELECT</string>
+
+    <string name="adding_to_storage_TextNewItem">NEW INGREDIENT</string>
+    <string name="adding_to_storage_tvTextName">Name</string>
+    <string name="adding_to_storage_etHintName">water</string>
+    <string name="adding_to_storage_btnTextAdd">ADD</string>
+    <string name="adding_to_storage_etHintAmount">300</string>
+    <string name="adding_to_storage_tvTextAmount">Amount</string>
 </resources>

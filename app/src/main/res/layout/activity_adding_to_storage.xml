@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ic_background_home"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/adding_to_storage_tvIdNewItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/adding_to_storage_MarginTopNewItem"
+        android:layout_centerHorizontal="true"
+        android:text="@string/adding_to_storage_TextNewItem"
+        android:textStyle="bold"
+        android:textSize="@dimen/adding_to_storage_SizeNewItem"
+        android:textColor="@color/adding_to_storage_TextColorNewItem"/>
+
+    <RelativeLayout
+        android:layout_width="@dimen/adding_to_storage_layoutWidth"
+        android:layout_height="@dimen/adding_to_storage_layoutHeight"
+        android:layout_below="@+id/adding_to_storage_tvIdNewItem"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/adding_to_storage_layoutMarginStart"
+        android:layout_marginTop="@dimen/adding_to_storage_layoutMarginTop"
+        android:background="@drawable/custom_layout">
+
+        <TextView
+            android:id="@+id/adding_to_storage_tvIdName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/adding_to_storage_tvMarginTopName"
+            android:layout_centerHorizontal="true"
+            android:text="@string/adding_to_storage_tvTextName"
+            android:textSize="@dimen/adding_to_storage_tvTextSizeName"
+            android:textColor="@color/adding_to_storage_tvTextColorName"/>
+
+        <EditText
+            android:id="@+id/adding_to_storage_etIdName"
+            android:layout_width="@dimen/adding_to_storage_etWidthName"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/adding_to_storage_etMarginTopName"
+            android:elevation="@dimen/adding_to_storage_etElevationName"
+            android:paddingStart="@dimen/adding_to_storage_etPaddingStartName"
+            android:paddingEnd="@dimen/adding_to_storage_etPaddingEndName"
+            android:layout_below="@+id/adding_to_storage_tvIdName"
+            android:hint="@string/adding_to_storage_etHintName"
+            android:background="@drawable/custom_input"
+            android:importantForAutofill="no"/>
+
+        <TextView
+            android:id="@+id/adding_to_storage_tvIdAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/adding_to_storage_tvMarginTopAmount"
+            android:layout_below="@+id/adding_to_storage_etIdName"
+            android:layout_centerHorizontal="true"
+            android:text="@string/adding_to_storage_tvTextAmount"
+            android:textSize="@dimen/adding_to_storage_tvTextSizeAmount"
+            android:textColor="@color/adding_to_storage_tvTextColorAmount"/>
+
+        <EditText
+            android:id="@+id/adding_to_storage_etIdAmount"
+            android:layout_width="@dimen/adding_to_storage_etWidthAmount"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/adding_to_storage_etMarginTopAmount"
+            android:elevation="@dimen/adding_to_storage_etElevationAmount"
+            android:paddingStart="@dimen/adding_to_storage_etPaddingStartAmount"
+            android:paddingEnd="@dimen/adding_to_storage_etPaddingEndAmount"
+            android:layout_below="@+id/adding_to_storage_tvIdAmount"
+            android:hint="@string/adding_to_storage_etHintAmount"
+            android:background="@drawable/custom_input"
+            android:importantForAutofill="no"/>
+
+        <Button
+            android:id="@+id/adding_to_storage_btnIdAdd"
+            android:layout_width="@dimen/adding_to_storage_btnWidthAdd"
+            android:layout_height="@dimen/adding_to_storage_btnHeightAdd"
+            android:layout_below="@+id/adding_to_storage_etIdAmount"
+            android:layout_marginTop="@dimen/adding_to_storage_btnMarginTopAdd"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/custom_button"
+            android:text="@string/adding_to_storage_btnTextAdd"
+            android:textColor="@color/adding_to_storage_btnTextColorAdd"/>
+    </RelativeLayout>
+</RelativeLayout>

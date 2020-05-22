@@ -26,7 +26,7 @@
 
 
     <color name="colorBtnAdd">#FFFFFF</color>
-    <color name="color_btn">#23CDF8</color>
+    <color name="color_btn">#7D80DA</color>
     <color name="color_ic_BtnAdd">#FFFFFF</color>
 
 
@@ -37,6 +37,7 @@
     <color name="presets_tvTextColorIngredients">#8D8A8D</color>
     <color name="presets_tvTextColorListName">#8D8A8D</color>
     <color name="presets_tvTextColorAmount">#8D8A8D</color>
+    <color name="presets_layoutColor">#FFFFFF</color>
 
 
     <color name="register_tvTextColorAlreadyHaveAccount">#8A8CDE</color>
@@ -50,5 +51,10 @@
     <color name="storage_tvTextColorAmount">#8D8A8D</color>
     <color name="storage_tvTextColorBeerName">#8D8A8D</color>
     <color name="storage_tvTextColorBeerAmount">#8D8A8D</color>
-    <color name="orders_btnTextColorRegister">#FFFFFF</color>
+
+    <color name="adding_to_storage_TextColorNewItem">#8D8A8D</color>
+    <color name="adding_to_storage_tvTextColorName">#8D8A8D</color>
+    <color name="adding_to_storage_btnTextColorAdd">#FFFFFF</color>
+    <color name="adding_to_storage_tvTextColorAmount">#8D8A8D</color>
+
 </resources>
