@@ -6,11 +6,11 @@ public class User {
     private String Name;
     private String Email;
     private String Username;
-    private String Password;
+    private int Password;
 
     public User(){ }
 
-    public User(String id, String name, String email, String username, String password){
+    public User(String id, String name, String email, String username, int password){
         userId = id;
         Name = name;
         Email = email;
@@ -50,11 +50,11 @@ public class User {
         Username = username;
     }
 
-    public String getPassword() {
+    public int getPassword() {
         return Password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(int password) {
         Password = password;
     }
 

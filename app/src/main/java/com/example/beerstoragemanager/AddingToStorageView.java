@@ -23,6 +23,7 @@ public class AddingToStorageView extends AppCompatActivity {
     Button btnIdAdd;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
+    int amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,14 +88,14 @@ public class AddingToStorageView extends AppCompatActivity {
         etIdAmount = findViewById(R.id.adding_to_storage_etIdAmount);
 
         String name = etIdName.getText().toString().trim();
-        String amount = etIdAmount.getText().toString().trim();
+        amount = Integer.parseInt(etIdAmount.getText().toString());
 
         if(name.isEmpty()){
             etIdName.setError("Ingredient name is required");
             etIdName.requestFocus();
             return;
         }
-        if(amount.isEmpty()){
+        if(amount == 0){
             etIdAmount.setError("Ingredient amount is required");
             etIdAmount.requestFocus();
             return;

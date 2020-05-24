@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ic_background_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/presets_history_tvIdPresets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/presets_history_tvMarginTopPresets"
+        android:layout_centerHorizontal="true"
+        android:text="@string/presets_history_tvTextPresets"
+        android:textStyle="bold"
+        android:textSize="@dimen/presets_history_tvSizePresets"
+        android:textColor="@color/presets_history_tvTextColorPresets"/>
+
+    <RelativeLayout
+        android:id="@+id/presets_history_rlId"
+        android:layout_width="@dimen/presets_history_layoutWidth"
+        android:layout_height="@dimen/presets_history_layoutHeight"
+        android:layout_below="@+id/presets_history_tvIdPresets"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/presets_history_layoutMarginStart"
+        android:layout_marginTop="@dimen/presets_history_layoutMarginTop"
+        android:background="@drawable/custom_layout">
+
+        <TextView
+            android:id="@+id/presets_history_tvIdName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/presets_history_tvMarginTopName"
+            android:layout_marginStart="@dimen/presets_history_tvMarginStartName"
+            android:text="@string/presets_history_tvTextName"
+            android:textSize="@dimen/presets_history_tvSizeName"
+            android:textColor="@color/presets_history_tvTextColorName"/>
+
+        <ListView
+            android:id="@+id/presets_history_listIdBeers"
+            android:layout_width="@dimen/presets_history_listWidthBeers"
+            android:layout_height="@dimen/presets_history_listHeightBeers"
+            android:layout_marginTop="@dimen/presets_history_listMarginTopBeers"
+            android:layout_centerHorizontal="true"
+            android:divider="#00000000"
+            android:layout_below="@+id/presets_history_tvIdName"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/presets_history_btnIdOrder"
+        android:layout_width="@dimen/presets_history_btnWidthOrder"
+        android:layout_height="@dimen/presets_history_btnHeightOrder"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/presets_history_btnMarginTopOrder"
+        android:layout_marginEnd="@dimen/presets_history_btnMarginEndOrder"
+        android:layout_below="@+id/presets_history_rlId"
+        android:text="@string/presets_history_btnTextOrder"
+        android:textColor="@color/presets_history_btnTextColorOrder"
+        android:background="@drawable/custom_button"/>
+</RelativeLayout>

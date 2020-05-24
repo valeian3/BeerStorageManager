@@ -28,7 +28,7 @@
         android:layout_below="@+id/orders_tvIdOrder"
         android:text="@string/orders_tvTextSelectBeer"
         android:textSize="@dimen/orders_tvSizeSelectBeer"
-        android:textColor="@color/orders_tvTextColorOrder"/>
+        android:textColor="@color/orders_tvTextColorSelectBeer"/>
 
     <Spinner
         android:id="@+id/orders_spinnerIdSelector"
@@ -49,7 +49,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/orders_tvTextAmountOfBags"
         android:textSize="@dimen/orders_tvSizeAmountOfBags"
-        android:textColor="@color/orders_tvTextColorOrder"/>
+        android:textColor="@color/orders_tvTextColorAmountOfBags"/>
 
     <EditText
         android:id="@+id/orders_etIdAmountOfBags"

@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/presets_tvTextSelectBeer"
         android:textSize="@dimen/presets_tvSizeSelectBeer"
-        android:textColor="@color/presets_tvTextColorPresets"/>
+        android:textColor="@color/presets_tvTextColorSelectBeer"/>
 
     <Spinner
         android:id="@+id/presets_spinnerIdSelector"

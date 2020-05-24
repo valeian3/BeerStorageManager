@@ -36,6 +36,8 @@ public class RegisterView extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
+    int password;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +106,7 @@ public class RegisterView extends AppCompatActivity {
         String name = etIdName.getText().toString().trim();
         String email = etIdEmail.getText().toString().trim();
         String username = etIdUsername.getText().toString().trim();
-        String password = etIdPassword.getText().toString().trim();
+        password = Integer.parseInt(etIdPassword.getText().toString());
 
         //Ako su prazna polja za unos podataka
         if(name.isEmpty()){
@@ -122,7 +124,7 @@ public class RegisterView extends AppCompatActivity {
             etIdUsername.requestFocus();
             return;
         }
-        if(password.isEmpty()){
+        if(password == 0){
             etIdPassword.setError("Password is required");
             etIdPassword.requestFocus();
             return;
@@ -134,13 +136,13 @@ public class RegisterView extends AppCompatActivity {
             etIdEmail.requestFocus();
             return;
         }
-        if(password.length()<6){
+        if(password <= 6){
             etIdPassword.setError("Minimum length of password should be 6");
             etIdPassword.requestFocus();
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email, String.valueOf(password)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){

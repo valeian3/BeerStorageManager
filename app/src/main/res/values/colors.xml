@@ -17,8 +17,10 @@
     <color name="home_btnTextColorHome">#FFFFFF</color>
 
 
+    <color name="orders_tvTextColorSelectBeer">#8D8A8D</color>
+    <color name="orders_tvTextColorAmountOfBags">#8D8A8D</color>
     <color name="orders_btnColorOrder">#36B2F4</color>
-    <color name="orders_tvTextColorOrder">#8D8A8D</color>
+    <color name="orders_tvTextColorOrder">#FFFFFF</color>
     <color name="orders_tvTextColorListOfOrder">#8D8A8D</color>
     <color name="orders_tvTextColorName">#8D8A8D</color>
     <color name="orders_tvTextColorAmount">#8D8A8D</color>
@@ -30,7 +32,8 @@
     <color name="color_ic_BtnAdd">#FFFFFF</color>
 
 
-    <color name="presets_tvTextColorPresets">#8D8A8D</color>
+    <color name="presets_tvTextColorPresets">#FFFFFF</color>
+    <color name="presets_tvTextColorSelectBeer">#8D8A8D</color>
     <color name="presets_btnColorSelect">#37A7FC</color>
     <color name="presets_btnTextColorSelect">#FFFFFF</color>
     <color name="presets_tvTextColorName">#8D8A8D</color>
@@ -46,15 +49,36 @@
     <color name="register_tvTextColorRegister">#8D8A8D</color>
 
 
-    <color name="storage_tvTextColorStorage">#8D8A8D</color>
+    <color name="storage_tvTextColorStorage">#FFFFFF</color>
     <color name="storage_tvTextColorName">#8D8A8D</color>
     <color name="storage_tvTextColorAmount">#8D8A8D</color>
     <color name="storage_tvTextColorBeerName">#8D8A8D</color>
     <color name="storage_tvTextColorBeerAmount">#8D8A8D</color>
 
+
     <color name="adding_to_storage_TextColorNewItem">#8D8A8D</color>
     <color name="adding_to_storage_tvTextColorName">#8D8A8D</color>
     <color name="adding_to_storage_btnTextColorAdd">#FFFFFF</color>
     <color name="adding_to_storage_tvTextColorAmount">#8D8A8D</color>
+
+
+    <color name="adding_new_presets_tvTextColorNewPreset">#FFFFFF</color>
+    <color name="adding_new_presets_tvTextColorName">#999696</color>
+    <color name="adding_new_presets_tvTextColorIngredients">#8D8A8D</color>
+    <color name="adding_new_presets_tvTextColorAmount">#8D8A8D</color>
+
+    <color name="adding_new_presets_tvTextColorIngredientAmount">#8D8A8D</color>
+    <color name="adding_new_presets_tvTextColorIngredientName">#8D8A8D</color>
+    <color name="adding_new_presets_btnTextColorAddPreset">#FFFFFF</color>
+
+
+    <color name="orders_history_tvTextColorPresets">#FFFFFF</color>
+    <color name="orders_history_tvTextColorName">#8D8A8D</color>
+    <color name="orders_history_btnTextColorOrder">#FFFFFF</color>
+
+
+    <color name="presets_history_tvTextColorPresets">#FFFFFF</color>
+    <color name="presets_history_tvTextColorName">#8D8A8D</color>
+    <color name="presets_history_btnTextColorOrder">#FFFFFF</color>
 
 </resources>

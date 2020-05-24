@@ -21,11 +21,11 @@ public class UserController {
         model.setUsername(name);
     }
 
-    public String getPassword(){
+    public int getPassword(){
         return model.getPassword();
     }
 
-    public void setPassword(String password){
+    public void setPassword(int password){
         model.setPassword(password);
     }
 

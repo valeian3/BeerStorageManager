@@ -39,7 +39,7 @@ public class IngredientList extends ArrayAdapter<Ingredient> {
         Ingredient ingredient = IngredientList.get(position);
 
         tvName.setText(ingredient.getName());
-        tvAmount.setText(ingredient.getAmount());
+        tvAmount.setText(String.valueOf(ingredient.getAmount()));
 
         return ingredientViewItem;
     }

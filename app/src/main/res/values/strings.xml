@@ -51,4 +51,25 @@
     <string name="adding_to_storage_btnTextAdd">ADD</string>
     <string name="adding_to_storage_etHintAmount">300</string>
     <string name="adding_to_storage_tvTextAmount">Amount</string>
+
+    <string name="adding_new_presets_TextNewPreset">NEW PRESET</string>
+    <string name="adding_new_presets_tvTextName">Beer name</string>
+    <string name="adding_new_presets_etHintName">ABA</string>
+    <string name="adding_new_presets_tvTextIngredients">Ingredient</string>
+    <string name="adding_new_presets_etHintIngredients">water</string>
+    <string name="adding_to_storage_btnTextAddIngredient">ADD INGREDIENT</string>
+    <string name="adding_new_presets_tvTextAmount">Amount</string>
+    <string name="adding_new_presets_etHintAmount">200</string>
+    <string name="adding_new_presets_tvTextIngredientName">Name</string>
+    <string name="adding_new_presets_tvTextIngredientAmount">Amount</string>
+    <string name="adding_to_storage_btnTextAddPreset">ADD PRESET</string>
+
+    <string name="orders_history_tvTextPresets">ORDER HISTORY</string>
+    <string name="orders_history_tvTextAmount">Amount</string>
+    <string name="orders_history_tvTextName">Name</string>
+    <string name="orders_history_btnTextOrder">RETURN</string>
+    <string name="presets_history_tvTextPresets">PRESETS HISTORY</string>
+    <string name="presets_history_tvTextName">Name</string>
+    <string name="presets_history_tvTextAmount">Amount</string>
+    <string name="presets_history_btnTextOrder">RETURN</string>
 </resources>
