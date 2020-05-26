@@ -22,6 +22,9 @@
         <activity android:name=".PresetsView"/>
         <activity android:name=".StorageView"/>
         <activity android:name=".AddingToStorageView"/>
+        <activity android:name=".AddingNewPresetView"/>
+        <activity android:name=".PresetHistoryView"/>
+        <activity android:name=".OrdersHistoryView"/>
         <activity android:name=".Controller.DbController" />
     </application>
 

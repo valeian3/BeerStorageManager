@@ -40,7 +40,7 @@
             android:textColor="@color/presets_history_tvTextColorName"/>
 
         <ListView
-            android:id="@+id/presets_history_listIdBeers"
+            android:id="@+id/presets_history_listIdPresets"
             android:layout_width="@dimen/presets_history_listWidthBeers"
             android:layout_height="@dimen/presets_history_listHeightBeers"
             android:layout_marginTop="@dimen/presets_history_listMarginTopBeers"
@@ -50,7 +50,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/presets_history_btnIdOrder"
+        android:id="@+id/presets_history_btnIdReturn"
         android:layout_width="@dimen/presets_history_btnWidthOrder"
         android:layout_height="@dimen/presets_history_btnHeightOrder"
         android:layout_alignParentEnd="true"

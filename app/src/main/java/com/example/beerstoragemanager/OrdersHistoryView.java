@@ -4,15 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.beerstoragemanager.Controller.IngredientListController;
-import com.example.beerstoragemanager.Model.Ingredient;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.beerstoragemanager.Controller.CustomerListController;
+import com.example.beerstoragemanager.Controller.OrdersListController;
+import com.example.beerstoragemanager.Model.Beer;
+import com.example.beerstoragemanager.Model.Customer;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,21 +25,26 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StorageView extends AppCompatActivity {
+public class OrdersHistoryView extends AppCompatActivity {
 
-    private static final String TAG = "StorageView";
-    FloatingActionButton fabAdd;
+    private static final String TAG = "OrdersHistoryView";
+    Button btnReturn;
+
+    ListView lvCustomers;
+    List<Customer> customersList;
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
-    ListView listViewIngredients;
-    List<Ingredient> ingredientList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_storage);
+        setContentView(R.layout.activity_order_history);
+
+        database = FirebaseDatabase.getInstance();
+
+        lvCustomers = findViewById(R.id.orders_history_listIdCustomers);
+        customersList = new ArrayList<>();
     }
 
     @Override
@@ -56,8 +64,17 @@ public class StorageView extends AppCompatActivity {
         super.onResume();
         Log.i(TAG, "onResume executed.");
 
-        newIngredient();
-        listingIngredients();
+        showOrderList();
+
+        btnReturn = findViewById(R.id.orders_history_btnIdOrder);
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent explicitIntent = new Intent();
+                explicitIntent.setClass(getApplicationContext(), HomeView.class);
+                startActivity(explicitIntent);
+            }
+        });
     }
 
     @Override
@@ -78,47 +95,22 @@ public class StorageView extends AppCompatActivity {
         Log.i(TAG, "onDestroy executed.");
     }
 
-    private void newIngredient(){
-        fabAdd = findViewById(R.id.storage_fabIdAdd);
-        fabAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent explicitIntent = new Intent();
-                explicitIntent.setClass(getApplicationContext(), AddingToStorageView.class);
-                startActivity(explicitIntent);
-            }
-        });
-    }
-
-    private void listingIngredients(){
-
-        listViewIngredients = findViewById(R.id.storage_listIdBeers);
-
-        ingredientList = new ArrayList<>();
-
-        database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("Ingredients");
-
+    private void showOrderList(){
+        databaseReference = database.getReference("Customers");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                ingredientList.clear();
-
+                customersList.clear();
                 for(DataSnapshot ingredientSnapshot : dataSnapshot.getChildren()){
-                    Ingredient ingredient = ingredientSnapshot.getValue(Ingredient.class);
-
-                    ingredientList.add(ingredient);
-
+                    Customer customer = ingredientSnapshot.getValue(Customer.class);
+                    customersList.add(customer);
                 }
-
-                IngredientListController adapter = new IngredientListController(StorageView.this, ingredientList);
-                listViewIngredients.setAdapter(adapter);
-
+                CustomerListController adapter = new CustomerListController(OrdersHistoryView.this, customersList);
+                lvCustomers.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                    displayToast("Error: database could't load.");
+                displayToast("Error: database could't load.");
             }
         });
     }

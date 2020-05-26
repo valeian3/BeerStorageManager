@@ -40,7 +40,7 @@
             android:textColor="@color/orders_history_tvTextColorName"/>
 
         <ListView
-            android:id="@+id/orders_history_listIdBeers"
+            android:id="@+id/orders_history_listIdCustomers"
             android:layout_width="@dimen/orders_history_listWidthBeers"
             android:layout_height="@dimen/orders_history_listHeightBeers"
             android:layout_marginTop="@dimen/orders_history_listMarginTopBeers"

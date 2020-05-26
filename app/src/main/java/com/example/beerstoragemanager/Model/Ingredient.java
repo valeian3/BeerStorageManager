@@ -8,7 +8,6 @@ public class Ingredient {
 
     public Ingredient(){ }
 
-
     public Ingredient(String id, String name, int amount){
         ingredientId = id;
         Name = name;

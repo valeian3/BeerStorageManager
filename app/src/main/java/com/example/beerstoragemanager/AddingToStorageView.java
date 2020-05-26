@@ -12,18 +12,19 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Model.Ingredient;
-import com.example.beerstoragemanager.Model.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddingToStorageView extends AppCompatActivity {
 
     private static final String TAG = "AddingToStorageView";
+    int amount;
+
     EditText etIdName, etIdAmount;
     Button btnIdAdd;
+
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    int amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

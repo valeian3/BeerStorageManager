@@ -15,12 +15,12 @@ import com.example.beerstoragemanager.R;
 
 import java.util.List;
 
-public class IngredientList extends ArrayAdapter<Ingredient> {
+public class IngredientListController extends ArrayAdapter<Ingredient> {
 
     private Activity context;
     private List<Ingredient> IngredientList;
 
-    public IngredientList(Activity context, List<Ingredient> ingredientList){
+    public IngredientListController(Activity context, List<Ingredient> ingredientList){
         super(context, R.layout.order_list, ingredientList);
         this.context = context;
         this.IngredientList = ingredientList;

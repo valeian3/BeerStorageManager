@@ -25,7 +25,10 @@
 
     <string name="orders_btnTextOrder">Order</string>
     <string name="orders_tvTextOrder">ORDERS</string>
-    <string name="orders_tvTextSelectBeer">Select beer</string>
+    <string name="orders_tvTextOrderName">Customer name</string>
+    <string name="orders_tvTextBeerName">Beer name</string>
+    <string name="orders_etHintOrderName">StarCafe</string>
+    <string name="orders_etHintBeerName">ABA</string>
     <string name="orders_tvTextAmountOfBags">Amount of bags</string>
     <string name="orders_tvHintAmountOfBags">3</string>
     <string name="orders_etHintAmountOfBags">3</string>
@@ -40,7 +43,7 @@
     <string name="presets_tvTextSelectBeer">Select beer</string>
     <string name="presets_tvTextName">Name</string>
     <string name="presets_etHintName">name</string>
-    <string name="presets_tvTextIngredients">INGREDIENTS</string>
+    <string name="presets_tvListTextPresets">Presets</string>
     <string name="presets_tvTextListName">Name</string>
     <string name="presets_tvTextAmount">Amount</string>
     <string name="presets_btnTextOrder">SELECT</string>
@@ -72,4 +75,7 @@
     <string name="presets_history_tvTextName">Name</string>
     <string name="presets_history_tvTextAmount">Amount</string>
     <string name="presets_history_btnTextOrder">RETURN</string>
+    <string name="presets_tvListTextIngredients">Ingredients</string>
+    <string name="orders_btnTextInput">INPUT</string>
+    <string name="adding_new_presets_etHintAddName">INPUT NAME</string>
 </resources>
