@@ -56,7 +56,7 @@
     <color name="storage_tvTextColorBeerAmount">#8D8A8D</color>
 
 
-    <color name="adding_to_storage_TextColorNewItem">#8D8A8D</color>
+    <color name="adding_to_storage_TextColorNewItem">#FFFFFF</color>
     <color name="adding_to_storage_tvTextColorName">#8D8A8D</color>
     <color name="adding_to_storage_btnTextColorAdd">#FFFFFF</color>
     <color name="adding_to_storage_tvTextColorAmount">#8D8A8D</color>

@@ -21,7 +21,7 @@ public class PresetsListController extends ArrayAdapter<Beer> {
     private List<Beer> PresetsList;
 
     public PresetsListController(Activity context, List<Beer> presetsList){
-        super(context, R.layout.order_list, presetsList);
+        super(context, R.layout.history_list, presetsList);
         this.context = context;
         this.PresetsList = presetsList;
     }
@@ -31,9 +31,9 @@ public class PresetsListController extends ArrayAdapter<Beer> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
 
-        View ingredientViewItem = inflater.inflate(R.layout.order_list, null, true);
+        View ingredientViewItem = inflater.inflate(R.layout.history_list, null, true);
 
-        TextView tvName = (TextView) ingredientViewItem.findViewById(R.id.orders_tvIdBeerName);
+        TextView tvName = (TextView) ingredientViewItem.findViewById(R.id.history_tvIdBeerName);
 
         Beer beer = PresetsList.get(position);
 

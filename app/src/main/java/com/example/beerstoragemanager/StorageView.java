@@ -76,6 +76,7 @@ public class StorageView extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
+        finish();
     }
 
     private void newIngredient(){

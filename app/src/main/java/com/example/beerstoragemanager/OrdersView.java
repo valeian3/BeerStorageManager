@@ -104,12 +104,14 @@ public class OrdersView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop executed.");
+        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
+        finish();
     }
 
     private void addingNewOrder(){

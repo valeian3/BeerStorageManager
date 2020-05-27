@@ -3,18 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <TextView
         android:id="@+id/orders_tvIdBeerName"
         android:layout_width="@dimen/orders_tvWidthBeerName"
         android:layout_height="@dimen/orders_tvHeightBeerName"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="@dimen/orders_tvMarginStartBeerName"
         android:paddingStart="@dimen/orders_tvPaddingStartName"
         android:paddingEnd="@dimen/orders_tvPaddingEndName"
         android:textSize="@dimen/orders_tvSizeBeerName"
         android:textColor="@color/storage_tvTextColorBeerName"/>
-
     <TextView
         android:id="@+id/orders_tvIdBeerAmount"
         android:layout_width="@dimen/orders_tvWidthBeerAmount"
@@ -25,5 +22,4 @@
         android:paddingEnd="@dimen/orders_tvPaddingEndAmount"
         android:textSize="@dimen/orders_tvSizeBeerAmount"
         android:textColor="@color/storage_tvTextColorBeerAmount"/>
-
 </RelativeLayout>

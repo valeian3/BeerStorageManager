@@ -36,15 +36,21 @@ public class RegisterView extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
-    int password;
-
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+        etIdName = findViewById(R.id.register_etIdName);
+        etIdEmail = findViewById(R.id.register_etIdEmail);
+        etIdUsername = findViewById(R.id.register_etIdUsername);
+        etIdPassword = findViewById(R.id.register_etIdPassword);
+        tvIdAlreadyHaveAccount = findViewById(R.id.register_tvIdAlreadyHaveAccount);
     }
 
     @Override
@@ -95,20 +101,11 @@ public class RegisterView extends AppCompatActivity {
     }
 
     private void RegisterUser(){
-
-        User user;
-
-        etIdName = findViewById(R.id.register_etIdName);
-        etIdEmail = findViewById(R.id.register_etIdEmail);
-        etIdUsername = findViewById(R.id.register_etIdUsername);
-        etIdPassword = findViewById(R.id.register_etIdPassword);
-
         String name = etIdName.getText().toString().trim();
         String email = etIdEmail.getText().toString().trim();
         String username = etIdUsername.getText().toString().trim();
-        password = Integer.parseInt(etIdPassword.getText().toString());
+        String password = etIdPassword.getText().toString();
 
-        //Ako su prazna polja za unos podataka
         if(name.isEmpty()){
             etIdName.setError("Name is required");
             etIdName.requestFocus();
@@ -124,25 +121,23 @@ public class RegisterView extends AppCompatActivity {
             etIdUsername.requestFocus();
             return;
         }
-        if(password == 0){
+        if(password.isEmpty()){
             etIdPassword.setError("Password is required");
             etIdPassword.requestFocus();
             return;
         }
-
-        //Ostale provjere unesenih polja
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             etIdEmail.setError("Please enter a valid email");
             etIdEmail.requestFocus();
             return;
         }
-        if(password <= 6){
+        if(password.length() <= 6){
             etIdPassword.setError("Minimum length of password should be 6");
             etIdPassword.requestFocus();
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email, String.valueOf(password)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -160,7 +155,6 @@ public class RegisterView extends AppCompatActivity {
             }
         });
 
-        database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("User");
         if(!TextUtils.isEmpty(name)){
 
@@ -175,8 +169,6 @@ public class RegisterView extends AppCompatActivity {
     }
 
     private void AlreadyHaveAccount(){
-
-        tvIdAlreadyHaveAccount = findViewById(R.id.register_tvIdAlreadyHaveAccount);
         tvIdAlreadyHaveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

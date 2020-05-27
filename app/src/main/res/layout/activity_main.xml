@@ -7,69 +7,51 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/login_tvIdBreweryName"
-        android:layout_width="@dimen/login_tvWidthBreweryName"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/login_tvMarginTopBreweryName"
-        android:layout_marginStart="@dimen/login_tvMarginStartBreweryName"
-        android:text="@string/login_tvTextBreweryName"
-        android:textStyle="bold"
-        android:textSize="@dimen/login_tvSizeBreweryName"
-        android:textColor="@color/login_tvTextColorBreweryName"/>
-
     <RelativeLayout
         android:layout_width="@dimen/login_layoutWidth"
         android:layout_height="@dimen/login_layoutHeight"
-        android:layout_below="@+id/login_tvIdBreweryName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="@dimen/login_layoutMarginStart"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/login_layoutMarginTop"
         android:background="@drawable/custom_layout">
-
         <TextView
             android:id="@+id/login_tvIdLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/login_tvMarginTopLogin"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/login_tvMarginTopLogin"
             android:text="@string/login_tvTextLogin"
-            android:textStyle="bold"
+            android:textColor="@color/login_tvTextColorLogin"
             android:textSize="@dimen/login_tvSizeLogin"
-            android:textColor="@color/login_tvTextColorLogin"/>
-
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/login_etIdEmail"
             android:layout_width="@dimen/login_etWidthEmail"
             android:layout_height="@dimen/login_etHeightEmail"
-            android:inputType="textEmailAddress"
+            android:layout_below="@+id/login_tvIdLogin"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/login_etMarginTopEmail"
-            android:layout_below="@+id/login_tvIdLogin"
             android:background="@drawable/custom_input"
             android:elevation="@dimen/login_etElevationEmail"
-            android:paddingStart="@dimen/login_etPaddingStartEmail"
-            android:paddingEnd="@dimen/login_etPaddingEndEmail"
             android:hint="@string/login_etHintEmail"
-            android:importantForAutofill="no"/>
-
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:paddingStart="@dimen/login_etPaddingStartEmail"
+            android:paddingEnd="@dimen/login_etPaddingEndEmail" />
         <EditText
             android:id="@+id/login_etIdPassword"
             android:layout_width="@dimen/login_etWidthPassword"
             android:layout_height="@dimen/login_etHeightPassword"
-            android:inputType="numberPassword"
+            android:layout_below="@+id/login_etIdEmail"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/login_etMarginTopPassword"
-            android:layout_below="@+id/login_etIdEmail"
             android:background="@drawable/custom_input"
             android:elevation="@dimen/login_etElevationPassword"
-            android:paddingStart="@dimen/login_etPaddingStartPassword"
-            android:paddingEnd="@dimen/login_etPaddingEndPassword"
             android:hint="@string/login_etHintPassword"
-            android:importantForAutofill="no"/>
-
+            android:importantForAutofill="no"
+            android:inputType="numberPassword"
+            android:paddingStart="@dimen/login_etPaddingStartPassword"
+            android:paddingEnd="@dimen/login_etPaddingEndPassword"/>
         <TextView
             android:id="@+id/login_tvIdForgotPassword"
             android:layout_width="wrap_content"
@@ -80,31 +62,26 @@
             android:layout_marginEnd="@dimen/login_tvMarginEndForgotPassword"
             android:text="@string/login_tvTextForgotPassword"
             android:textColor="@color/login_tvTextColorForgotPassword"
-            android:textSize="@dimen/login_tvSizeForgotPassword" />
-
+            android:textSize="@dimen/login_tvSizeForgotPassword"/>
         <Button
             android:id="@+id/login_btnIdLogin"
             android:layout_width="@dimen/login_btnWidthLogin"
             android:layout_height="@dimen/login_btnHeightLogin"
+            android:layout_below="@+id/login_etIdPassword"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/login_btnMarginTopLogin"
-            android:layout_below="@+id/login_etIdPassword"
+            android:background="@drawable/custom_button"
             android:text="@string/login_btnTextLogin"
-            android:textColor="@color/login_btnTextColorLogin"
-            android:background="@drawable/custom_button"/>
-
+            android:textColor="@color/login_btnTextColorLogin"/>
         <Button
             android:id="@+id/login_btnIdRegister"
             android:layout_width="@dimen/login_btnWidthRegister"
             android:layout_height="@dimen/login_btnHeightRegister"
+            android:layout_below="@+id/login_btnIdLogin"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/login_btnMarginTopRegister"
-            android:layout_below="@+id/login_btnIdLogin"
+            android:background="@drawable/custom_button"
             android:text="@string/login_btnTextRegister"
-            android:textColor="@color/login_btnTextColorRegister"
-            android:background="@drawable/custom_button"/>
-
+            android:textColor="@color/login_btnTextColorRegister"/>
     </RelativeLayout>
-
-
 </RelativeLayout>

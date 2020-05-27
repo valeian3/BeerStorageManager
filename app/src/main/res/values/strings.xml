@@ -21,7 +21,9 @@
     <string name="register_tvTextEmail">Email</string>
     <string name="register_etHintEmail">Your email address</string>
 
-    <string name="home_btnTextLogout">Logout</string>
+    <string name="home_btnTextLogout">LOGOUT</string>
+    <string name="home_btnTextPresets">PRESETS</string>
+    <string name="home_btnTextOrders">ORDERS</string>
 
     <string name="orders_btnTextOrder">Order</string>
     <string name="orders_tvTextOrder">ORDERS</string>

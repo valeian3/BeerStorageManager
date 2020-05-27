@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     EditText etIdEmail, etIdPassword;
     Button btnRegister, btnLogin;
 
@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        btnLogin = findViewById(R.id.login_btnIdLogin);
+        btnRegister = findViewById(R.id.login_btnIdRegister);
+        etIdEmail = findViewById(R.id.login_etIdEmail);
+        etIdPassword = findViewById(R.id.login_etIdPassword);
     }
 
     @Override
@@ -51,14 +55,21 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.i(TAG, "onResume executed.");
 
-        btnLogin = findViewById(R.id.login_btnIdLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginUser();
             }
         });
-        registerUser();
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent explicitIntent = new Intent();
+                explicitIntent.setClass(getApplicationContext(), RegisterView.class);
+                startActivity(explicitIntent);
+                Log.i(TAG, "Registration view opened.");
+            }
+        });
     }
 
     @Override
@@ -81,10 +92,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private  void loginUser(){
-
-        etIdEmail = findViewById(R.id.login_etIdEmail);
-        etIdPassword = findViewById(R.id.login_etIdPassword);
-
         String email = etIdEmail.getText().toString().trim();
         String password = etIdPassword.getText().toString().trim();
 
@@ -110,20 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     displayToast(task.getException().getMessage());
                 }
-            }
-        });
-    }
-
-    private void registerUser(){
-
-        btnRegister = findViewById(R.id.login_btnIdRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent explicitIntent = new Intent();
-                explicitIntent.setClass(getApplicationContext(), RegisterView.class);
-                startActivity(explicitIntent);
-                Log.i(TAG, "Registration view opened.");
             }
         });
     }

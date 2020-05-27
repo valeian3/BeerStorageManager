@@ -20,7 +20,7 @@ public class CustomerListController extends ArrayAdapter<Customer> {
     private List<Customer> ordersList;
 
     public CustomerListController(Activity context, List<Customer> ordersList){
-        super(context, R.layout.order_list, ordersList);
+        super(context, R.layout.history_list, ordersList);
         this.context = context;
         this.ordersList = ordersList;
     }
@@ -30,9 +30,9 @@ public class CustomerListController extends ArrayAdapter<Customer> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
 
-        View ingredientViewItem = inflater.inflate(R.layout.order_list, null, true);
+        View ingredientViewItem = inflater.inflate(R.layout.history_list, null, true);
 
-        TextView tvName = (TextView) ingredientViewItem.findViewById(R.id.orders_tvIdBeerName);
+        TextView tvName = (TextView) ingredientViewItem.findViewById(R.id.history_tvIdBeerName);
 
         Customer customer = ordersList.get(position);
 

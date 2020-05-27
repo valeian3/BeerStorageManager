@@ -15,7 +15,7 @@ public class HomeView extends AppCompatActivity {
 
     private static final String TAG = "HomeView";
 
-    Button btnIdLogout, btnStorage, btnPresets, btnOrders;
+    Button btnIdLogout, btnStorage, btnPresets, btnOrders, btnOrdersHistory, btnPresetsHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,8 @@ public class HomeView extends AppCompatActivity {
         Storage();
         Orders();
         Presets();
+        OrdersHistory();
+        PresetsHistory();
     }
 
     @Override
@@ -114,7 +116,31 @@ public class HomeView extends AppCompatActivity {
             }
         });
     }
+    private void OrdersHistory(){
+        btnOrdersHistory = findViewById(R.id.home_btnIdOrders);
+        btnOrdersHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent explicitIntent = new Intent();
+                explicitIntent.setClass(getApplicationContext(), OrdersHistoryView.class);
+                startActivity(explicitIntent);
+                Log.i(TAG, "Presets history view opened.");
+            }
+        });
 
+    }
+    private void PresetsHistory(){
+        btnPresetsHistory = findViewById(R.id.home_btnIdPresets);
+        btnPresetsHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent explicitIntent = new Intent();
+                explicitIntent.setClass(getApplicationContext(), PresetHistoryView.class);
+                startActivity(explicitIntent);
+                Log.i(TAG, "Presets history view opened.");
+            }
+        });
+    }
     private void displayToast(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
