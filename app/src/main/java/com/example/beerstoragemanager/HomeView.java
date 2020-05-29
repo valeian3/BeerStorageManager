@@ -94,7 +94,7 @@ public class HomeView extends AppCompatActivity {
         });
     }
     private void Orders(){
-        binding.homeBtnIdOrders.setOnClickListener(new View.OnClickListener() {
+        binding.homeBtnIdBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();

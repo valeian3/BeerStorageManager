@@ -147,10 +147,6 @@ public class RegisterView extends AppCompatActivity {
                                 Intent explicitIntent = new Intent();
                                 explicitIntent.setClass(getApplicationContext(), MainActivity.class);
                                 startActivity(explicitIntent);
-                                /*binding.registerEtIdName.setText("");
-                                binding.registerEtIdEmail.setText("");
-                                binding.registerEtIdUsername.setText("");
-                                binding.registerEtIdPassword.setText("");*/
                             }else {
                                 displayToast(task.getException().getMessage());
                             }
@@ -167,13 +163,17 @@ public class RegisterView extends AppCompatActivity {
         });
 
         databaseReference = database.getReference().child("User");
-        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)){
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(username)){
 
             String id = databaseReference.push().getKey();
 
-            user = new User(id, name, email, username, password);
+            user = new User(id, name, email, username);
             databaseReference.child(id).setValue(user);
             Log.i(TAG, "User inserted into database");
+            binding.registerEtIdName.setText("");
+            binding.registerEtIdEmail.setText("");
+            binding.registerEtIdUsername.setText("");
+            binding.registerEtIdPassword.setText("");
         } else {
             Log.i(TAG, "User is not inserted into database.");
         }
