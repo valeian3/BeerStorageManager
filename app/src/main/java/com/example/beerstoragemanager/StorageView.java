@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Controller.IngredientListController;
 import com.example.beerstoragemanager.Model.Ingredient;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.beerstoragemanager.databinding.ActivityStorageBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,19 +23,27 @@ import java.util.List;
 
 public class StorageView extends AppCompatActivity {
 
+    ActivityStorageBinding binding;
+
     private static final String TAG = "StorageView";
-    FloatingActionButton fabAdd;
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
-    ListView listViewIngredients;
     List<Ingredient> ingredientList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_storage);
+        //setContentView(R.layout.activity_storage);
+
+        binding = ActivityStorageBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        database = FirebaseDatabase.getInstance();
+
+        ingredientList = new ArrayList<>();
     }
 
     @Override
@@ -76,12 +83,11 @@ public class StorageView extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
-        finish();
+        finishAndRemoveTask();
     }
 
     private void newIngredient(){
-        fabAdd = findViewById(R.id.storage_fabIdAdd);
-        fabAdd.setOnClickListener(new View.OnClickListener() {
+        binding.storageFabIdAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();
@@ -93,13 +99,7 @@ public class StorageView extends AppCompatActivity {
 
     private void listingIngredients(){
 
-        listViewIngredients = findViewById(R.id.storage_listIdBeers);
-
-        ingredientList = new ArrayList<>();
-
-        database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Ingredients");
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -114,7 +114,7 @@ public class StorageView extends AppCompatActivity {
                 }
 
                 IngredientListController adapter = new IngredientListController(StorageView.this, ingredientList);
-                listViewIngredients.setAdapter(adapter);
+                binding.storageListIdBeers.setAdapter(adapter);
 
             }
             @Override

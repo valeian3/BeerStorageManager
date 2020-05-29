@@ -4,21 +4,21 @@ public class Ingredient {
 
     private String ingredientId;
     private String Name;
-    private int Amount;
+    private String Amount;
 
     public Ingredient(){ }
 
-    public Ingredient(String id, String name, int amount){
+    public Ingredient(String id, String name, String amount){
         ingredientId = id;
         Name = name;
         Amount = amount;
     }
 
-    public int getAmount() {
+    public String getAmount() {
         return Amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(String amount) {
         Amount = amount;
     }
 

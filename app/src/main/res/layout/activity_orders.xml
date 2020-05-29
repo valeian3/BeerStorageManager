@@ -22,16 +22,18 @@
         android:textStyle="bold"
         android:textSize="@dimen/orders_tvSizeOrder"
         android:textColor="@color/orders_tvTextColorOrder"/>
+
     <TextView
         android:id="@+id/orders_tvIdOrderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/orders_tvIdOrder"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/orders_tvMarginStartOrderName"
         android:layout_marginTop="@dimen/orders_tvMarginTopOrderName"
         android:text="@string/orders_tvTextOrderName"
         android:textColor="@color/orders_tvTextColorBeerName"
-        android:textSize="@dimen/orders_tvSizeOrderName"/>
+        android:textSize="@dimen/orders_tvSizeOrderName" />
     <EditText
         android:id="@+id/orders_etIdOrderName"
         android:layout_width="@dimen/orders_etWidthOrderName"
@@ -61,30 +63,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/orders_tvMarginStartBeerName"
             android:layout_marginTop="@dimen/orders_tvMarginTopBeerName"
-            android:layout_marginEnd="100dp"
             android:text="@string/orders_tvTextBeerName"
             android:textColor="@color/orders_tvTextColorBeerName"
             android:textSize="@dimen/orders_tvSizeBeerName" />
+
         <EditText
             android:id="@+id/orders_etIdBeerName"
-            android:layout_width="@dimen/orders_etWidthAmountOfBags"
-            android:layout_height="@dimen/register_etHeightName"
+            android:layout_width="@dimen/orders_etWidthBeerName"
+            android:layout_height="@dimen/orders_etHeightBeerName"
             android:layout_below="@+id/orders_tvIdBeerName"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginStart="30dp"
             android:layout_marginTop="@dimen/orders_etMarginTopAmountOfBags"
-            android:layout_marginEnd="100dp"
             android:background="@drawable/custom_input"
             android:elevation="@dimen/register_etElevationName"
             android:hint="@string/orders_etHintBeerName"
             android:importantForAutofill="no"
             android:inputType="text"
             android:paddingStart="@dimen/register_etPaddingStartName"
-            android:paddingEnd="@dimen/register_etPaddingEndName"/>
+            android:paddingEnd="@dimen/register_etPaddingEndName" />
         <TextView
             android:id="@+id/orders_tvIdAmountOfBags"
             android:layout_width="wrap_content"
@@ -98,30 +97,29 @@
             android:text="@string/orders_tvTextAmountOfBags"
             android:textColor="@color/orders_tvTextColorAmountOfBags"
             android:textSize="@dimen/orders_tvSizeAmountOfBags"/>
+
         <EditText
             android:id="@+id/orders_etIdAmountOfBags"
             android:layout_width="@dimen/orders_etWidthAmountOfBags"
-            android:layout_height="@dimen/register_etHeightName"
+            android:layout_height="@dimen/orders_etHeightAmountOfBags"
             android:layout_below="@+id/orders_tvIdAmountOfBags"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginStart="30dp"
             android:layout_marginTop="@dimen/orders_etMarginTopAmountOfBags"
-            android:layout_marginEnd="100dp"
             android:background="@drawable/custom_input"
             android:elevation="@dimen/register_etElevationName"
             android:hint="@string/orders_etHintAmountOfBags"
             android:importantForAutofill="no"
             android:inputType="number"
             android:paddingStart="@dimen/register_etPaddingStartName"
-            android:paddingEnd="@dimen/register_etPaddingEndName"/>
+            android:paddingEnd="@dimen/register_etPaddingEndName" />
         <Button
             android:id="@+id/orders_btnIdInput"
             android:layout_width="@dimen/orders_btnWidthOrder"
             android:layout_height="@dimen/orders_btnHeightOrder"
             android:layout_below="@+id/orders_etIdAmountOfBags"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/custom_button"
             android:text="@string/orders_btnTextInput"
             android:textColor="@color/orders_btnTextColorOrder"/>
@@ -173,7 +171,8 @@
             android:layout_below="@+id/orders_tvIdAmount"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/orders_listMarginTopBeers"
-            android:divider="#00000000"/>
+            android:divider="#00000000"
+            tools:ignore="NestedScrolling" />
     </RelativeLayout>
     <Button
         android:id="@+id/orders_btnIdOrder"

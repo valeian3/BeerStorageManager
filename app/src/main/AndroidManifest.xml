@@ -4,28 +4,29 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_app"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterView"/>
-        <activity android:name=".HomeView"/>
-        <activity android:name=".OrdersView"/>
-        <activity android:name=".PresetsView"/>
-        <activity android:name=".StorageView"/>
-        <activity android:name=".AddingToStorageView"/>
-        <activity android:name=".AddingNewPresetView"/>
-        <activity android:name=".PresetHistoryView"/>
-        <activity android:name=".OrdersHistoryView"/>
-        <activity android:name=".Controller.DbController" />
+        <activity android:name=".RegisterView" android:screenOrientation="portrait"/>
+        <activity android:name=".HomeView" android:screenOrientation="portrait"/>
+        <activity android:name=".OrdersView" android:screenOrientation="portrait"/>
+        <activity android:name=".PresetsView" android:screenOrientation="portrait"/>
+        <activity android:name=".StorageView" android:screenOrientation="portrait"/>
+        <activity android:name=".AddingToStorageView" android:screenOrientation="portrait"/>
+        <activity android:name=".AddingNewPresetView" android:screenOrientation="portrait"/>
+        <activity android:name=".PresetHistoryView" android:screenOrientation="portrait"/>
+        <activity android:name=".OrdersHistoryView" android:screenOrientation="portrait"/>
+        <activity android:name=".ForgotPasswordView" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

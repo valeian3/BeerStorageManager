@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.beerstoragemanager.Controller.IngredientListController;
 import com.example.beerstoragemanager.Model.Beer;
 import com.example.beerstoragemanager.Model.Ingredient;
+import com.example.beerstoragemanager.databinding.ActivityAddingNewPresetsBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,22 +25,31 @@ import java.util.List;
 
 public class AddingNewPresetView extends AppCompatActivity {
 
-    private static final String TAG = "AddingNewPresetsView";
-    int amount;
+    ActivityAddingNewPresetsBinding binding;
 
-    Button btnAddIngredient, btnAddPreset, btnAddBeerName;
-    EditText etBeerName, etIngredientName, etIngredientAmount;
-    ListView listViewIngredients;
-    List<Ingredient> ingredientList;
+    private static final String TAG = "AddingNewPresetsView";
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
+
+    List<Ingredient> ingredientList;
+    boolean checkForIngredient = false;
+    Ingredient ingredient;
+    Beer beer;
     String beerNameId, presetBeerName, ingredientId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adding_new_presets);
+        //setContentView(R.layout.activity_adding_new_presets);
+
+        binding = ActivityAddingNewPresetsBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        database = FirebaseDatabase.getInstance();
+
+        ingredientList = new ArrayList<>();
     }
 
     @Override
@@ -62,8 +69,7 @@ public class AddingNewPresetView extends AppCompatActivity {
         super.onResume();
         Log.i(TAG, "onResume executed.");
 
-        btnAddIngredient = findViewById(R.id.adding_new_presets_btnIdAddIngredient);
-        btnAddIngredient.setOnClickListener(new View.OnClickListener() {
+        binding.addingNewPresetsBtnIdAddIngredient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addingIngredient();
@@ -71,19 +77,20 @@ public class AddingNewPresetView extends AppCompatActivity {
             }
         });
 
-        btnAddPreset = findViewById(R.id.adding_new_presets_btnIdAddPreset);
-        btnAddPreset.setOnClickListener(new View.OnClickListener() {
+        binding.addingNewPresetsBtnIdAddPreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addingPreset();
-                Intent explicitIntent = new Intent();
-                explicitIntent.setClass(getApplicationContext(), PresetHistoryView.class);
-                startActivity(explicitIntent);
+                if(checkForIngredient){
+                    Intent explicitIntent = new Intent();
+                    explicitIntent.setClass(getApplicationContext(), PresetsView.class);
+                    startActivity(explicitIntent);
+                }
             }
         });
 
-        btnAddBeerName = findViewById(R.id.adding_new_presets_btnIdAddName);
-        btnAddBeerName.setOnClickListener(new View.OnClickListener() {
+        binding.addingNewPresetRlId.setVisibility(View.GONE);
+
+        binding.addingNewPresetsBtnIdNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addName();
@@ -101,33 +108,30 @@ public class AddingNewPresetView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop executed.");
-        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
-        finish();
+        finishAndRemoveTask();
     }
 
     public void addName(){
-
-        Beer beer;
-
-        etBeerName = findViewById(R.id.adding_new_presets_etIdName);
-        String beerName = etBeerName.getText().toString().trim();
-        presetBeerName = beerName;
+        String beerName = binding.addingNewPresetsEtIdName.getText().toString().trim();
 
         if(beerName.isEmpty()){
-            etIngredientName.setError("Beer name is required");
-            etIngredientName.requestFocus();
+            binding.addingNewPresetsEtIdName.setError("Beer name is required");
+            binding.addingNewPresetsEtIdName.requestFocus();
             return;
+        }else{
+            binding.addingNewPresetRlId.setVisibility(View.VISIBLE);
+            binding.addingNewPresetsBtnIdNext.setVisibility(View.GONE);
         }
+        presetBeerName = beerName;
 
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Presets");
-
         if(!TextUtils.isEmpty(beerName)){
 
             String id = databaseReference.push().getKey();
@@ -142,29 +146,21 @@ public class AddingNewPresetView extends AppCompatActivity {
     }
 
     private void addingIngredient(){
+        String IngredientName = binding.addingNewPresetsEtIdIngredients.getText().toString().trim();
+        String amount = binding.addingNewPresetsEtIdAmount.getText().toString();
 
-        Ingredient ingredient;
-
-        etIngredientName = findViewById(R.id.adding_new_presets_etIdIngredients);
-        etIngredientAmount = findViewById(R.id.adding_new_presets_etIdAmount);
-
-        String IngredientName = etIngredientName.getText().toString().trim();
-        amount = Integer.parseInt(etIngredientAmount.getText().toString());
-
-        if(IngredientName.isEmpty()){
-            etIngredientName.setError("Ingredient name is required");
-            etIngredientName.requestFocus();
+        if(IngredientName.isEmpty() && amount.isEmpty()){
+            binding.addingNewPresetsEtIdIngredients.setError("Ingredient name is required");
+            binding.addingNewPresetsEtIdIngredients.requestFocus();
+            binding.addingNewPresetsEtIdAmount.setError("Ingredient amount is required");
+            binding.addingNewPresetsEtIdAmount.requestFocus();
+            checkForIngredient = false;
             return;
-        }
-        if(amount == 0){
-            etIngredientAmount.setError("Ingredient amount is required");
-            etIngredientAmount.requestFocus();
-            return;
+        }else {
+            checkForIngredient = true;
         }
 
-        database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Preset ingredients").child(beerNameId);
-
         if(!TextUtils.isEmpty(IngredientName)){
 
             String id = databaseReference.push().getKey();
@@ -173,48 +169,31 @@ public class AddingNewPresetView extends AppCompatActivity {
             ingredient = new Ingredient(id, IngredientName, amount);
             databaseReference.child(id).setValue(ingredient);
             Log.i(TAG, "Ingredient inserted into database");
-            etIngredientName.getText().clear();
-            etIngredientAmount.getText().clear();
+            binding.addingNewPresetsEtIdIngredients.getText().clear();
+            binding.addingNewPresetsEtIdAmount.getText().clear();
         } else {
             Log.i(TAG, "Ingredient is not inserted into database.");
         }
     }
 
     private void displayIngredients(){
-
-        listViewIngredients = findViewById(R.id.adding_new_presets_listIdIngredients);
-
-        ingredientList = new ArrayList<>();
-
-        database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Preset ingredients").child(beerNameId);
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 ingredientList.clear();
-
                 for(DataSnapshot ingredientSnapshot : dataSnapshot.getChildren()){
                     Ingredient ingredient = ingredientSnapshot.getValue(Ingredient.class);
-
                     ingredientList.add(ingredient);
-
                 }
-
                 IngredientListController adapter = new IngredientListController(AddingNewPresetView.this, ingredientList);
-                listViewIngredients.setAdapter(adapter);
-
+                binding.addingNewPresetsListIdIngredients.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 displayToast("Error: database could't load.");
             }
         });
-    }
-
-    private void addingPreset(){
-
     }
 
     private void displayToast(String message){

@@ -81,4 +81,9 @@
     <color name="presets_history_tvTextColorName">#8D8A8D</color>
     <color name="presets_history_btnTextColorOrder">#FFFFFF</color>
 
+    <color name="forgot_password_tvColorHeader">#FFFFFF</color>
+    <color name="forgot_password_tvColorUsername">#8D8A8D</color>
+    <color name="forgot_password_tvColorEmail">#8D8A8D</color>
+    <color name="forgot_password_btnColorSend">#FFFFFF</color>
+
 </resources>

@@ -23,6 +23,61 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/adding_to_storage_layoutMarginTop"
         android:background="@drawable/custom_layout">
+
+        <TextView
+            android:id="@+id/adding_to_storage_tvIdName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/adding_to_storage_tvMarginTopName"
+            android:text="@string/adding_to_storage_tvTextName"
+            android:textColor="@color/adding_to_storage_tvTextColorName"
+            android:textSize="@dimen/adding_to_storage_tvTextSizeName" />
+
+        <EditText
+            android:id="@+id/adding_to_storage_etIdName"
+            android:layout_width="@dimen/adding_to_storage_etWidthName"
+            android:layout_height="@dimen/adding_to_storage_etHeightName"
+            android:layout_below="@+id/adding_to_storage_tvIdName"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/adding_to_storage_etMarginTopName"
+            android:background="@drawable/custom_input"
+            android:elevation="@dimen/adding_to_storage_etElevationName"
+            android:hint="@string/adding_to_storage_etHintName"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="@dimen/adding_to_storage_etPaddingStartName"
+            android:paddingEnd="@dimen/adding_to_storage_etPaddingEndName" />
+
+        <TextView
+            android:id="@+id/adding_to_storage_tvIdAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/adding_to_storage_etIdName"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/adding_to_storage_tvMarginTopAmount"
+            android:text="@string/adding_to_storage_tvTextAmount"
+            android:textColor="@color/adding_to_storage_tvTextColorAmount"
+            android:textSize="@dimen/adding_to_storage_tvTextSizeAmount" />
+
+        <EditText
+            android:id="@+id/adding_to_storage_etIdAmount"
+            android:layout_width="@dimen/adding_to_storage_etWidthAmount"
+            android:layout_height="@dimen/adding_to_storage_etHeightAmount"
+            android:layout_below="@+id/adding_to_storage_tvIdAmount"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/adding_to_storage_etMarginTopAmount"
+            android:background="@drawable/custom_input"
+            android:elevation="@dimen/adding_to_storage_etElevationAmount"
+            android:hint="@string/adding_to_storage_etHintAmount"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="@dimen/adding_to_storage_etPaddingStartAmount"
+            android:paddingEnd="@dimen/adding_to_storage_etPaddingEndAmount" />
         <Button
             android:id="@+id/adding_to_storage_btnIdAdd"
             android:layout_width="@dimen/adding_to_storage_btnWidthAdd"
@@ -33,52 +88,5 @@
             android:background="@drawable/custom_button"
             android:text="@string/adding_to_storage_btnTextAdd"
             android:textColor="@color/adding_to_storage_btnTextColorAdd"/>
-        <EditText
-            android:id="@+id/adding_to_storage_etIdAmount"
-            android:layout_width="@dimen/adding_to_storage_etWidthAmount"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/adding_to_storage_tvIdAmount"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/adding_to_storage_etMarginTopAmount"
-            android:background="@drawable/custom_input"
-            android:elevation="@dimen/adding_to_storage_etElevationAmount"
-            android:hint="@string/adding_to_storage_etHintAmount"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:paddingStart="@dimen/adding_to_storage_etPaddingStartAmount"
-            android:paddingEnd="@dimen/adding_to_storage_etPaddingEndAmount"/>
-        <EditText
-            android:id="@+id/adding_to_storage_etIdName"
-            android:layout_width="@dimen/adding_to_storage_etWidthName"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/adding_to_storage_tvIdName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/adding_to_storage_etMarginTopName"
-            android:background="@drawable/custom_input"
-            android:elevation="@dimen/adding_to_storage_etElevationName"
-            android:hint="@string/adding_to_storage_etHintName"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:paddingStart="@dimen/adding_to_storage_etPaddingStartName"
-            android:paddingEnd="@dimen/adding_to_storage_etPaddingEndName"/>
-        <TextView
-            android:id="@+id/adding_to_storage_tvIdName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/adding_to_storage_tvMarginTopName"
-            android:text="@string/adding_to_storage_tvTextName"
-            android:textColor="@color/adding_to_storage_tvTextColorName"
-            android:textSize="@dimen/adding_to_storage_tvTextSizeName"/>
-        <TextView
-            android:id="@+id/adding_to_storage_tvIdAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/adding_to_storage_etIdName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/adding_to_storage_tvMarginTopAmount"
-            android:text="@string/adding_to_storage_tvTextAmount"
-            android:textColor="@color/adding_to_storage_tvTextColorAmount"
-            android:textSize="@dimen/adding_to_storage_tvTextSizeAmount"/>
     </RelativeLayout>
 </RelativeLayout>

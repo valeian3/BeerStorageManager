@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Controller.PresetsListController;
 import com.example.beerstoragemanager.Model.Beer;
+import com.example.beerstoragemanager.databinding.ActivityPresetsHistoryBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,23 +23,26 @@ import java.util.List;
 
 public class PresetHistoryView extends AppCompatActivity {
 
-    private static final String TAG = "PresetHistoryView";
-    Button btnReturn;
+    ActivityPresetsHistoryBinding binding;
 
-    ListView lvPresets;
-    List<Beer> presetsList;
+    private static final String TAG = "PresetHistoryView";
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
+    List<Beer> presetsList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_presets_history);
+        //setContentView(R.layout.activity_presets_history);
+
+        binding = ActivityPresetsHistoryBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         database = FirebaseDatabase.getInstance();
 
-        lvPresets = findViewById(R.id.presets_history_listIdPresets);
         presetsList = new ArrayList<>();
     }
 
@@ -63,8 +65,7 @@ public class PresetHistoryView extends AppCompatActivity {
 
         displayPresets();
 
-        btnReturn = findViewById(R.id.presets_history_btnIdReturn);
-        btnReturn.setOnClickListener(new View.OnClickListener() {
+        binding.presetsHistoryBtnIdReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();
@@ -84,18 +85,16 @@ public class PresetHistoryView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop executed.");
-        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
-        finish();
+        finishAndRemoveTask();
     }
 
     private void displayPresets(){
-
         databaseReference = database.getReference("Selected presets");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -106,14 +105,13 @@ public class PresetHistoryView extends AppCompatActivity {
                     presetsList.add(beer);
                 }
                 PresetsListController adapter = new PresetsListController(PresetHistoryView.this, presetsList);
-                lvPresets.setAdapter(adapter);
+                binding.presetsHistoryListIdPresets.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 displayToast("Error: database could't load.");
             }
         });
-
     }
 
     private void displayToast(String message){

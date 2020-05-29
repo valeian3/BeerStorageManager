@@ -22,12 +22,14 @@
             android:textStyle="bold"
             android:textSize="@dimen/adding_new_presets_tvIdSizeNewPreset"
             android:textColor="@color/adding_new_presets_tvTextColorNewPreset"/>
+
         <TextView
             android:id="@+id/adding_new_presets_tvIdName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@+id/adding_new_presets_tvIdNewPreset"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/adding_new_presets_tvMarginStartName"
             android:layout_marginTop="@dimen/adding_new_presets_tvMarginTopName"
             android:text="@string/adding_new_presets_tvTextName"
             android:textColor="@color/adding_new_presets_tvTextColorName"
@@ -35,7 +37,7 @@
         <EditText
             android:id="@+id/adding_new_presets_etIdName"
             android:layout_width="@dimen/adding_new_presets_etWidthName"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/adding_new_presets_etHeightName"
             android:layout_below="@+id/adding_new_presets_tvIdName"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/adding_new_presets_etMarginTopName"
@@ -47,51 +49,39 @@
             android:paddingStart="@dimen/adding_new_presets_etPaddingStartName"
             android:paddingEnd="@dimen/adding_new_presets_etPaddingEndName" />
         <Button
-            android:id="@+id/adding_new_presets_btnIdAddName"
+            android:id="@+id/adding_new_presets_btnIdNext"
             android:layout_width="@dimen/adding_new_presets_btnWidthAddIngredient"
             android:layout_height="@dimen/adding_new_presets_btnHeightAddIngredient"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/adding_new_presets_etMarginTopName"
+            android:layout_marginTop="@dimen/adding_new_presets_btnMarginTopNext"
             android:layout_below="@+id/adding_new_presets_etIdName"
             android:background="@drawable/custom_button"
-            android:text="@string/adding_new_presets_etHintAddName"
+            android:text="@string/adding_new_presets_etHintNext"
             android:textColor="@color/adding_to_storage_btnTextColorAdd" />
 
         <RelativeLayout
+            android:id="@+id/adding_new_preset_rlId"
             android:layout_width="@dimen/adding_new_presets_layoutWidth"
             android:layout_height="@dimen/adding_new_presets_layoutHeight"
-            android:layout_below="@+id/adding_new_presets_btnIdAddName"
+            android:layout_below="@+id/adding_new_presets_btnIdNext"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/adding_new_presets_layoutMarginTop"
             android:layout_marginBottom="@dimen/adding_new_presets_layoutMarginBottom"
             android:background="@drawable/custom_layout">
-
-            <Button
-                android:id="@+id/adding_new_presets_btnIdAddIngredient"
-                android:layout_width="@dimen/adding_new_presets_btnWidthAddIngredient"
-                android:layout_height="@dimen/adding_new_presets_btnHeightAddIngredient"
-                android:layout_below="@+id/adding_new_presets_etIdAmount"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/adding_new_presets_btnMarginTopAddIngredient"
-                android:background="@drawable/custom_button"
-                android:text="@string/adding_to_storage_btnTextAddIngredient"
-                android:textColor="@color/adding_to_storage_btnTextColorAdd" />
-
-            <Button
-                android:id="@+id/adding_new_presets_btnIdAddPreset"
-                android:layout_width="@dimen/adding_new_presets_btnWidthAddPreset"
-                android:layout_height="@dimen/adding_new_presets_btnHeightAddPreset"
-                android:layout_below="@+id/adding_new_presets_listIdIngredients"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/adding_new_presets_btnMarginTopAddPreset"
-                android:background="@drawable/custom_button"
-                android:text="@string/adding_to_storage_btnTextAddPreset"
-                android:textColor="@color/adding_new_presets_btnTextColorAddPreset" />
-
+            <TextView
+                android:id="@+id/adding_new_presets_tvIdIngredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/adding_new_presets_tvMarginStartIngredients"
+                android:layout_marginTop="@dimen/adding_new_presets_tvMarginTopIngredients"
+                android:text="@string/adding_new_presets_tvTextIngredients"
+                android:textColor="@color/adding_new_presets_tvTextColorIngredients"
+                android:textSize="@dimen/adding_new_presets_tvSizeIngredients"/>
             <EditText
                 android:id="@+id/adding_new_presets_etIdIngredients"
                 android:layout_width="@dimen/adding_new_presets_etWidthIngredients"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/adding_new_presets_etHeightIngredients"
                 android:layout_below="@+id/adding_new_presets_tvIdIngredients"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/adding_new_presets_etMarginStartIngredients"
@@ -103,11 +93,21 @@
                 android:inputType="text"
                 android:paddingStart="@dimen/adding_new_presets_etPaddingStartIngredients"
                 android:paddingEnd="@dimen/adding_new_presets_etPaddingEndIngredients" />
-
+            <TextView
+                android:id="@+id/adding_new_presets_tvIdAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/adding_new_presets_etIdIngredients"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/adding_new_presets_tvMarginStartAmount"
+                android:layout_marginTop="@dimen/adding_new_presets_tvMarginTopAmount"
+                android:text="@string/adding_new_presets_tvTextAmount"
+                android:textColor="@color/adding_new_presets_tvTextColorAmount"
+                android:textSize="@dimen/adding_new_presets_tvTextSizeAmount"/>
             <EditText
                 android:id="@+id/adding_new_presets_etIdAmount"
                 android:layout_width="@dimen/adding_new_presets_etWidthAmount"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/adding_new_presets_etHeightAmount"
                 android:layout_below="@+id/adding_new_presets_tvIdAmount"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/adding_new_presets_etMarginStartAmount"
@@ -120,15 +120,16 @@
                 android:paddingStart="@dimen/adding_new_presets_etPaddingStartAmount"
                 android:paddingEnd="@dimen/adding_new_presets_etPaddingEndAmount" />
 
-            <ListView
-                android:id="@+id/adding_new_presets_listIdIngredients"
-                android:layout_width="@dimen/adding_new_presets_listWidthBeers"
-                android:layout_height="@dimen/adding_new_presets_listHeightBeers"
-                android:layout_below="@+id/adding_new_presets_tvIdIngredientAmount"
+            <Button
+                android:id="@+id/adding_new_presets_btnIdAddIngredient"
+                android:layout_width="@dimen/adding_new_presets_btnWidthAddIngredient"
+                android:layout_height="@dimen/adding_new_presets_btnHeightAddIngredient"
+                android:layout_below="@+id/adding_new_presets_etIdAmount"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/adding_new_presets_listMarginTopBeers"
-                android:divider="#00000000" />
-
+                android:layout_marginTop="@dimen/adding_new_presets_btnMarginTopAddIngredient"
+                android:background="@drawable/custom_button"
+                android:text="@string/adding_to_storage_btnTextAddIngredient"
+                android:textColor="@color/adding_to_storage_btnTextColorAdd" />
             <TextView
                 android:id="@+id/adding_new_presets_tvIdIngredientName"
                 android:layout_width="wrap_content"
@@ -138,8 +139,7 @@
                 android:layout_marginTop="@dimen/adding_new_presets_tvMarginTopIngredientName"
                 android:text="@string/adding_new_presets_tvTextIngredientName"
                 android:textColor="@color/adding_new_presets_tvTextColorIngredientName"
-                android:textSize="@dimen/adding_new_presets_tvSizeIngredientName" />
-
+                android:textSize="@dimen/adding_new_presets_tvSizeIngredientName"/>
             <TextView
                 android:id="@+id/adding_new_presets_tvIdIngredientAmount"
                 android:layout_width="wrap_content"
@@ -150,30 +150,26 @@
                 android:layout_marginEnd="@dimen/adding_new_presets_tvMarginEndIngredientAmount"
                 android:text="@string/adding_new_presets_tvTextIngredientAmount"
                 android:textColor="@color/adding_new_presets_tvTextColorIngredientAmount"
-                android:textSize="@dimen/adding_new_presets_tvSizeIngredientAmount" />
-
-            <TextView
-                android:id="@+id/adding_new_presets_tvIdIngredients"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/adding_new_presets_tvMarginStartIngredients"
-                android:layout_marginTop="@dimen/adding_new_presets_tvMarginTopIngredients"
-                android:text="@string/adding_new_presets_tvTextIngredients"
-                android:textColor="@color/adding_new_presets_tvTextColorIngredients"
-                android:textSize="@dimen/adding_new_presets_tvSizeIngredients" />
-
-            <TextView
-                android:id="@+id/adding_new_presets_tvIdAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/adding_new_presets_etIdIngredients"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/adding_new_presets_tvMarginStartAmount"
-                android:layout_marginTop="@dimen/adding_new_presets_tvMarginTopAmount"
-                android:text="@string/adding_new_presets_tvTextAmount"
-                android:textColor="@color/adding_new_presets_tvTextColorAmount"
-                android:textSize="@dimen/adding_new_presets_tvTextSizeAmount" />
+                android:textSize="@dimen/adding_new_presets_tvSizeIngredientAmount"/>
+            <ListView
+                android:id="@+id/adding_new_presets_listIdIngredients"
+                android:layout_width="@dimen/adding_new_presets_listWidthBeers"
+                android:layout_height="@dimen/adding_new_presets_listHeightBeers"
+                android:layout_below="@+id/adding_new_presets_tvIdIngredientAmount"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/adding_new_presets_listMarginTopBeers"
+                android:divider="#00000000"
+                tools:ignore="NestedScrolling" />
+            <Button
+                android:id="@+id/adding_new_presets_btnIdAddPreset"
+                android:layout_width="@dimen/adding_new_presets_btnWidthAddPreset"
+                android:layout_height="@dimen/adding_new_presets_btnHeightAddPreset"
+                android:layout_below="@+id/adding_new_presets_listIdIngredients"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/adding_new_presets_btnMarginTopAddPreset"
+                android:background="@drawable/custom_button"
+                android:text="@string/adding_to_storage_btnTextAddPreset"
+                android:textColor="@color/adding_new_presets_btnTextColorAddPreset"/>
         </RelativeLayout>
     </RelativeLayout>
 </ScrollView>

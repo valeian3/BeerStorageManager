@@ -6,33 +6,31 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Model.User;
+import com.example.beerstoragemanager.databinding.ActivityRegisterBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterView extends AppCompatActivity {
 
+    ActivityRegisterBinding binding;
+
     private static final String TAG = "RegisterView";
 
-    TextView tvIdAlreadyHaveAccount;
-    EditText etIdName, etIdEmail, etIdUsername, etIdPassword;
-    Button btnSignUp;
-
-    private FirebaseAuth mAuth;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
@@ -41,16 +39,15 @@ public class RegisterView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        //setContentView(R.layout.activity_register);
+
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         database = FirebaseDatabase.getInstance();
-        mAuth = FirebaseAuth.getInstance();
-
-        etIdName = findViewById(R.id.register_etIdName);
-        etIdEmail = findViewById(R.id.register_etIdEmail);
-        etIdUsername = findViewById(R.id.register_etIdUsername);
-        etIdPassword = findViewById(R.id.register_etIdPassword);
-        tvIdAlreadyHaveAccount = findViewById(R.id.register_tvIdAlreadyHaveAccount);
+        firebaseAuth = FirebaseAuth.getInstance();
+        //firebaseUser = firebaseAuth.getCurrentUser();
     }
 
     @Override
@@ -70,8 +67,7 @@ public class RegisterView extends AppCompatActivity {
         super.onResume();
         Log.i(TAG, "onResume executed.");
 
-        btnSignUp = findViewById(R.id.register_btnIdSignUp);
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        binding.registerBtnIdSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RegisterUser();
@@ -101,50 +97,65 @@ public class RegisterView extends AppCompatActivity {
     }
 
     private void RegisterUser(){
-        String name = etIdName.getText().toString().trim();
-        String email = etIdEmail.getText().toString().trim();
-        String username = etIdUsername.getText().toString().trim();
-        String password = etIdPassword.getText().toString();
+        String name = binding.registerEtIdName.getText().toString().trim();
+        String email = binding.registerEtIdEmail.getText().toString().trim();
+        String username = binding.registerEtIdUsername.getText().toString().trim();
+        String password = binding.registerEtIdPassword.getText().toString().trim();
 
         if(name.isEmpty()){
-            etIdName.setError("Name is required");
-            etIdName.requestFocus();
+            binding.registerEtIdName.setError("Name is required");
+            binding.registerEtIdName.requestFocus();
             return;
         }
         if(email.isEmpty()){
-            etIdEmail.setError("Email is required");
-            etIdEmail.requestFocus();
+            binding.registerEtIdEmail.setError("Email is required");
+            binding.registerEtIdEmail.requestFocus();
             return;
         }
         if(username.isEmpty()){
-            etIdUsername.setError("Username is required");
-            etIdUsername.requestFocus();
+            binding.registerEtIdUsername.setError("Username is required");
+            binding.registerEtIdUsername.requestFocus();
             return;
         }
         if(password.isEmpty()){
-            etIdPassword.setError("Password is required");
-            etIdPassword.requestFocus();
+            binding.registerEtIdPassword.setError("Password is required");
+            binding.registerEtIdPassword.requestFocus();
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            etIdEmail.setError("Please enter a valid email");
-            etIdEmail.requestFocus();
+            binding.registerEtIdEmail.setError("Please enter a valid email");
+            binding.registerEtIdEmail.requestFocus();
             return;
         }
         if(password.length() <= 6){
-            etIdPassword.setError("Minimum length of password should be 6");
-            etIdPassword.requestFocus();
+            binding.registerEtIdPassword.setError("Minimum length of password should be 6");
+            binding.registerEtIdPassword.requestFocus();
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Log.i(TAG, "User registered successfully.");
-                    Intent explicitIntent = new Intent();
-                    explicitIntent.setClass(getApplicationContext(), MainActivity.class);
-                    startActivity(explicitIntent);
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+                    firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                displayToast("Registered successfully. Please verify your email address");
+                                Intent explicitIntent = new Intent();
+                                explicitIntent.setClass(getApplicationContext(), MainActivity.class);
+                                startActivity(explicitIntent);
+                                /*binding.registerEtIdName.setText("");
+                                binding.registerEtIdEmail.setText("");
+                                binding.registerEtIdUsername.setText("");
+                                binding.registerEtIdPassword.setText("");*/
+                            }else {
+                                displayToast(task.getException().getMessage());
+                            }
+                        }
+                    });
                 }else{
                     if(task.getException() instanceof FirebaseAuthUserCollisionException){
                         displayToast("This account already exist.");
@@ -156,7 +167,7 @@ public class RegisterView extends AppCompatActivity {
         });
 
         databaseReference = database.getReference().child("User");
-        if(!TextUtils.isEmpty(name)){
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)){
 
             String id = databaseReference.push().getKey();
 
@@ -169,7 +180,7 @@ public class RegisterView extends AppCompatActivity {
     }
 
     private void AlreadyHaveAccount(){
-        tvIdAlreadyHaveAccount.setOnClickListener(new View.OnClickListener() {
+        binding.registerTvIdAlreadyHaveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();

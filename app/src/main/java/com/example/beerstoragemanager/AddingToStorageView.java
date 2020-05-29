@@ -5,23 +5,24 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Model.Ingredient;
+import com.example.beerstoragemanager.databinding.ActivityAddingToStorageBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddingToStorageView extends AppCompatActivity {
 
-    private static final String TAG = "AddingToStorageView";
-    int amount;
+    ActivityAddingToStorageBinding binding;
 
-    EditText etIdName, etIdAmount;
-    Button btnIdAdd;
+    private static final String TAG = "AddingToStorageView";
+
+    boolean checkForIngredientInput = false;
+
+    Ingredient ingredient;
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
@@ -29,7 +30,13 @@ public class AddingToStorageView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adding_to_storage);
+        //setContentView(R.layout.activity_adding_to_storage);
+
+        binding = ActivityAddingToStorageBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        database = FirebaseDatabase.getInstance();
     }
 
     @Override
@@ -49,14 +56,13 @@ public class AddingToStorageView extends AppCompatActivity {
         super.onResume();
         Log.i(TAG, "onResume executed.");
 
-        btnIdAdd = findViewById(R.id.adding_to_storage_btnIdAdd);
-        btnIdAdd.setOnClickListener(new View.OnClickListener() {
+        binding.addingToStorageBtnIdAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addingNewIngredient();
-                Intent explicitIntent = new Intent();
-                explicitIntent.setClass(getApplicationContext(), StorageView.class);
-                startActivity(explicitIntent);
+                    Intent explicitIntent = new Intent();
+                    explicitIntent.setClass(getApplicationContext(), StorageView.class);
+                    startActivity(explicitIntent);
+                    addingNewIngredient();
             }
         });
     }
@@ -71,40 +77,31 @@ public class AddingToStorageView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop executed.");
-        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
-        finish();
+        finishAndRemoveTask();
     }
 
     private void addingNewIngredient(){
+        String name = binding.addingToStorageEtIdName.getText().toString().trim();
+        String amount = binding.addingToStorageEtIdAmount.getText().toString().trim();
 
-        Ingredient ingredient;
-
-        etIdName = findViewById(R.id.adding_to_storage_etIdName);
-        etIdAmount = findViewById(R.id.adding_to_storage_etIdAmount);
-
-        String name = etIdName.getText().toString().trim();
-        amount = Integer.parseInt(etIdAmount.getText().toString());
-
-        if(name.isEmpty()){
-            etIdName.setError("Ingredient name is required");
-            etIdName.requestFocus();
+        if(name.isEmpty() && amount.isEmpty()){
+            binding.addingToStorageEtIdName.setError("Ingredient name is required");
+            binding.addingToStorageEtIdName.requestFocus();
+            binding.addingToStorageEtIdAmount.setError("Ingredient amount is required");
+            binding.addingToStorageEtIdAmount.requestFocus();
             return;
-        }
-        if(amount == 0){
-            etIdAmount.setError("Ingredient amount is required");
-            etIdAmount.requestFocus();
-            return;
+        }else{
+            checkForIngredientInput = true;
         }
 
-        database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Ingredients");
-        if(!TextUtils.isEmpty(name)){
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(amount)){
 
             String id = databaseReference.push().getKey();
 

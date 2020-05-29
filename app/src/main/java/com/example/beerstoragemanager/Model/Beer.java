@@ -4,11 +4,11 @@ public class Beer {
 
     private String beerId;
     private String Name;
-    private int AmountOfBags;
+    private String AmountOfBags;
 
     public Beer(){ }
 
-    public Beer(String id, String name, int amountOfBags){
+    public Beer(String id, String name, String amountOfBags){
         beerId = id;
         Name = name;
         AmountOfBags = amountOfBags;
@@ -44,11 +44,11 @@ public class Beer {
         return Name;
     }
 
-    public int getAmountOfBags() {
+    public String getAmountOfBags() {
         return AmountOfBags;
     }
 
-    public void setAmountOfBags(int amountOfBags) {
+    public void setAmountOfBags(String amountOfBags) {
         AmountOfBags = amountOfBags;
     }
 }

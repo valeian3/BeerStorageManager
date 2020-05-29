@@ -4,23 +4,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.beerstoragemanager.databinding.ActivityHomeBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class HomeView extends AppCompatActivity {
 
+    ActivityHomeBinding binding;
+
     private static final String TAG = "HomeView";
 
-    Button btnIdLogout, btnStorage, btnPresets, btnOrders, btnOrdersHistory, btnPresetsHistory;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+
+    String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        //setContentView(R.layout.activity_home);
+
+        binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
     }
 
     @Override
@@ -39,6 +52,9 @@ public class HomeView extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.i(TAG, "onResume executed.");
+
+        binding.homeTvIdUser.setText(firebaseUser.getEmail());
+        userEmail = firebaseUser.getEmail();
 
         logout();
         Storage();
@@ -67,8 +83,7 @@ public class HomeView extends AppCompatActivity {
     }
 
     private void Storage(){
-        btnStorage = findViewById(R.id.home_btnIdWineBarrel);
-        btnStorage.setOnClickListener(new View.OnClickListener() {
+        binding.homeBtnIdWineBarrel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();
@@ -79,8 +94,7 @@ public class HomeView extends AppCompatActivity {
         });
     }
     private void Orders(){
-        btnOrders = findViewById(R.id.home_btnIdBox);
-        btnOrders.setOnClickListener(new View.OnClickListener() {
+        binding.homeBtnIdOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();
@@ -91,8 +105,7 @@ public class HomeView extends AppCompatActivity {
         });
     }
     private void Presets(){
-        btnPresets = findViewById(R.id.home_btnIdList);
-        btnPresets.setOnClickListener(new View.OnClickListener() {
+        binding.homeBtnIdList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();
@@ -103,22 +116,20 @@ public class HomeView extends AppCompatActivity {
         });
     }
     private void logout(){
-        btnIdLogout = findViewById(R.id.home_btnIdLogout);
-        btnIdLogout.setOnClickListener(new View.OnClickListener() {
+        binding.homeBtnIdLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                finish();
-                displayToast("Logged out.");
-                Intent explicitIntent = new Intent();
-                explicitIntent.setClass(getApplicationContext(), MainActivity.class);
-                startActivity(explicitIntent);
+                displayToast("User " + userEmail + " signed out.");
+                Intent intent = new Intent(HomeView.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
     }
     private void OrdersHistory(){
-        btnOrdersHistory = findViewById(R.id.home_btnIdOrders);
-        btnOrdersHistory.setOnClickListener(new View.OnClickListener() {
+        binding.homeBtnIdOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();
@@ -130,8 +141,7 @@ public class HomeView extends AppCompatActivity {
 
     }
     private void PresetsHistory(){
-        btnPresetsHistory = findViewById(R.id.home_btnIdPresets);
-        btnPresetsHistory.setOnClickListener(new View.OnClickListener() {
+        binding.homeBtnIdPresets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();

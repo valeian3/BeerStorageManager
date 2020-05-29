@@ -7,41 +7,46 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.beerstoragemanager.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private FirebaseAuth mAuth;
-    EditText etIdEmail, etIdPassword;
-    Button btnRegister, btnLogin;
+    ActivityMainBinding binding;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
         Log.i(TAG, "onCreate executed.");
 
-        mAuth = FirebaseAuth.getInstance();
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-        btnLogin = findViewById(R.id.login_btnIdLogin);
-        btnRegister = findViewById(R.id.login_btnIdRegister);
-        etIdEmail = findViewById(R.id.login_etIdEmail);
-        etIdPassword = findViewById(R.id.login_etIdPassword);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart executed.");
+
+        if(firebaseUser!=null){
+            startActivity(new Intent(this,HomeView.class));
+        }
     }
 
     @Override
@@ -55,19 +60,28 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.i(TAG, "onResume executed.");
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        binding.loginBtnIdLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginUser();
             }
         });
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        binding.loginBtnIdRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();
                 explicitIntent.setClass(getApplicationContext(), RegisterView.class);
                 startActivity(explicitIntent);
                 Log.i(TAG, "Registration view opened.");
+            }
+        });
+
+        binding.loginTvIdForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent explicitIntent = new Intent();
+                explicitIntent.setClass(getApplicationContext(), ForgotPasswordView.class);
+                startActivity(explicitIntent);
             }
         });
     }
@@ -92,28 +106,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private  void loginUser(){
-        String email = etIdEmail.getText().toString().trim();
-        String password = etIdPassword.getText().toString().trim();
+        String email = binding.loginEtIdEmail.getText().toString().trim();
+        String password = binding.loginEtIdPassword.getText().toString().trim();
 
         if(email.isEmpty()){
-            etIdEmail.setError("Email is required");
-            etIdEmail.requestFocus();
+            binding.loginEtIdEmail.setError("Email is required");
+            binding.loginEtIdEmail.requestFocus();
             return;
         }
         if(password.isEmpty()){
-            etIdPassword.setError("Password is required");
-            etIdPassword.requestFocus();
+            binding.loginEtIdPassword.setError("Password is required");
+            binding.loginEtIdPassword.requestFocus();
             return;
         }
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent explicitIntent = new Intent();
-                    explicitIntent.setClass(getApplicationContext(), HomeView.class);
-                    startActivity(explicitIntent);
-                    Log.i(TAG, "Logged in successfully.");
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    if(firebaseUser.isEmailVerified()){
+                        startActivity(new Intent(getApplicationContext(), HomeView.class));
+                        displayToast("Logged in");
+                    }else{
+                        displayToast("Please verify your email address");
+                    }
                 }else{
                     displayToast(task.getException().getMessage());
                 }

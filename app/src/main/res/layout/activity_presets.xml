@@ -40,21 +40,11 @@
             android:text="@string/presets_tvListTextPresets"
             android:textColor="@color/presets_tvTextColorIngredients"
             android:textSize="@dimen/presets_tvSizeIngredients" />
-        <TextView
-            android:id="@+id/presets_tvIdPresetsName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/presets_tvIdPresetsList"
-            android:layout_marginStart="@dimen/presets_tvMarginStartListName"
-            android:layout_marginTop="@dimen/presets_tvMarginTopListName"
-            android:text="@string/presets_tvTextListName"
-            android:textColor="@color/presets_tvTextColorListName"
-            android:textSize="@dimen/presets_tvSizeListName" />
         <ListView
             android:id="@+id/presets_listIdPresets"
             android:layout_width="@dimen/presets_listWidthBeers"
             android:layout_height="@dimen/presets_listHeightBeers"
-            android:layout_below="@+id/presets_tvIdPresetsName"
+            android:layout_below="@+id/presets_tvIdPresetsList"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/presets_listMarginTopBeers"
             android:divider="#00000000"

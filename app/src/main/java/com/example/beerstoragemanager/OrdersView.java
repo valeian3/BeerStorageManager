@@ -5,18 +5,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Controller.OrdersListController;
-import com.example.beerstoragemanager.Controller.PresetsListController;
 import com.example.beerstoragemanager.Model.Beer;
 import com.example.beerstoragemanager.Model.Customer;
+import com.example.beerstoragemanager.databinding.ActivityOrdersBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,18 +25,16 @@ import java.util.List;
 
 public class OrdersView extends AppCompatActivity {
 
+    ActivityOrdersBinding binding;
+
     private static final String TAG = "OrdersView";
 
-    Button btnOrder, btnInput;
-    EditText etBeerName, etBeerAmountOfBags, etCustomerName;
-
-    ListView lvOrders;
     List<Beer> beerOrderList;
-
     Beer beer;
     Customer customer;
-    int amount;
     String orderId;
+    boolean checkForCustomerName = false;
+    boolean checkForOneOrder = false;
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
@@ -47,12 +42,14 @@ public class OrdersView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orders);
+        //setContentView(R.layout.activity_orders);
+
+        binding = ActivityOrdersBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         database = FirebaseDatabase.getInstance();
         orderId = database.getReference("Orders").push().getKey();
-
-        lvOrders = findViewById(R.id.orders_listIdBeers);
 
         beerOrderList = new ArrayList<>();
     }
@@ -74,22 +71,23 @@ public class OrdersView extends AppCompatActivity {
         super.onResume();
         Log.i(TAG, "onResume executed.");
 
-        btnInput = findViewById(R.id.orders_btnIdInput);
-        btnInput.setOnClickListener(new View.OnClickListener() {
+        binding.ordersBtnIdInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addingNewOrder();
                 displayInputtedOrder();
             }
         });
-        btnOrder = findViewById(R.id.orders_btnIdOrder);
-        btnOrder.setOnClickListener(new View.OnClickListener() {
+        binding.ordersBtnIdOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                orderForCustomer();
-                Intent explicitIntent = new Intent();
-                explicitIntent.setClass(getApplicationContext(), OrdersHistoryView.class);
-                startActivity(explicitIntent);
+
+                if(checkForCustomerName && checkForOneOrder){
+                    orderForCustomer();
+                    Intent explicitIntent = new Intent();
+                    explicitIntent.setClass(getApplicationContext(), OrdersHistoryView.class);
+                    startActivity(explicitIntent);
+                }
             }
         });
     }
@@ -104,33 +102,31 @@ public class OrdersView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop executed.");
-        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
-        finish();
+        finishAndRemoveTask();
     }
 
     private void addingNewOrder(){
 
-        etBeerName = findViewById(R.id.orders_etIdBeerName);
-        etBeerAmountOfBags = findViewById(R.id.orders_etIdAmountOfBags);
+        String BeerName = binding.ordersEtIdBeerName.getText().toString().trim();
+        String amount = binding.ordersEtIdAmountOfBags.getText().toString();
 
-        String BeerName = etBeerName.getText().toString().trim();
-        amount = Integer.parseInt(etBeerAmountOfBags.getText().toString());
-
-        if(BeerName.isEmpty()){
-            etBeerName.setError("Beer name is required");
-            etBeerName.requestFocus();
+        if(BeerName.isEmpty() && amount.isEmpty()){
+            binding.ordersEtIdBeerName.setError("Beer name is required");
+            binding.ordersEtIdBeerName.requestFocus();
+            binding.ordersEtIdAmountOfBags.setError("Amount of bags is required");
+            binding.ordersEtIdAmountOfBags.requestFocus();
+            checkForOneOrder = false;
+            checkForCustomerName = false;
             return;
-        }
-        if(amount == 0){
-            etBeerAmountOfBags.setError("Beer amount is required");
-            etBeerAmountOfBags.requestFocus();
-            return;
+        }else{
+            checkForOneOrder = true;
+            checkForCustomerName = true;
         }
 
         databaseReference = database.getReference().child("Orders");
@@ -141,15 +137,14 @@ public class OrdersView extends AppCompatActivity {
             beer = new Beer(id, BeerName, amount);
             databaseReference.child(orderId).child(id).setValue(beer);
             Log.i(TAG, "Beer inserted into database");
-            etBeerName.getText().clear();
-            etBeerAmountOfBags.getText().clear();
+            binding.ordersEtIdBeerName.getText().clear();
+            binding.ordersEtIdAmountOfBags.getText().clear();
         } else {
             Log.i(TAG, "Beer is not inserted into database.");
         }
     }
 
     private void displayInputtedOrder(){
-
         databaseReference = database.getReference("Orders").child(orderId);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -160,7 +155,7 @@ public class OrdersView extends AppCompatActivity {
                     beerOrderList.add(beer);
                 }
                 OrdersListController adapter = new OrdersListController(OrdersView.this, beerOrderList);
-                lvOrders.setAdapter(adapter);
+                binding.ordersListIdBeers.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -170,15 +165,15 @@ public class OrdersView extends AppCompatActivity {
     }
 
     private void orderForCustomer(){
-
-        etCustomerName = findViewById(R.id.orders_etIdOrderName);
-
-        String CustomerName = etCustomerName.getText().toString().trim();
+        String CustomerName = binding.ordersEtIdOrderName.getText().toString().trim();
 
         if(CustomerName.isEmpty()){
-            etCustomerName.setError("Customer name is required");
-            etCustomerName.requestFocus();
+            binding.ordersEtIdOrderName.setError("Customer name is required");
+            binding.ordersEtIdOrderName.requestFocus();
+            checkForCustomerName = false;
             return;
+        }else{
+            checkForCustomerName = true;
         }
 
         databaseReference = database.getReference().child("Customers");

@@ -4,18 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Controller.CustomerListController;
-import com.example.beerstoragemanager.Controller.OrdersListController;
-import com.example.beerstoragemanager.Model.Beer;
 import com.example.beerstoragemanager.Model.Customer;
+import com.example.beerstoragemanager.databinding.ActivityOrderHistoryBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,23 +23,26 @@ import java.util.List;
 
 public class OrdersHistoryView extends AppCompatActivity {
 
-    private static final String TAG = "OrdersHistoryView";
-    Button btnReturn;
+    ActivityOrderHistoryBinding binding;
 
-    ListView lvCustomers;
-    List<Customer> customersList;
+    private static final String TAG = "OrdersHistoryView";
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
+    List<Customer> customersList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_history);
+        //setContentView(R.layout.activity_order_history);
+
+        binding = ActivityOrderHistoryBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         database = FirebaseDatabase.getInstance();
 
-        lvCustomers = findViewById(R.id.orders_history_listIdCustomers);
         customersList = new ArrayList<>();
     }
 
@@ -66,8 +65,7 @@ public class OrdersHistoryView extends AppCompatActivity {
 
         showOrderList();
 
-        btnReturn = findViewById(R.id.orders_history_btnIdOrder);
-        btnReturn.setOnClickListener(new View.OnClickListener() {
+        binding.ordersHistoryBtnIdOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();
@@ -87,14 +85,13 @@ public class OrdersHistoryView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop executed.");
-        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
-        finish();
+        finishAndRemoveTask();
     }
 
     private void showOrderList(){
@@ -108,7 +105,7 @@ public class OrdersHistoryView extends AppCompatActivity {
                     customersList.add(customer);
                 }
                 CustomerListController adapter = new CustomerListController(OrdersHistoryView.this, customersList);
-                lvCustomers.setAdapter(adapter);
+                binding.ordersHistoryListIdCustomers.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
