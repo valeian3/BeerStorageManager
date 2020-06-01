@@ -1,12 +1,19 @@
 package com.example.beerstoragemanager;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Controller.CustomerListController;
@@ -30,6 +37,7 @@ public class OrdersHistoryView extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
+    Customer customer;
     List<Customer> customersList;
 
     @Override
@@ -110,6 +118,67 @@ public class OrdersHistoryView extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 displayToast("Error: database could't load.");
+            }
+        });
+
+        binding.ordersHistoryListIdCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                customer = customersList.get(position);
+                deleteDialog(customer.getCustomerId());
+            }
+        });
+    }
+
+    private void deleteDialog(final String id){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(OrdersHistoryView.this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        final View dialogView = inflater.inflate(R.layout.history_dialog,null);
+        dialogBuilder.setView(dialogView);
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        final TextView tvYes, tvNo;
+        final Button btnExit;
+
+        tvYes = alertDialog.findViewById(R.id.history_dialog_tvIdYes);
+        tvNo = alertDialog.findViewById(R.id.history_dialog_tvIdNo);
+        btnExit = alertDialog.findViewById(R.id.history_dialog_btnIdExit);
+
+        tvYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseReference = FirebaseDatabase.getInstance().getReference("Customers").child(id);
+                databaseReference.removeValue();
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
+            }
+        });
+        tvNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
+            }
+        });
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
             }
         });
     }

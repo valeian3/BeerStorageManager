@@ -85,5 +85,9 @@
     <color name="forgot_password_tvColorUsername">#8D8A8D</color>
     <color name="forgot_password_tvColorEmail">#8D8A8D</color>
     <color name="forgot_password_btnColorSend">#FFFFFF</color>
+    <color name="storage_dialog_btnTextColorDelete">#FFFFFF</color>
+    <color name="storage_dialog_btnTextColorUpdate">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="progress_bar">#FD5E53</color>
 
 </resources>

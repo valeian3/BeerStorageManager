@@ -463,4 +463,30 @@
 
     <dimen name="forgot_password_layoutWidth">300sp</dimen>
     <dimen name="forgot_password_layoutHeight">200dp</dimen>
+
+
+    <dimen name="storage_dialog_tvMarginTopIngredientName">40dp</dimen>
+
+    <dimen name="storage_dialog_seekBarWidth">250sp</dimen>
+    <dimen name="storage_dialog_seekBarHeight">20dp</dimen>
+    <dimen name="storage_dialog_seekBarMarginTop">20dp</dimen>
+
+    <dimen name="storage_dialog_btnWidth">120sp</dimen>
+    <dimen name="storage_dialog_btnHeight">35dp</dimen>
+    <dimen name="storage_dialog_btnMarginTop">200dp</dimen>
+
+    <dimen name="storage_dialog_tvMarginTopIngredientAmount">15dp</dimen>
+
+    <dimen name="storage_dialog_btnMarginTopExit">10dp</dimen>
+    <dimen name="storage_dialog_btnMarginEndExit">10dp</dimen>
+    <dimen name="storage_dialog_btnWidthExit">30sp</dimen>
+    <dimen name="storage_dialog_btnHeightExit">30dp</dimen>
+
+    <dimen name="storage_dialog_rlHeight">400dp</dimen>
+
+    <dimen name="history_dialog_tvMarginTopHeadline">40dp</dimen>
+
+    <dimen name="history_dialog_tvMarginTopYes">30dp</dimen>
+
+    <dimen name="history_dialog_tvMarginTopNo">30dp</dimen>
 </resources>

@@ -1,12 +1,21 @@
 package com.example.beerstoragemanager;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Controller.IngredientListController;
@@ -30,6 +39,7 @@ public class StorageView extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
+    Ingredient ingredient;
     List<Ingredient> ingredientList;
 
     @Override
@@ -65,6 +75,7 @@ public class StorageView extends AppCompatActivity {
 
         newIngredient();
         listingIngredients();
+        mainStorage();
     }
 
     @Override
@@ -122,6 +133,114 @@ public class StorageView extends AppCompatActivity {
                     displayToast("Error: database could't load.");
             }
         });
+        binding.storageListIdBeers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ingredient = ingredientList.get(position);
+
+                updateAndDeleteDialog(ingredient.getIngredientId(), ingredient.getName(), ingredient.getAmount());
+            }
+        });
+    }
+
+    private void updateAndDeleteDialog(final String id, final String ingredientName, final String amount){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(StorageView.this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        final View dialogView = inflater.inflate(R.layout.storage_dialog,null);
+        dialogBuilder.setView(dialogView);
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        final TextView tvIngredientName, tvIngredientAmount;
+        final Button btnUpdate, btnDelete, btnExit;
+        final SeekBar seekBar;
+
+        tvIngredientName = alertDialog.findViewById(R.id.storage_dialog_tvIdIngredientName);
+        tvIngredientAmount = alertDialog.findViewById(R.id.storage_dialog_tvIdIngredientAmount);
+        btnUpdate = alertDialog.findViewById(R.id.storage_dialog_btnIdUpdate);
+        btnDelete = alertDialog.findViewById(R.id.storage_dialog_btnIdDelete);
+        btnExit = alertDialog.findViewById(R.id.storage_dialog_btnIdExit);
+        seekBar = alertDialog.findViewById(R.id.storage_dialog_seekBarId);
+
+        tvIngredientName.setText(ingredientName);
+        tvIngredientAmount.setText(amount);
+
+        seekBar.setProgress(Integer.valueOf(amount));
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                tvIngredientAmount.setText("Amount "+ progress + "/"+ seekBar.getMax());
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Ingredients").child(ingredient.getIngredientId());
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int newAmount = seekBar.getProgress();
+
+                if(!TextUtils.isEmpty(String.valueOf(newAmount))){
+
+                    ingredient = new Ingredient(ingredient.getIngredientId(), ingredientName, String.valueOf(newAmount));
+                    databaseReference.setValue(ingredient);
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0, 0);
+                    alertDialog.dismiss();
+                }
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
+            }
+        });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                databaseReference = FirebaseDatabase.getInstance().getReference("Ingredients").child(id);
+                databaseReference.removeValue();
+
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
+            }
+        });
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    private void mainStorage(){
+        binding.storageProgressBarIdProgressBar.setMax(30);
     }
 
     private void displayToast(String message){

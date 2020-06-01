@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -114,6 +115,7 @@ public class AddingNewPresetView extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
+        deletePreset();
         finishAndRemoveTask();
     }
 
@@ -194,6 +196,22 @@ public class AddingNewPresetView extends AppCompatActivity {
                 displayToast("Error: database could't load.");
             }
         });
+
+        binding.addingNewPresetsListIdIngredients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ingredient = ingredientList.get(position);
+                databaseReference = FirebaseDatabase.getInstance().getReference("Preset ingredients").child(beerNameId).child(ingredient.getIngredientId());
+                databaseReference.removeValue();
+            }
+        });
+    }
+
+    private void deletePreset(){
+        if(ingredientList.isEmpty()){
+            databaseReference = FirebaseDatabase.getInstance().getReference("Presets").child(beerNameId);
+            databaseReference.removeValue();
+        }
     }
 
     private void displayToast(String message){

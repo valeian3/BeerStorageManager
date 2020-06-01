@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/storage_list_tvIdBeerName"
+        android:layout_width="@dimen/orders_tvWidthBeerName"
+        android:layout_height="@dimen/orders_tvHeightBeerName"
+        android:layout_alignParentStart="true"
+        android:paddingStart="@dimen/orders_tvPaddingStartName"
+        android:paddingEnd="@dimen/orders_tvPaddingEndName"
+        android:textSize="@dimen/orders_tvSizeBeerName"
+        android:textColor="@color/storage_tvTextColorBeerName"/>
+    <TextView
+        android:id="@+id/storage_list_tvIdBeerAmount"
+        android:layout_width="@dimen/orders_tvWidthBeerAmount"
+        android:layout_height="@dimen/orders_tvHeightBeerAmount"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/orders_tvMarginEndBeerAmount"
+        android:paddingStart="@dimen/orders_tvPaddingStartAmount"
+        android:paddingEnd="@dimen/orders_tvPaddingEndAmount"
+        android:textSize="@dimen/orders_tvSizeBeerAmount"
+        android:textColor="@color/storage_tvTextColorBeerAmount"/>
+    <ProgressBar
+        android:id="@+id/storage_list_pbId"
+        android:layout_width="220sp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="5dp"/>
+</RelativeLayout>

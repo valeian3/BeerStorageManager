@@ -37,6 +37,7 @@
     <string name="orders_tvTextListOfOrders">List of orders</string>
     <string name="orders_tvTextName">Name</string>
     <string name="orders_tvTextAmount">Amount</string>
+    <string name="orders_btnTextInput">INPUT</string>
 
     <string name="storage_tvTextStorage">STORAGE</string>
     <string name="storage_tvTextAmount">Amount</string>
@@ -50,39 +51,40 @@
     <string name="presets_tvTextAmount">Amount</string>
     <string name="presets_btnTextOrder">SELECT</string>
 
+
     <string name="adding_to_storage_TextNewItem">NEW INGREDIENT</string>
     <string name="adding_to_storage_tvTextName">Name</string>
     <string name="adding_to_storage_etHintName">Water</string>
     <string name="adding_to_storage_btnTextAdd">ADD</string>
     <string name="adding_to_storage_etHintAmount">300</string>
     <string name="adding_to_storage_tvTextAmount">Amount</string>
+    <string name="adding_to_storage_btnTextAddPreset">FINISH</string>
+
 
     <string name="adding_new_presets_TextNewPreset">NEW PRESET</string>
     <string name="adding_new_presets_tvTextName">Beer name</string>
     <string name="adding_new_presets_etHintName">ABA</string>
     <string name="adding_new_presets_tvTextIngredients">Ingredient</string>
     <string name="adding_new_presets_etHintIngredients">Water</string>
-    <string name="adding_to_storage_btnTextAddIngredient">ADD INGREDIENT</string>
+    <string name="adding_new_presets_btnTextAddIngredient">ADD INGREDIENT</string>
     <string name="adding_new_presets_tvTextAmount">Amount</string>
     <string name="adding_new_presets_etHintAmount">200</string>
     <string name="adding_new_presets_tvTextIngredientName">Name</string>
     <string name="adding_new_presets_tvTextIngredientAmount">Amount</string>
     <string name="adding_new_presets_etHintNext">NEXT</string>
 
-    <string name="adding_to_storage_btnTextAddPreset">FINISH</string>
 
     <string name="orders_history_tvTextPresets">ORDERS</string>
     <string name="orders_history_tvTextAmount">Amount</string>
     <string name="orders_history_tvTextName">List of customers</string>
     <string name="orders_history_btnTextOrder">RETURN</string>
 
+
     <string name="presets_history_tvTextPresets">PRESETS</string>
     <string name="presets_history_tvTextName">Selected presets</string>
     <string name="presets_history_tvTextAmount">Amount</string>
     <string name="presets_history_btnTextOrder">RETURN</string>
     <string name="presets_tvListTextIngredients">Preset ingredients</string>
-
-    <string name="orders_btnTextInput">INPUT</string>
 
 
     <string name="forgot_password_tvTextHeader">NEW PASSWORD</string>
@@ -91,4 +93,13 @@
     <string name="forgot_password_etHintEmail">user.user@gmail.com</string>
     <string name="forgot_password_tvTextEmail">Email</string>
     <string name="forgot_password_btnTextSend">SEND</string>
+
+
+    <string name="storage_dialog_tvTextIngredientName">Water</string>
+    <string name="storage_dialog_tvTextIngredientAmount">20</string>
+    <string name="storage_dialog_btnTextUpdate">UPDATE</string>
+    <string name="storage_dialog_btnTextDelete">DELETE</string>
+    <string name="history_dialog_tvText">Are you sure you want to delete this?</string>
+    <string name="history_dialog_tvTextYes">YES</string>
+    <string name="history_dialog_tvTextNo">NO</string>
 </resources>

@@ -118,8 +118,7 @@
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:paddingStart="@dimen/adding_new_presets_etPaddingStartAmount"
-                android:paddingEnd="@dimen/adding_new_presets_etPaddingEndAmount" />
-
+                android:paddingEnd="@dimen/adding_new_presets_etPaddingEndAmount"/>
             <Button
                 android:id="@+id/adding_new_presets_btnIdAddIngredient"
                 android:layout_width="@dimen/adding_new_presets_btnWidthAddIngredient"
@@ -128,7 +127,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/adding_new_presets_btnMarginTopAddIngredient"
                 android:background="@drawable/custom_button"
-                android:text="@string/adding_to_storage_btnTextAddIngredient"
+                android:text="@string/adding_new_presets_btnTextAddIngredient"
                 android:textColor="@color/adding_to_storage_btnTextColorAdd" />
             <TextView
                 android:id="@+id/adding_new_presets_tvIdIngredientName"
