@@ -78,7 +78,9 @@ public class PresetHistoryView extends AppCompatActivity {
             public void onClick(View v) {
                 Intent explicitIntent = new Intent();
                 explicitIntent.setClass(getApplicationContext(), HomeView.class);
+                explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(explicitIntent);
+                overridePendingTransition(0, 0);
             }
         });
     }
@@ -100,6 +102,7 @@ public class PresetHistoryView extends AppCompatActivity {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
         finishAndRemoveTask();
+        overridePendingTransition(0, 0);
     }
 
     private void displayPresets(){

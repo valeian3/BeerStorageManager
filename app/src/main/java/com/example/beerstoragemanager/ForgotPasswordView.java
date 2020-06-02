@@ -63,7 +63,9 @@ public class ForgotPasswordView extends AppCompatActivity {
                 resettingPassword();
                 Intent explicitIntent = new Intent();
                 explicitIntent.setClass(getApplicationContext(), MainActivity.class);
+                explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(explicitIntent);
+                overridePendingTransition(0, 0);
             }
         });
     }
@@ -78,6 +80,7 @@ public class ForgotPasswordView extends AppCompatActivity {
         super.onStop();
         Log.i(TAG, "onStop executed.");
         finish();
+        overridePendingTransition(0, 0);
     }
 
     @Override
@@ -85,6 +88,7 @@ public class ForgotPasswordView extends AppCompatActivity {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
         finishAndRemoveTask();
+        overridePendingTransition(0, 0);
     }
 
     private void resettingPassword(){

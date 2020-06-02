@@ -80,6 +80,8 @@ public class HomeView extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
+        finish();
+        overridePendingTransition(0, 0);
     }
 
     private void Storage(){
@@ -125,6 +127,7 @@ public class HomeView extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                overridePendingTransition(0, 0);
             }
         });
     }

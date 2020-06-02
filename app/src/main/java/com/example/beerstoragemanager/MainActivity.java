@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
         finishAndRemoveTask();
+        overridePendingTransition(0, 0);
     }
 
     private  void loginUser(){

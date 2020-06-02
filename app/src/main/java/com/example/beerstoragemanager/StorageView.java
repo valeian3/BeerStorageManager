@@ -95,6 +95,7 @@ public class StorageView extends AppCompatActivity {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
         finishAndRemoveTask();
+        overridePendingTransition(0, 0);
     }
 
     private void newIngredient(){
@@ -114,19 +115,13 @@ public class StorageView extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 ingredientList.clear();
-
                 for(DataSnapshot ingredientSnapshot : dataSnapshot.getChildren()){
                     Ingredient ingredient = ingredientSnapshot.getValue(Ingredient.class);
-
                     ingredientList.add(ingredient);
-
                 }
-
                 IngredientListController adapter = new IngredientListController(StorageView.this, ingredientList);
                 binding.storageListIdBeers.setAdapter(adapter);
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

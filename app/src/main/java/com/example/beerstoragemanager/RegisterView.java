@@ -94,6 +94,7 @@ public class RegisterView extends AppCompatActivity {
         super.onDestroy();
         Log.i(TAG, "onDestroy executed.");
         finishAndRemoveTask();
+        overridePendingTransition(0, 0);
     }
 
     private void RegisterUser(){

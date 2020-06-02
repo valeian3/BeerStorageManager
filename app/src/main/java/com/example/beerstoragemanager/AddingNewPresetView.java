@@ -84,7 +84,9 @@ public class AddingNewPresetView extends AppCompatActivity {
                 if(checkForIngredient){
                     Intent explicitIntent = new Intent();
                     explicitIntent.setClass(getApplicationContext(), PresetsView.class);
+                    explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(explicitIntent);
+                    overridePendingTransition(0, 0);
                 }
             }
         });
@@ -117,6 +119,7 @@ public class AddingNewPresetView extends AppCompatActivity {
         Log.i(TAG, "onDestroy executed.");
         deletePreset();
         finishAndRemoveTask();
+        overridePendingTransition(0, 0);
     }
 
     public void addName(){
