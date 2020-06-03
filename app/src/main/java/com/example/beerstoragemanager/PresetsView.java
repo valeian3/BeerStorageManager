@@ -51,7 +51,7 @@ public class PresetsView extends AppCompatActivity{
     List<Beer> listOfAvailableBeerPresets;
 
     String presetId, presetName;
-    Boolean checkForSelectedPreset = false, checkIfAllIngredientsAreInStorage = false, checkIfSelectedPreset = false;
+    Boolean checkForSelectedPreset = false, checkIfSelectedPreset = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +135,7 @@ public class PresetsView extends AppCompatActivity{
         binding.presetsBtnIdSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkForSelectedPreset && !checkIfAllIngredientsAreInStorage){
+                if (checkForSelectedPreset){
                     selectedPresets();
                     onPresetSelectDeleteFromStorage();
 
@@ -145,9 +145,6 @@ public class PresetsView extends AppCompatActivity{
                     startActivity(explicitIntent);
                     overridePendingTransition(0, 0);
                     checkIfSelectedPreset = true;
-                }else if(checkIfAllIngredientsAreInStorage){
-                    checkIfAllIngredientsAreInStorage = false;
-                    displayToast("No enough ingredients in storage");
                 }else {
                     displayToast("Select preset");
                 }
@@ -241,16 +238,20 @@ public class PresetsView extends AppCompatActivity{
     }
 
     private void selectedPresets(){
-        databaseReference = database.getReference().child("Selected presets");
-        if(!TextUtils.isEmpty(presetName)){
+        if(onPresetSelectDeleteFromStorage()){
+            databaseReference = database.getReference().child("Selected presets");
+            if(!TextUtils.isEmpty(presetName)){
 
-            String id = databaseReference.push().getKey();
+                String id = databaseReference.push().getKey();
 
-            beer = new Beer(id, presetName);
-            databaseReference.child(id).setValue(beer);
-            Log.i(TAG, "Preset inserted into database");
-        } else {
-            Log.i(TAG, "Preset is not inserted into database.");
+                beer = new Beer(id, presetName);
+                databaseReference.child(id).setValue(beer);
+                Log.i(TAG, "Preset inserted into database");
+            } else {
+                Log.i(TAG, "Preset is not inserted into database.");
+            }
+        }else {
+            displayToast("Not enough ingredients in storage");
         }
     }
 
@@ -272,7 +273,9 @@ public class PresetsView extends AppCompatActivity{
         });
     }
 
-    private void onPresetSelectDeleteFromStorage(){
+    private boolean onPresetSelectDeleteFromStorage(){
+
+        Boolean checkIfAllIngredientsAreInStorage = true;
 
         for(int i = 0; i < listOfIngredientsFromPresets.size(); i++){
             Ingredient presetIngredient = listOfIngredientsFromPresets.get(i);
@@ -284,7 +287,7 @@ public class PresetsView extends AppCompatActivity{
                     if(storageAmount >= presetAmount){
                         storageAmount -= presetAmount;
                     }else{
-                        checkIfAllIngredientsAreInStorage = true;
+                        checkIfAllIngredientsAreInStorage = false;
                     }
                     ingredient = new Ingredient(storageIngredient.getIngredientId(), storageIngredient.getName(), String.valueOf(storageAmount));
                     newListOfIngredientsForStorage.add(ingredient);
@@ -297,7 +300,7 @@ public class PresetsView extends AppCompatActivity{
                 }*/
             }
         }
-        if(!checkIfAllIngredientsAreInStorage){
+        if(checkIfAllIngredientsAreInStorage){
             for(int k = 0; k < newListOfIngredientsForStorage.size(); k++){
                 Ingredient newStorageIngredient = newListOfIngredientsForStorage.get(k);
                 databaseReference = database.getReference().child("Ingredients");
@@ -308,7 +311,10 @@ public class PresetsView extends AppCompatActivity{
                     Log.i(TAG, "Amount didn't changed in database");
                 }
             }
+        }else {
+            displayToast("Could't select preset, not enough ingredients");
         }
+        return checkIfAllIngredientsAreInStorage;
     }
 
     private void deleteDialog(final String id){
