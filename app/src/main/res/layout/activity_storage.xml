@@ -22,15 +22,29 @@
             android:textStyle="bold"
             android:textSize="@dimen/storage_tvSizeStorage"
             android:textColor="@color/storage_tvTextColorStorage"/>
+
         <ProgressBar
             android:id="@+id/storage_progressBarIdProgressBar"
             style="?android:progressBarStyleHorizontal"
             android:layout_width="@dimen/storage_progressBarWidthProgressBar"
             android:layout_height="@dimen/storage_progressBarHeightProgressBar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/storage_progressBarMarginStartProgressBar"
             android:layout_marginTop="@dimen/storage_progressBarMarginTopProgressBar"
-            android:layout_centerHorizontal="true"
-            android:progress="10"
-            android:progressDrawable="@drawable/custom_progress_bar_circel"/>
+            android:progressDrawable="@drawable/custom_progress_bar_circle" />
+
+        <TextView
+            android:id="@+id/storage_tvIdPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/storage_tvMarginTopPercentage"
+            android:layout_marginEnd="@dimen/storage_tvMarginStartPercentage"
+            android:textColor="@color/storage_tvPercentage"
+            android:textSize="@dimen/storage_tvSizeStorage"/>
+
         <RelativeLayout
             android:layout_width="@dimen/storage_layoutWidth"
             android:layout_height="@dimen/storage_layoutHeight"

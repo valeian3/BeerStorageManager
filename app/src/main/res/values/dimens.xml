@@ -206,7 +206,11 @@
 
     <dimen name="storage_progressBarWidthProgressBar">140sp</dimen>
     <dimen name="storage_progressBarHeightProgressBar">140dp</dimen>
-    <dimen name="storage_progressBarMarginTopProgressBar">175dp</dimen>
+    <dimen name="storage_progressBarMarginTopProgressBar">190dp</dimen>
+    <dimen name="storage_progressBarMarginStartProgressBar">60dp</dimen>
+
+    <dimen name="storage_tvMarginTopPercentage">240dp</dimen>
+    <dimen name="storage_tvMarginStartPercentage">60dp</dimen>
 
     <dimen name="storage_layoutMarginTop">30dp</dimen>
     <dimen name="storage_layoutPaddingBottom">10dp</dimen>

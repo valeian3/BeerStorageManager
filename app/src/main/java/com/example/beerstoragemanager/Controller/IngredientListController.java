@@ -20,9 +20,14 @@ public class IngredientListController extends ArrayAdapter<Ingredient> {
 
     private Activity context;
     private List<Ingredient> IngredientList;
+    private int maxAmount;
 
-    int max = 10;
-
+    public IngredientListController(Activity context, List<Ingredient> ingredientList, int max){
+        super(context, R.layout.storage_list, ingredientList);
+        this.context = context;
+        this.IngredientList = ingredientList;
+        maxAmount = max;
+    }
     public IngredientListController(Activity context, List<Ingredient> ingredientList){
         super(context, R.layout.storage_list, ingredientList);
         this.context = context;
@@ -42,16 +47,10 @@ public class IngredientListController extends ArrayAdapter<Ingredient> {
 
         Ingredient ingredient = IngredientList.get(position);
 
-
-
-        /*for(int i = 0; i <= IngredientList.size(); i++){
-            max += Integer.valueOf(ingredient.getAmount();
-        }*/
-
         tvName.setText(ingredient.getName());
         tvAmount.setText(String.valueOf(ingredient.getAmount()));
 
-        progressBar.setMax(max);
+        progressBar.setMax(maxAmount);
         progressBar.setProgress(Integer.valueOf(ingredient.getAmount()));
 
         return ingredientViewItem;

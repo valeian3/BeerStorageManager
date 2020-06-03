@@ -41,6 +41,9 @@ public class StorageView extends AppCompatActivity {
 
     Ingredient ingredient;
     List<Ingredient> ingredientList;
+    int maxValueOfStorage = 20000;
+    int maxAmountOfLeftInStorage;
+    int amountOfIngredientsInStorage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +78,6 @@ public class StorageView extends AppCompatActivity {
 
         newIngredient();
         listingIngredients();
-        mainStorage();
     }
 
     @Override
@@ -119,8 +121,18 @@ public class StorageView extends AppCompatActivity {
                 for(DataSnapshot ingredientSnapshot : dataSnapshot.getChildren()){
                     Ingredient ingredient = ingredientSnapshot.getValue(Ingredient.class);
                     ingredientList.add(ingredient);
+
+                    int amount = Integer.parseInt(ingredient.getAmount());
+                    amountOfIngredientsInStorage += amount;
+                    int percentage;
+                    percentage = amountOfIngredientsInStorage * 100 /maxValueOfStorage;
+                    binding.storageTvIdPercentage.setText(String.valueOf(percentage) + "%");
+                    maxAmountOfLeftInStorage = maxValueOfStorage - amountOfIngredientsInStorage;
+                    binding.storageProgressBarIdProgressBar.setMax(maxValueOfStorage);
+                    binding.storageProgressBarIdProgressBar.setProgress(amountOfIngredientsInStorage);
+
                 }
-                IngredientListController adapter = new IngredientListController(StorageView.this, ingredientList);
+                IngredientListController adapter = new IngredientListController(StorageView.this, ingredientList, maxValueOfStorage);
                 binding.storageListIdBeers.setAdapter(adapter);
             }
             @Override
@@ -128,6 +140,7 @@ public class StorageView extends AppCompatActivity {
                     displayToast("Error: database could't load.");
             }
         });
+
         binding.storageListIdBeers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -164,7 +177,8 @@ public class StorageView extends AppCompatActivity {
         tvIngredientName.setText(ingredientName);
         tvIngredientAmount.setText(amount);
 
-        seekBar.setProgress(Integer.valueOf(amount));
+        seekBar.setProgress(Integer.parseInt(amount));
+        seekBar.setMax(maxValueOfStorage);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -191,15 +205,20 @@ public class StorageView extends AppCompatActivity {
 
                 int newAmount = seekBar.getProgress();
 
-                if(!TextUtils.isEmpty(String.valueOf(newAmount))){
+                if(newAmount <= maxAmountOfLeftInStorage) {
+                    if (!TextUtils.isEmpty(String.valueOf(newAmount))) {
 
-                    ingredient = new Ingredient(ingredient.getIngredientId(), ingredientName, String.valueOf(newAmount));
-                    databaseReference.setValue(ingredient);
-                    finish();
-                    overridePendingTransition(0, 0);
-                    startActivity(getIntent());
-                    overridePendingTransition(0, 0);
-                    alertDialog.dismiss();
+                        ingredient = new Ingredient(ingredient.getIngredientId(), ingredientName, String.valueOf(newAmount));
+                        databaseReference.setValue(ingredient);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(getIntent());
+                        overridePendingTransition(0, 0);
+                        alertDialog.dismiss();
+                    }
+                }else {
+                    displayToast("Not enough space in storage");
+                    displayToast("Available space in storage " + maxAmountOfLeftInStorage);
                 }
                 finish();
                 overridePendingTransition(0, 0);
@@ -232,10 +251,6 @@ public class StorageView extends AppCompatActivity {
                 alertDialog.dismiss();
             }
         });
-    }
-
-    private void mainStorage(){
-        binding.storageProgressBarIdProgressBar.setMax(30);
     }
 
     private void displayToast(String message){
