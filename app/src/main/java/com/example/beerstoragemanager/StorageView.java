@@ -41,6 +41,7 @@ public class StorageView extends AppCompatActivity {
 
     Ingredient ingredient;
     List<Ingredient> ingredientList;
+    boolean checkIfAppInBackground = false;
     int maxValueOfStorage = 20000;
     int maxAmountOfLeftInStorage;
     int amountOfIngredientsInStorage = 0;
@@ -90,6 +91,8 @@ public class StorageView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop executed.");
+        checkIfAppInBackground = true;
+
     }
 
     @Override
@@ -107,6 +110,7 @@ public class StorageView extends AppCompatActivity {
                 Intent explicitIntent = new Intent();
                 explicitIntent.setClass(getApplicationContext(), AddingToStorageView.class);
                 startActivity(explicitIntent);
+                checkIfAppInBackground = false;
             }
         });
     }
@@ -124,13 +128,14 @@ public class StorageView extends AppCompatActivity {
 
                     int amount = Integer.parseInt(ingredient.getAmount());
                     amountOfIngredientsInStorage += amount;
-                    int percentage;
-                    percentage = amountOfIngredientsInStorage * 100 /maxValueOfStorage;
-                    binding.storageTvIdPercentage.setText(String.valueOf(percentage) + "%");
-                    maxAmountOfLeftInStorage = maxValueOfStorage - amountOfIngredientsInStorage;
-                    binding.storageProgressBarIdProgressBar.setMax(maxValueOfStorage);
-                    binding.storageProgressBarIdProgressBar.setProgress(amountOfIngredientsInStorage);
-
+                    if (!checkIfAppInBackground) {
+                        int percentage;
+                        percentage = amountOfIngredientsInStorage * 100 / maxValueOfStorage;
+                        binding.storageTvIdPercentage.setText(percentage + "%");
+                        maxAmountOfLeftInStorage = maxValueOfStorage - amountOfIngredientsInStorage;
+                        binding.storageProgressBarIdProgressBar.setMax(maxValueOfStorage);
+                        binding.storageProgressBarIdProgressBar.setProgress(amountOfIngredientsInStorage);
+                    }
                 }
                 IngredientListController adapter = new IngredientListController(StorageView.this, ingredientList, maxValueOfStorage);
                 binding.storageListIdBeers.setAdapter(adapter);
@@ -147,6 +152,8 @@ public class StorageView extends AppCompatActivity {
                 ingredient = ingredientList.get(position);
 
                 updateAndDeleteDialog(ingredient.getIngredientId(), ingredient.getName(), ingredient.getAmount());
+
+                checkIfAppInBackground = false;
             }
         });
     }
