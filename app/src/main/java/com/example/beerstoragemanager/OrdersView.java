@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.example.beerstoragemanager.Controller.OrdersListController;
 import com.example.beerstoragemanager.Model.Beer;
 import com.example.beerstoragemanager.Model.Customer;
 import com.example.beerstoragemanager.databinding.ActivityOrdersBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,6 +54,35 @@ public class OrdersView extends AppCompatActivity {
         orderId = database.getReference("Orders").push().getKey();
 
         beerOrderList = new ArrayList<>();
+
+        binding.bottomNavigationMenu.setSelectedItemId(R.id.ordersView);
+        binding.bottomNavigationMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.storageView:
+                        startActivity(new Intent(getApplicationContext(), StorageView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                    case R.id.presetsView:
+                        startActivity(new Intent(getApplicationContext(), PresetsView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                    case R.id.ordersView:
+                        return  true;
+                    case R.id.ordersHistory:
+                        startActivity(new Intent(getApplicationContext(), OrdersHistoryView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                    case R.id.presetsHistory:
+                        startActivity(new Intent(getApplicationContext(), PresetHistoryView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override

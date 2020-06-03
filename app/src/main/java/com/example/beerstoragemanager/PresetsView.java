@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -12,10 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Controller.IngredientListController;
+import com.example.beerstoragemanager.Controller.IngredientsListInPresetsController;
 import com.example.beerstoragemanager.Controller.PresetsListController;
 import com.example.beerstoragemanager.Model.Beer;
 import com.example.beerstoragemanager.Model.Ingredient;
 import com.example.beerstoragemanager.databinding.ActivityPresetsBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -60,6 +63,35 @@ public class PresetsView extends AppCompatActivity{
         listOfIngredientsFromPresets = new ArrayList<>();
         listOfIngredientsFromStorage = new ArrayList<>();
         newListOfIngredientsForStorage = new ArrayList<>();
+
+        binding.bottomNavigationMenu.setSelectedItemId(R.id.presetsView);
+        binding.bottomNavigationMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.storageView:
+                        startActivity(new Intent(getApplicationContext(), StorageView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                    case R.id.presetsView:
+                        return  true;
+                    case R.id.ordersView:
+                        startActivity(new Intent(getApplicationContext(), OrdersView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                    case R.id.ordersHistory:
+                        startActivity(new Intent(getApplicationContext(), OrdersHistoryView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                    case R.id.presetsHistory:
+                        startActivity(new Intent(getApplicationContext(), PresetHistoryView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -172,7 +204,7 @@ public class PresetsView extends AppCompatActivity{
                     Ingredient ingredient = ingredientSnapshot.getValue(Ingredient.class);
                     listOfIngredientsFromPresets.add(ingredient);
                 }
-                IngredientListController adapter = new IngredientListController(PresetsView.this, listOfIngredientsFromPresets);
+                IngredientsListInPresetsController adapter = new IngredientsListInPresetsController(PresetsView.this, listOfIngredientsFromPresets);
                 binding.presetsListIdIngredients.setAdapter(adapter);
             }
             @Override
@@ -230,6 +262,10 @@ public class PresetsView extends AppCompatActivity{
                     }
                     ingredient = new Ingredient(storageIngredient.getIngredientId(), storageIngredient.getName(), String.valueOf(storageAmount));
                     newListOfIngredientsForStorage.add(ingredient);
+                }else{
+                    checkIfAllIngredientsAreInStorage = true;
+                    displayToast("That ingredient does not exists in storage");
+                    break;
                 }
             }
         }

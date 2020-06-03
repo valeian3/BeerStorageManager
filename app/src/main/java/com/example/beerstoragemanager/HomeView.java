@@ -36,6 +36,7 @@ public class HomeView extends AppCompatActivity {
         firebaseUser = firebaseAuth.getCurrentUser();
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();

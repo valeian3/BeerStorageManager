@@ -90,4 +90,6 @@
     <color name="storage_dialog_btnTextColorUpdate">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="progress_bar">#FD5E53</color>
+    <color name="black">#000000</color>
+    <color name="blue">#002BFF</color>
 </resources>

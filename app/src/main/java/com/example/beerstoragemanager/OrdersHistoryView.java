@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.beerstoragemanager.Controller.CustomerListController;
 import com.example.beerstoragemanager.Model.Customer;
 import com.example.beerstoragemanager.databinding.ActivityOrderHistoryBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,6 +54,35 @@ public class OrdersHistoryView extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         customersList = new ArrayList<>();
+
+        binding.bottomNavigationMenu.setSelectedItemId(R.id.ordersHistory);
+        binding.bottomNavigationMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.storageView:
+                        startActivity(new Intent(getApplicationContext(), StorageView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                    case R.id.presetsView:
+                        startActivity(new Intent(getApplicationContext(), PresetsView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                    case R.id.ordersView:
+                        startActivity(new Intent(getApplicationContext(), OrdersView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                    case R.id.ordersHistory:
+                        return  true;
+                    case R.id.presetsHistory:
+                        startActivity(new Intent(getApplicationContext(), PresetHistoryView.class));
+                        overridePendingTransition(0, 0);
+                        return  true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -72,17 +103,6 @@ public class OrdersHistoryView extends AppCompatActivity {
         Log.i(TAG, "onResume executed.");
 
         showOrderList();
-
-        binding.ordersHistoryBtnIdOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent explicitIntent = new Intent();
-                explicitIntent.setClass(getApplicationContext(), HomeView.class);
-                explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(explicitIntent);
-                overridePendingTransition(0, 0);
-            }
-        });
     }
 
     @Override

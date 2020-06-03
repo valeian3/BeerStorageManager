@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Controller.IngredientListController;
+import com.example.beerstoragemanager.Controller.IngredientsListInPresetsController;
 import com.example.beerstoragemanager.Model.Beer;
 import com.example.beerstoragemanager.Model.Ingredient;
 import com.example.beerstoragemanager.databinding.ActivityAddingNewPresetsBinding;
@@ -191,7 +192,7 @@ public class AddingNewPresetView extends AppCompatActivity {
                     Ingredient ingredient = ingredientSnapshot.getValue(Ingredient.class);
                     ingredientList.add(ingredient);
                 }
-                IngredientListController adapter = new IngredientListController(AddingNewPresetView.this, ingredientList);
+                IngredientsListInPresetsController adapter = new IngredientsListInPresetsController(AddingNewPresetView.this, ingredientList);
                 binding.addingNewPresetsListIdIngredients.setAdapter(adapter);
             }
             @Override
@@ -211,9 +212,16 @@ public class AddingNewPresetView extends AppCompatActivity {
     }
 
     private void deletePreset(){
-        if(ingredientList.isEmpty()){
+        String beerName = binding.addingNewPresetsEtIdName.getText().toString().trim();
+
+        if(ingredientList.isEmpty() && !beerName.isEmpty()){
             databaseReference = FirebaseDatabase.getInstance().getReference("Presets").child(beerNameId);
             databaseReference.removeValue();
+            finishAndRemoveTask();
+            overridePendingTransition(0, 0);
+        }else if(beerName.isEmpty()){
+            finishAndRemoveTask();
+            overridePendingTransition(0, 0);
         }
     }
 

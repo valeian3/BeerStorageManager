@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onStart executed.");
 
         if(firebaseUser!=null){
-            startActivity(new Intent(this,HomeView.class));
+            startActivity(new Intent(this,StorageView.class));
         }
     }
 
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                     if(firebaseUser.isEmailVerified()){
-                        startActivity(new Intent(getApplicationContext(), HomeView.class));
+                        startActivity(new Intent(getApplicationContext(), StorageView.class));
                         displayToast("Logged in");
                     }else{
                         displayToast("Please verify your email address");

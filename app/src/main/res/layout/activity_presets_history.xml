@@ -43,15 +43,13 @@
             android:layout_marginTop="@dimen/presets_history_listMarginTopBeers"
             android:divider="#00000000"/>
     </RelativeLayout>
-    <Button
-        android:id="@+id/presets_history_btnIdReturn"
-        android:layout_width="@dimen/presets_history_btnWidthOrder"
-        android:layout_height="@dimen/presets_history_btnHeightOrder"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/presets_history_btnMarginTopOrder"
-        android:layout_marginEnd="@dimen/presets_history_btnMarginEndOrder"
-        android:layout_below="@+id/presets_history_rlId"
-        android:text="@string/presets_history_btnTextOrder"
-        android:textColor="@color/presets_history_btnTextColorOrder"
-        android:background="@drawable/custom_button"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/bottom_menu"/>
 </RelativeLayout>
