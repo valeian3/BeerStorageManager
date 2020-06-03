@@ -493,4 +493,6 @@
     <dimen name="history_dialog_tvMarginTopYes">30dp</dimen>
 
     <dimen name="history_dialog_tvMarginTopNo">30dp</dimen>
+    <dimen name="splash_screen_tvTextSizeAppName">25sp</dimen>
+    <dimen name="splash_screen_tvMarginBottomAppName">108dp</dimen>
 </resources>
