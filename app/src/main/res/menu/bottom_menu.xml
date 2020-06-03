@@ -14,11 +14,7 @@
         android:title="Orders"
         android:icon="@drawable/ic_box"/>
     <item
-        android:id="@+id/ordersHistory"
-        android:title="Customers orders"
+        android:id="@+id/other"
+        android:title="Other"
         android:icon="@drawable/ic_customers_orders"/>
-    <item
-        android:id="@+id/presetsHistory"
-        android:title="Selected presets"
-        android:icon="@drawable/ic_selected_presets"/>
 </menu>

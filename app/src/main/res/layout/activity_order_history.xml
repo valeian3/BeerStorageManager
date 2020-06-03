@@ -43,13 +43,4 @@
             android:layout_marginTop="@dimen/orders_history_listMarginTopBeers"
             android:divider="#00000000"/>
     </RelativeLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:layout_alignParentBottom="true"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
-        app:menu="@menu/bottom_menu"/>
 </RelativeLayout>

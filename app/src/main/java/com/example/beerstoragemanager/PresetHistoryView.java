@@ -54,35 +54,6 @@ public class PresetHistoryView extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         presetsList = new ArrayList<>();
-
-        binding.bottomNavigationMenu.setSelectedItemId(R.id.presetsHistory);
-        binding.bottomNavigationMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-                    case R.id.storageView:
-                        startActivity(new Intent(getApplicationContext(), StorageView.class));
-                        overridePendingTransition(0, 0);
-                        return  true;
-                    case R.id.presetsView:
-                        startActivity(new Intent(getApplicationContext(), PresetsView.class));
-                        overridePendingTransition(0, 0);
-                        return  true;
-                    case R.id.ordersView:
-                        startActivity(new Intent(getApplicationContext(), OrdersView.class));
-                        overridePendingTransition(0, 0);
-                        return  true;
-                    case R.id.ordersHistory:
-                        startActivity(new Intent(getApplicationContext(), OrdersHistoryView.class));
-                        overridePendingTransition(0, 0);
-                        return  true;
-                    case R.id.presetsHistory:
-                        return  true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override

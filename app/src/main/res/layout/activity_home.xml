@@ -17,37 +17,6 @@
         android:textSize="20sp"
         android:textColor="@color/orders_tvTextColorOrder"/>
     <Button
-        android:id="@+id/home_btnIdList"
-        android:layout_width="@dimen/home_btnWidthList"
-        android:layout_height="@dimen/home_btnHeightList"
-        android:layout_marginTop="@dimen/home_btnMarginTopList"
-        android:layout_marginEnd="@dimen/home_btnMarginEndList"
-        android:layout_toStartOf="@+id/home_btnIdWineBarrel"
-        android:paddingStart="@dimen/home_btnPaddingStartList"
-        android:drawableStart="@drawable/ic_list"
-        android:background="@drawable/custom_button"
-        tools:ignore="RtlSymmetry" />
-    <Button
-        android:id="@+id/home_btnIdWineBarrel"
-        android:layout_width="@dimen/home_btnWidthWineBarrel"
-        android:layout_height="@dimen/home_btnHeightWineBarrel"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/home_btnMarginTopWineBarrel"
-        android:paddingTop="@dimen/home_btnPaddingTopWineBarrel"
-        android:drawableTop="@drawable/ic_wine_barrel"
-        android:background="@drawable/custom_button"/>
-    <Button
-        android:id="@+id/home_btnIdBox"
-        android:layout_width="@dimen/home_btnWidthBox"
-        android:layout_height="@dimen/home_btnHeightBox"
-        android:layout_marginStart="@dimen/home_btnMarginStartHeightBox"
-        android:layout_marginTop="@dimen/home_btnMarginTopBox"
-        android:layout_toEndOf="@+id/home_btnIdWineBarrel"
-        android:paddingStart="@dimen/home_btnPaddingStartBox"
-        android:paddingEnd="@dimen/home_btnPaddingEndBox"
-        android:drawableStart="@drawable/ic_box"
-        android:background="@drawable/custom_button"/>
-    <Button
         android:id="@+id/home_btnIdLogout"
         android:layout_width="@dimen/home_btnWidthLogout"
         android:layout_height="@dimen/home_btnHeightLogout"
@@ -57,7 +26,6 @@
         android:background="@drawable/custom_button"
         android:text="@string/home_btnTextLogout"
         android:textColor="@color/home_btnTextColorHome"/>
-
     <Button
         android:id="@+id/home_btnIdPresets"
         android:layout_width="@dimen/home_btnWidthPresets"
@@ -81,4 +49,14 @@
         android:background="@drawable/custom_button"
         android:text="@string/home_btnTextOrders"
         android:textColor="@color/home_btnTextColorHome" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/bottom_menu"/>
 </RelativeLayout>

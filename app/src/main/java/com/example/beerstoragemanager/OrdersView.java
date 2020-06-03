@@ -36,7 +36,7 @@ public class OrdersView extends AppCompatActivity {
     Customer customer;
     String orderId;
     boolean checkForCustomerName = false;
-    boolean checkForOneOrder = false;
+    boolean checkForOneOrder = false, checkIfOrderSelected = false;
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
@@ -59,24 +59,29 @@ public class OrdersView extends AppCompatActivity {
         binding.bottomNavigationMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+                Intent explicitIntent = new Intent();
                 switch (item.getItemId()){
                     case R.id.storageView:
-                        startActivity(new Intent(getApplicationContext(), StorageView.class));
+                        explicitIntent.setClass(getApplicationContext(), StorageView.class);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(explicitIntent);
                         overridePendingTransition(0, 0);
                         return  true;
                     case R.id.presetsView:
-                        startActivity(new Intent(getApplicationContext(), PresetsView.class));
+                        explicitIntent.setClass(getApplicationContext(), PresetsView.class);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(explicitIntent);
                         overridePendingTransition(0, 0);
                         return  true;
                     case R.id.ordersView:
                         return  true;
-                    case R.id.ordersHistory:
-                        startActivity(new Intent(getApplicationContext(), OrdersHistoryView.class));
-                        overridePendingTransition(0, 0);
-                        return  true;
-                    case R.id.presetsHistory:
-                        startActivity(new Intent(getApplicationContext(), PresetHistoryView.class));
+                    case R.id.other:
+                        explicitIntent.setClass(getApplicationContext(), HomeView.class);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(explicitIntent);
                         overridePendingTransition(0, 0);
                         return  true;
                 }
@@ -120,6 +125,7 @@ public class OrdersView extends AppCompatActivity {
                     explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(explicitIntent);
                     overridePendingTransition(0, 0);
+                    checkIfOrderSelected = true;
                 }
             }
         });
@@ -135,6 +141,10 @@ public class OrdersView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop executed.");
+        if(checkIfOrderSelected){
+            finishAndRemoveTask();
+            overridePendingTransition(0, 0);
+        }
     }
 
     @Override

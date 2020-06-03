@@ -23,6 +23,8 @@ import com.example.beerstoragemanager.Controller.IngredientListController;
 import com.example.beerstoragemanager.Model.Ingredient;
 import com.example.beerstoragemanager.databinding.ActivityStorageBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +42,8 @@ public class StorageView extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     Ingredient ingredient;
     List<Ingredient> ingredientList;
@@ -58,6 +62,8 @@ public class StorageView extends AppCompatActivity {
         setContentView(view);
 
         database = FirebaseDatabase.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         ingredientList = new ArrayList<>();
 
@@ -65,24 +71,29 @@ public class StorageView extends AppCompatActivity {
         binding.bottomNavigationMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+                Intent explicitIntent = new Intent();
                 switch (item.getItemId()){
                     case R.id.storageView:
                         return  true;
                     case R.id.presetsView:
-                        startActivity(new Intent(getApplicationContext(), PresetsView.class));
+                        explicitIntent.setClass(getApplicationContext(), PresetsView.class);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(explicitIntent);
                         overridePendingTransition(0, 0);
                         return  true;
                     case R.id.ordersView:
-                        startActivity(new Intent(getApplicationContext(), OrdersView.class));
+                        explicitIntent.setClass(getApplicationContext(), OrdersView.class);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(explicitIntent);
                         overridePendingTransition(0, 0);
                         return  true;
-                    case R.id.ordersHistory:
-                        startActivity(new Intent(getApplicationContext(), OrdersHistoryView.class));
-                        overridePendingTransition(0, 0);
-                        return  true;
-                    case R.id.presetsHistory:
-                        startActivity(new Intent(getApplicationContext(), PresetHistoryView.class));
+                    case R.id.other:
+                        explicitIntent.setClass(getApplicationContext(), HomeView.class);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(explicitIntent);
                         overridePendingTransition(0, 0);
                         return  true;
                 }

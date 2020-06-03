@@ -1,18 +1,23 @@
 package com.example.beerstoragemanager;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.beerstoragemanager.Controller.IngredientListController;
 import com.example.beerstoragemanager.Controller.IngredientsListInPresetsController;
 import com.example.beerstoragemanager.Controller.PresetsListController;
 import com.example.beerstoragemanager.Model.Beer;
@@ -46,7 +51,7 @@ public class PresetsView extends AppCompatActivity{
     List<Beer> listOfAvailableBeerPresets;
 
     String presetId, presetName;
-    Boolean checkForSelectedPreset = false, checkIfAllIngredientsAreInStorage = false;
+    Boolean checkForSelectedPreset = false, checkIfAllIngredientsAreInStorage = false, checkIfSelectedPreset = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,24 +73,29 @@ public class PresetsView extends AppCompatActivity{
         binding.bottomNavigationMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+                Intent explicitIntent = new Intent();
                 switch (item.getItemId()){
                     case R.id.storageView:
-                        startActivity(new Intent(getApplicationContext(), StorageView.class));
+                        explicitIntent.setClass(getApplicationContext(), StorageView.class);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(explicitIntent);
                         overridePendingTransition(0, 0);
                         return  true;
                     case R.id.presetsView:
                         return  true;
                     case R.id.ordersView:
-                        startActivity(new Intent(getApplicationContext(), OrdersView.class));
+                        explicitIntent.setClass(getApplicationContext(), OrdersView.class);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(explicitIntent);
                         overridePendingTransition(0, 0);
                         return  true;
-                    case R.id.ordersHistory:
-                        startActivity(new Intent(getApplicationContext(), OrdersHistoryView.class));
-                        overridePendingTransition(0, 0);
-                        return  true;
-                    case R.id.presetsHistory:
-                        startActivity(new Intent(getApplicationContext(), PresetHistoryView.class));
+                    case R.id.other:
+                        explicitIntent.setClass(getApplicationContext(), HomeView.class);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(explicitIntent);
                         overridePendingTransition(0, 0);
                         return  true;
                 }
@@ -112,7 +122,7 @@ public class PresetsView extends AppCompatActivity{
         Log.i(TAG, "onResume executed.");
 
         availablePresets();
-        storageIngredients();
+        loadStorageIngredients();
 
         binding.presetsFabIdAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +135,7 @@ public class PresetsView extends AppCompatActivity{
         binding.presetsBtnIdSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkForSelectedPreset && !onPresetSelectDeleteFromStorage()){
+                if (checkForSelectedPreset && !checkIfAllIngredientsAreInStorage){
                     selectedPresets();
                     onPresetSelectDeleteFromStorage();
 
@@ -134,10 +144,11 @@ public class PresetsView extends AppCompatActivity{
                     explicitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(explicitIntent);
                     overridePendingTransition(0, 0);
-                }else if(onPresetSelectDeleteFromStorage()){
+                    checkIfSelectedPreset = true;
+                }else if(checkIfAllIngredientsAreInStorage){
                     checkIfAllIngredientsAreInStorage = false;
                     displayToast("No enough ingredients in storage");
-                }else if(!checkForSelectedPreset){
+                }else {
                     displayToast("Select preset");
                 }
             }
@@ -154,6 +165,11 @@ public class PresetsView extends AppCompatActivity{
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop executed.");
+        if(checkIfSelectedPreset){
+            finishAndRemoveTask();
+            overridePendingTransition(0, 0);
+            checkIfSelectedPreset = false;
+        }
     }
 
     @Override
@@ -182,6 +198,7 @@ public class PresetsView extends AppCompatActivity{
                 displayToast("Error: database could't load.");
             }
         });
+        binding.presetsListIdPresets.setLongClickable(true);
         binding.presetsListIdPresets.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -190,6 +207,15 @@ public class PresetsView extends AppCompatActivity{
                presetName = beer.getName();
                checkForSelectedPreset = true;
                displayIngredients();
+            }
+        });
+        binding.presetsListIdPresets.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Beer beer = listOfAvailableBeerPresets.get(position);
+                presetId = beer.getBeerId();
+                deleteDialog(presetId);
+                return false;
             }
         });
     }
@@ -228,7 +254,7 @@ public class PresetsView extends AppCompatActivity{
         }
     }
 
-    private void storageIngredients(){
+    private void loadStorageIngredients(){
         databaseReference = database.getReference().child("Ingredients");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -246,7 +272,7 @@ public class PresetsView extends AppCompatActivity{
         });
     }
 
-    private boolean onPresetSelectDeleteFromStorage(){
+    private void onPresetSelectDeleteFromStorage(){
 
         for(int i = 0; i < listOfIngredientsFromPresets.size(); i++){
             Ingredient presetIngredient = listOfIngredientsFromPresets.get(i);
@@ -262,11 +288,13 @@ public class PresetsView extends AppCompatActivity{
                     }
                     ingredient = new Ingredient(storageIngredient.getIngredientId(), storageIngredient.getName(), String.valueOf(storageAmount));
                     newListOfIngredientsForStorage.add(ingredient);
-                }else{
-                    checkIfAllIngredientsAreInStorage = true;
+                }
+                //This should check if ingredient exists in storage but it doesn't(Error!)
+                /*else{
+                    *//*checkIfAllIngredientsAreInStorage = true;*//*
                     displayToast("That ingredient does not exists in storage");
                     break;
-                }
+                }*/
             }
         }
         if(!checkIfAllIngredientsAreInStorage){
@@ -281,7 +309,61 @@ public class PresetsView extends AppCompatActivity{
                 }
             }
         }
-        return checkIfAllIngredientsAreInStorage;
+    }
+
+    private void deleteDialog(final String id){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(PresetsView.this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        final View dialogView = inflater.inflate(R.layout.history_dialog,null);
+        dialogBuilder.setView(dialogView);
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        final TextView tvYes, tvNo;
+        final Button btnExit;
+
+        tvYes = alertDialog.findViewById(R.id.history_dialog_tvIdYes);
+        tvNo = alertDialog.findViewById(R.id.history_dialog_tvIdNo);
+        btnExit = alertDialog.findViewById(R.id.history_dialog_btnIdExit);
+
+        tvYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseReference = FirebaseDatabase.getInstance().getReference("Presets").child(id);
+                databaseReference.removeValue();
+                databaseReference = FirebaseDatabase.getInstance().getReference("Preset ingredients").child(id);
+                databaseReference.removeValue();
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
+            }
+        });
+        tvNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
+            }
+        });
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
+            }
+        });
     }
 
     private void displayToast(String message){

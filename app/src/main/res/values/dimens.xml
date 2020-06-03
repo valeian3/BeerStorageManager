@@ -119,12 +119,12 @@
 
     <dimen name="home_btnWidthPresets">120sp</dimen>
     <dimen name="home_btnMarginStartPresets">55dp</dimen>
-    <dimen name="home_btnMarginBottomPresets">310dp</dimen>
-    <dimen name="home_btnHeightPresets">35dp</dimen>
+    <dimen name="home_btnMarginBottomPresets">450dp</dimen>
+    <dimen name="home_btnHeightPresets">60dp</dimen>
 
     <dimen name="home_btnWidthOrders">120sp</dimen>
-    <dimen name="home_btnHeightOrders">35dp</dimen>
-    <dimen name="home_btnMarginBottomOrders">310dp</dimen>
+    <dimen name="home_btnHeightOrders">60dp</dimen>
+    <dimen name="home_btnMarginBottomOrders">450dp</dimen>
     <dimen name="home_btnMarginEndOrders">55dp</dimen>
 
     <dimen name="home_btnWidthLogout">160sp</dimen>
