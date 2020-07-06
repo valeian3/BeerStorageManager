@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/orders_history_dialog_rlHeight"
+    android:background="@drawable/custom_dialog">
+    <Button
+        android:id="@+id/about_dialog_btnIdExit"
+        android:layout_width="@dimen/storage_dialog_btnWidthExit"
+        android:layout_height="@dimen/storage_dialog_btnHeightExit"
+        android:layout_marginTop="@dimen/storage_dialog_btnMarginTopExit"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/storage_dialog_btnMarginEndExit"
+        android:background="@drawable/ic_baseline_close_24"/>
+    <TextView
+        android:id="@+id/about_dialog_tvIdHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/history_dialog_tvMarginTopHeadline"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/about_dialog_tvText"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <ListView
+        android:id="@+id/about_dialog_listIdItems"
+        android:layout_width="@dimen/presets_listWidthBeers"
+        android:layout_height="@dimen/about_dialog_listHeightItems"
+        android:layout_below="@+id/about_dialog_tvIdHeadline"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/presets_listMarginTopBeers"
+        android:divider="#00000000" />
+</RelativeLayout>

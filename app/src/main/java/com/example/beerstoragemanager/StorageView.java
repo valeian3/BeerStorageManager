@@ -302,6 +302,25 @@ public class StorageView extends AppCompatActivity {
         });
     }
 
+
+    //Idea was to change layout and list height when new ingredient is added
+    /*private void layoutSize(){
+
+        ViewGroup.LayoutParams layoutParams = binding.storageRlIdLayoutWithList.getLayoutParams();
+
+        int newHeight = 40;
+
+        int layoutHeight = binding.storageRlIdLayoutWithList.getHeight();
+
+        layoutHeight += newHeight;
+
+        layoutParams.height = layoutHeight;
+
+        binding.storageRlIdLayoutWithList.setLayoutParams(layoutParams);
+
+
+    }*/
+
     private void displayToast(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }

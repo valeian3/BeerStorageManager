@@ -103,4 +103,5 @@
     <string name="history_dialog_tvTextYes">YES</string>
     <string name="history_dialog_tvTextNo">NO</string>
     <string name="splash_screen_tvTextAppName">Storage Manager</string>
+    <string name="about_dialog_tvText">Ordered items</string>
 </resources>

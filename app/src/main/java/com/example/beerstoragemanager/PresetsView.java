@@ -135,9 +135,8 @@ public class PresetsView extends AppCompatActivity{
         binding.presetsBtnIdSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkForSelectedPreset){
+                if (checkForSelectedPreset && onPresetSelectDeleteFromStorage()){
                     selectedPresets();
-                    onPresetSelectDeleteFromStorage();
 
                     Intent explicitIntent = new Intent();
                     explicitIntent.setClass(getApplicationContext(), PresetHistoryView.class);

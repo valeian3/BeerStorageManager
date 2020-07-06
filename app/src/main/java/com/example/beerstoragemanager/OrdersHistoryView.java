@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +19,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.beerstoragemanager.Controller.CustomerListController;
+import com.example.beerstoragemanager.Controller.IngredientsListInPresetsController;
+import com.example.beerstoragemanager.Controller.OrdersListController;
+import com.example.beerstoragemanager.Controller.PresetsListController;
+import com.example.beerstoragemanager.Model.Beer;
 import com.example.beerstoragemanager.Model.Customer;
+import com.example.beerstoragemanager.Model.Ingredient;
 import com.example.beerstoragemanager.databinding.ActivityOrderHistoryBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +47,7 @@ public class OrdersHistoryView extends AppCompatActivity {
 
     Customer customer;
     List<Customer> customersList;
+    List<Beer> beerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,7 @@ public class OrdersHistoryView extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         customersList = new ArrayList<>();
+        beerList = new ArrayList<>();
     }
 
     @Override
@@ -114,17 +122,75 @@ public class OrdersHistoryView extends AppCompatActivity {
                 displayToast("Error: database could't load.");
             }
         });
-
+        binding.ordersHistoryListIdCustomers.setLongClickable(true);
         binding.ordersHistoryListIdCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 customer = customersList.get(position);
+                aboutDialog(customer.getOrderId());
+            }
+        });
+
+        binding.ordersHistoryListIdCustomers.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                customer = customersList.get(position);
                 deleteDialog(customer.getCustomerId());
+                return false;
             }
         });
     }
 
-    private void deleteDialog(final String id){
+    private void aboutDialog(final String orderId){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(OrdersHistoryView.this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        final View dialogView = inflater.inflate(R.layout.about_dialog,null);
+        dialogBuilder.setView(dialogView);
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        final ListView itemList;
+
+        itemList = alertDialog.findViewById(R.id.about_dialog_listIdItems);
+
+        databaseReference = database.getReference("Orders").child(orderId);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                beerList.clear();
+                for(DataSnapshot ingredientSnapshot : dataSnapshot.getChildren()){
+                    Beer beer = ingredientSnapshot.getValue(Beer.class);
+                    beerList.add(beer);
+                }
+                OrdersListController adapter = new OrdersListController(OrdersHistoryView.this, beerList);
+                itemList.setAdapter(adapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                displayToast("Error: database could't load.");
+            }
+        });
+
+        final Button btnExit;
+
+        btnExit = alertDialog.findViewById(R.id.about_dialog_btnIdExit);
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    private void deleteDialog(final String customerId){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(OrdersHistoryView.this);
         LayoutInflater inflater = getLayoutInflater();
 
@@ -146,7 +212,7 @@ public class OrdersHistoryView extends AppCompatActivity {
         tvYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference = FirebaseDatabase.getInstance().getReference("Customers").child(id);
+                databaseReference = FirebaseDatabase.getInstance().getReference("Customers").child(customerId);
                 databaseReference.removeValue();
                 finish();
                 overridePendingTransition(0, 0);
