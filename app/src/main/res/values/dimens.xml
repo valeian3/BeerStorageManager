@@ -268,7 +268,7 @@
 
     <dimen name="presets_listWidthBeers">285sp</dimen>
     <dimen name="presets_listHeightBeers">200dp</dimen>
-    <dimen name="presets_listMarginTopBeers">10dp</dimen>
+    <dimen name="presets_listMarginTopBeers">80dp</dimen>
 
     <dimen name="presets_listHeightIngredients">160dp</dimen>
 
@@ -496,5 +496,5 @@
     <dimen name="splash_screen_tvTextSizeAppName">25sp</dimen>
     <dimen name="splash_screen_tvMarginBottomAppName">108dp</dimen>
     <dimen name="orders_history_dialog_rlHeight">500dp</dimen>
-    <dimen name="about_dialog_listHeightItems">350dp</dimen>
+    <dimen name="about_dialog_listHeightItems">200dp</dimen>
 </resources>

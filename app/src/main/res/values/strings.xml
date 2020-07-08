@@ -104,4 +104,7 @@
     <string name="history_dialog_tvTextNo">NO</string>
     <string name="splash_screen_tvTextAppName">Storage Manager</string>
     <string name="about_dialog_tvText">Ordered items</string>
+    <string name="about_dialogBtnText">Create PDF</string>
+    <string name="about_dialog_tvBeerAmount">Amount</string>
+    <string name="about_dialog_tvBeerName">Name</string>
 </resources>

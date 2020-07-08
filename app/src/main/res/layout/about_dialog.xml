@@ -21,8 +21,26 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:text="@string/about_dialog_tvText"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/about_dialog_tvIdBeerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/about_dialog_tvBeerName"
+        android:textSize="22sp"/>
+    <TextView
+        android:id="@+id/about_dialog_tvIdBeerAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/about_dialog_tvBeerAmount"
+        android:textSize="22sp"/>
     <ListView
         android:id="@+id/about_dialog_listIdItems"
         android:layout_width="@dimen/presets_listWidthBeers"
@@ -30,5 +48,16 @@
         android:layout_below="@+id/about_dialog_tvIdHeadline"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/presets_listMarginTopBeers"
-        android:divider="#00000000" />
+        android:divider="#00000000"/>
+    <Button
+        android:id="@+id/about_dialog_btnIdPdf"
+        android:layout_width="150sp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/about_dialog_listIdItems"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:text="@string/about_dialogBtnText"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/presets_btnTextColorSelect"/>
 </RelativeLayout>

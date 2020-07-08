@@ -1,9 +1,17 @@
 package com.example.beerstoragemanager;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -17,6 +25,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.example.beerstoragemanager.Controller.CustomerListController;
 import com.example.beerstoragemanager.Controller.IngredientsListInPresetsController;
@@ -33,7 +42,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OrdersHistoryView extends AppCompatActivity {
@@ -49,6 +64,10 @@ public class OrdersHistoryView extends AppCompatActivity {
     List<Customer> customersList;
     List<Beer> beerList;
 
+    Bitmap bmp, scaledBmp;
+    Date date;
+    DateFormat dateFormat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +81,12 @@ public class OrdersHistoryView extends AppCompatActivity {
 
         customersList = new ArrayList<>();
         beerList = new ArrayList<>();
+
+        ActivityCompat.requestPermissions(this,new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE},PackageManager.PERMISSION_GRANTED);
+
+        bmp = BitmapFactory.decodeResource(getResources(),R.drawable.logo);
+        scaledBmp = Bitmap.createScaledBitmap(bmp, 40, 40, false);
     }
 
     @Override
@@ -127,7 +152,7 @@ public class OrdersHistoryView extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 customer = customersList.get(position);
-                aboutDialog(customer.getOrderId());
+                aboutDialog(customer.getOrderId(), customer.getName());
             }
         });
 
@@ -141,7 +166,7 @@ public class OrdersHistoryView extends AppCompatActivity {
         });
     }
 
-    private void aboutDialog(final String orderId){
+    private void aboutDialog(final String orderId, final String customerName){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(OrdersHistoryView.this);
         LayoutInflater inflater = getLayoutInflater();
 
@@ -175,7 +200,7 @@ public class OrdersHistoryView extends AppCompatActivity {
             }
         });
 
-        final Button btnExit;
+        final Button btnExit, btnCreatePdf;
 
         btnExit = alertDialog.findViewById(R.id.about_dialog_btnIdExit);
         btnExit.setOnClickListener(new View.OnClickListener() {
@@ -186,6 +211,74 @@ public class OrdersHistoryView extends AppCompatActivity {
                 startActivity(getIntent());
                 overridePendingTransition(0, 0);
                 alertDialog.dismiss();
+            }
+        });
+        btnCreatePdf = alertDialog.findViewById(R.id.about_dialog_btnIdPdf);
+        btnCreatePdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                date = new Date();
+
+                PdfDocument pdfDocument = new PdfDocument();
+                Paint paint = new Paint();
+
+                PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(250, 400, 1).create();
+                PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+                Canvas canvas = page.getCanvas();
+
+                canvas.drawBitmap(scaledBmp, 10, 10, paint);
+
+                paint.setTextAlign(Paint.Align.CENTER);
+                paint.setTextSize(14f);
+                canvas.drawText("Pivovara Daruvar", pageInfo.getPageWidth()/2, 40, paint);
+
+                paint.setTextAlign(Paint.Align.CENTER);
+                paint.setTextSize(12f);
+                paint.setColor(Color.rgb(122,119,119));
+                canvas.drawText("Order details", pageInfo.getPageWidth()/2, 90, paint);
+
+                paint.setTextSize(10f);
+                canvas.drawText("Customer: " + customerName, 52, 120, paint);
+
+                dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+                paint.setTextSize(10f);
+                canvas.drawText("Date: " + dateFormat.format(date), 48, 140, paint);
+
+                paint.setTextSize(12f);
+                canvas.drawText("Beer name", 55, 170, paint);
+
+                canvas.drawLine(25, 174, 210, 174, paint);
+
+                paint.setTextSize(12f);
+                canvas.drawText("Quantity", 180, 170, paint);
+
+                int nameStartXPosition = 65;
+                int amountStartXPosition = 180;
+                int startYPosition = 195;
+
+                for(int i = 0; i < beerList.size(); i++){
+                    Beer beer = beerList.get(i);
+                    canvas.drawText(beer.getName(), nameStartXPosition, startYPosition, paint);
+                    canvas.drawText(beer.getAmountOfBags(), amountStartXPosition, startYPosition, paint);
+                    startYPosition += 20;
+                }
+
+
+                pdfDocument.finishPage(page);
+
+                File file = new File(Environment.getExternalStorageDirectory(), "/"+customerName + " Order Details.pdf");
+
+                try {
+                    pdfDocument.writeTo(new FileOutputStream(file));
+                    displayToast("PDF created");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    displayToast("Error: PDF not created");
+                }
+                pdfDocument.close();
+
             }
         });
     }
@@ -242,6 +335,7 @@ public class OrdersHistoryView extends AppCompatActivity {
             }
         });
     }
+
 
     private void displayToast(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
