@@ -108,6 +108,7 @@ public class PresetsView extends AppCompatActivity{
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart executed.");
+        binding.bottomNavigationMenu.setSelectedItemId(R.id.presetsView);
     }
 
     @Override
@@ -120,6 +121,7 @@ public class PresetsView extends AppCompatActivity{
     protected void onResume() {
         super.onResume();
         Log.i(TAG, "onResume executed.");
+        binding.bottomNavigationMenu.setSelectedItemId(R.id.presetsView);
 
         availablePresets();
         loadStorageIngredients();

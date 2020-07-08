@@ -152,21 +152,12 @@ public class OrdersHistoryView extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 customer = customersList.get(position);
-                aboutDialog(customer.getOrderId(), customer.getName());
-            }
-        });
-
-        binding.ordersHistoryListIdCustomers.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                customer = customersList.get(position);
-                deleteDialog(customer.getCustomerId());
-                return false;
+                aboutDialog(customer.getOrderId(), customer.getName(), customer.getCustomerId());
             }
         });
     }
 
-    private void aboutDialog(final String orderId, final String customerName){
+    private void aboutDialog(final String orderId, final String customerName, final String customerId){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(OrdersHistoryView.this);
         LayoutInflater inflater = getLayoutInflater();
 
@@ -200,7 +191,7 @@ public class OrdersHistoryView extends AppCompatActivity {
             }
         });
 
-        final Button btnExit, btnCreatePdf;
+        final Button btnExit, btnCreatePdf, btnDeleteOrder;
 
         btnExit = alertDialog.findViewById(R.id.about_dialog_btnIdExit);
         btnExit.setOnClickListener(new View.OnClickListener() {
@@ -278,31 +269,10 @@ public class OrdersHistoryView extends AppCompatActivity {
                     displayToast("Error: PDF not created");
                 }
                 pdfDocument.close();
-
             }
         });
-    }
-
-    private void deleteDialog(final String customerId){
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(OrdersHistoryView.this);
-        LayoutInflater inflater = getLayoutInflater();
-
-        final View dialogView = inflater.inflate(R.layout.history_dialog,null);
-        dialogBuilder.setView(dialogView);
-
-        final AlertDialog alertDialog = dialogBuilder.create();
-        alertDialog.show();
-
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        final TextView tvYes, tvNo;
-        final Button btnExit;
-
-        tvYes = alertDialog.findViewById(R.id.history_dialog_tvIdYes);
-        tvNo = alertDialog.findViewById(R.id.history_dialog_tvIdNo);
-        btnExit = alertDialog.findViewById(R.id.history_dialog_btnIdExit);
-
-        tvYes.setOnClickListener(new View.OnClickListener() {
+        btnDeleteOrder = alertDialog.findViewById(R.id.about_dialog_btnIdDeleteOrder);
+        btnDeleteOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 databaseReference = FirebaseDatabase.getInstance().getReference("Customers").child(customerId);
@@ -314,28 +284,7 @@ public class OrdersHistoryView extends AppCompatActivity {
                 alertDialog.dismiss();
             }
         });
-        tvNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                overridePendingTransition(0, 0);
-                startActivity(getIntent());
-                overridePendingTransition(0, 0);
-                alertDialog.dismiss();
-            }
-        });
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                overridePendingTransition(0, 0);
-                startActivity(getIntent());
-                overridePendingTransition(0, 0);
-                alertDialog.dismiss();
-            }
-        });
     }
-
 
     private void displayToast(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();

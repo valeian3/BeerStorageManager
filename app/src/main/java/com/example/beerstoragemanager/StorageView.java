@@ -106,6 +106,7 @@ public class StorageView extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart executed.");
+        binding.bottomNavigationMenu.setSelectedItemId(R.id.storageView);
     }
 
     @Override
@@ -118,6 +119,7 @@ public class StorageView extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.i(TAG, "onResume executed.");
+        binding.bottomNavigationMenu.setSelectedItemId(R.id.storageView);
 
         newIngredient();
         listingIngredients();

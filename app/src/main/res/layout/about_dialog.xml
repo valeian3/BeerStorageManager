@@ -47,17 +47,26 @@
         android:layout_height="@dimen/about_dialog_listHeightItems"
         android:layout_below="@+id/about_dialog_tvIdHeadline"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/presets_listMarginTopBeers"
+        android:layout_marginTop="80dp"
         android:divider="#00000000"/>
     <Button
         android:id="@+id/about_dialog_btnIdPdf"
         android:layout_width="150sp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/about_dialog_listIdItems"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
         android:text="@string/about_dialogBtnText"
         android:background="@drawable/custom_button"
+        android:textColor="@color/presets_btnTextColorSelect"/>
+    <Button
+        android:id="@+id/about_dialog_btnIdDeleteOrder"
+        android:layout_width="150sp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/about_dialog_btnIdPdf"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/custom_button"
+        android:text="@string/about_dialogBtnDeleteOrder"
         android:textColor="@color/presets_btnTextColorSelect"/>
 </RelativeLayout>

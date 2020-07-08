@@ -268,7 +268,7 @@
 
     <dimen name="presets_listWidthBeers">285sp</dimen>
     <dimen name="presets_listHeightBeers">200dp</dimen>
-    <dimen name="presets_listMarginTopBeers">80dp</dimen>
+    <dimen name="presets_listMarginTopBeers">10dp</dimen>
 
     <dimen name="presets_listHeightIngredients">160dp</dimen>
 
