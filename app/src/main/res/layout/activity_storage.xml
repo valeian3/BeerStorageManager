@@ -39,7 +39,6 @@
                 android:layout_marginStart="@dimen/storage_progressBarMarginStartProgressBar"
                 android:layout_marginTop="@dimen/storage_progressBarMarginTopProgressBar"
                 android:progressDrawable="@drawable/custom_progress_bar_circle" />
-
             <TextView
                 android:id="@+id/storage_tvIdPercentage"
                 android:layout_width="wrap_content"
@@ -50,7 +49,6 @@
                 android:layout_marginEnd="@dimen/storage_tvMarginStartPercentage"
                 android:textColor="@color/storage_tvPercentage"
                 android:textSize="@dimen/storage_tvSizeStorage"/>
-
             <RelativeLayout
                 android:id="@+id/storage_rlIdLayoutWithList"
                 android:layout_width="@dimen/storage_layoutWidth"

@@ -48,9 +48,11 @@ public class StorageView extends AppCompatActivity {
     Ingredient ingredient;
     List<Ingredient> ingredientList;
     boolean checkIfAppInBackground = false;
-    int maxValueOfStorage = 20000;
-    int maxAmountOfLeftInStorage;
-    int amountOfIngredientsInStorage = 0;
+    private int maxValueOfStorage = 20000;
+    private int maxAmountOfLeftInStorage;
+    private int amountOfIngredientsInStorage = 0;
+
+    private long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +102,19 @@ public class StorageView extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent explicitIntent = new Intent(Intent.ACTION_MAIN);
+        explicitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        explicitIntent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(explicitIntent);
+        finish();
+        System.exit(0);
+        overridePendingTransition(0, 0);
     }
 
     @Override
